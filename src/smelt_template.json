@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "spacerain",
+  "ingredient": {
+    "item": "INPUTITEMHERE"
+  },
+  "result": {
+    "item": "OUTPUTITEMHERE",
+    "count": 1
+  }
+}

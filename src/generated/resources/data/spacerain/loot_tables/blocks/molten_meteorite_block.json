@@ -1,0 +1,1 @@
+{"pools":[{"entries":[{"name":"spacerain:molten_meteorite_block","type":"minecraft:item"}],"rolls":1,"conditions":[{"condition":"minecraft:survives_explosion"}],"bonus_rolls":0}],"random_sequence":"spacerain:block/molten_meteorite_block","type":"minecraft:block"}

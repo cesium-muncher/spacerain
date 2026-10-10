@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "spacerain:cobaltite"
+  },
+  "result": "spacerain:cobalt_ingot"
+}

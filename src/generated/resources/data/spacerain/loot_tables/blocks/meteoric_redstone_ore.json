@@ -1,0 +1,1 @@
+{"pools":[{"entries":[{"name":"spacerain:meteoric_redstone_ore","type":"minecraft:item"}],"rolls":1,"conditions":[{"condition":"minecraft:survives_explosion"}],"bonus_rolls":0}],"random_sequence":"spacerain:block/meteoric_redstone_ore","type":"minecraft:block"}

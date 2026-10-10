@@ -1,0 +1,40 @@
+{
+
+  "item.spacerain.cobalt_ingot": "Cobalt Ingot",
+  "item.spacerain.cobalt_catalyst": "Cobalt Catalyst",
+  "item.spacerain.fallen_sigil": "Fallen Sigil",
+  "item.spacerain.awakened_sigil": "Awakened Sigil",
+  "item.spacerain.astral_jewel": "Astral Jewel",
+
+  "item.spacerain.cobalt_sword": "Cobalt Sword",
+  "item.spacerain.cobalt_pickaxe": "Cobalt Pickaxe",
+  "item.spacerain.cobalt_axe": "Cobalt Axe",
+  "item.spacerain.cobalt_shovel": "Cobalt Shovel",
+  "item.spacerain.cobalt_hoe": "Cobalt Hoe",
+  "item.spacerain.cobalt_omicron": "Cobalt Omicron",
+  "item.spacerain.awakened_cobalt_omicron": "Awakened Cobalt Omicron",
+  "item.spacerain.stellar_cobalt_omicron": "Stellar Cobalt Omicron",
+
+  "block.spacerain.meteorite_cobble": "Meteorite Cobble",
+  "block.spacerain.meteorite_block": "Meteorite Block",
+  "block.spacerain.molten_meteorite_block": "Molten Meteorite Block",
+  "block.spacerain.frigid_meteorite_block": "Frigid Meteorite Block",
+
+  "block.spacerain.meteoric_copper_ore": "Meteoric Copper Ore",
+  "block.spacerain.meteoric_iron_ore": "Meteoric Iron Ore",
+  "block.spacerain.meteoric_gold_ore": "Meteoric Gold Ore",
+  "block.spacerain.meteoric_diamond_ore": "Meteoric Diamond Ore",
+  "block.spacerain.meteoric_emerald_ore": "Meteoric Emerald Ore",
+  "block.spacerain.meteoric_lapis_ore": "Meteoric Lapis Ore",
+  "block.spacerain.meteoric_redstone_ore": "Meteoric Redstone Ore",
+
+  "block.spacerain.meteoric_cobaltite_ore": "Meteoric Cobaltite Ore",
+  "block.spacerain.astral_jewel_ore": "Astral Jewel Ore",
+
+  "block.spacerain.astral_altar": "Astral Altar",
+
+  "creativetab.spacerain_tab": "Spacerain",
+
+  "tooltip.scroll_info_text": "Ritual Requirements:",
+  "item.spacerain.debug_scroll": "Debug Scroll"
+}
