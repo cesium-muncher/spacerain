@@ -1,1 +1,1 @@
-{"parent":"item/handheld","textures":{"layer0":"spacerain:item/cobalt_shovel"}}
+{"textures":{"layer0":"spacerain:item/cobalt_shovel"},"parent":"item/handheld"}

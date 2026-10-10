@@ -32,11 +32,11 @@ public class RitualScrollItem extends Item {
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         List<Item> items = this.getItemRequirements();
-        pTooltipComponents.add(Component.translatable("tooltip.scroll_info_text"));
+        pTooltipComponents.add(Component.literal("§e" + Component.translatable("tooltip.scroll_info_text").getString()));
 
         for (Item reqitem: items) {
             String name = reqitem.getName(new ItemStack(reqitem)).getString();
-            pTooltipComponents.add(Component.literal("§9" + name));
+            pTooltipComponents.add(Component.literal("§6" + name));
 
         }
 

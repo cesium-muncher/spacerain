@@ -1,1 +1,1 @@
-{"parent":"item/handheld","textures":{"layer0":"spacerain:item/awakened_cobalt_omicron"}}
+{"textures":{"layer0":"spacerain:item/awakened_cobalt_omicron"},"parent":"item/handheld"}

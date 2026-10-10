@@ -28,6 +28,11 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.COBALT_AXE.get());
                 output.accept(ModItems.COBALT_SHOVEL.get());
                 output.accept(ModItems.COBALT_HOE.get());
+                output.accept(ModItems.COBALT_HELMET.get());
+                output.accept(ModItems.COBALT_CHESTPLATE.get());
+                output.accept(ModItems.COBALT_LEGGINGS.get());
+                output.accept(ModItems.COBALT_BOOTS.get());
+
                 output.accept(ModBlocks.METEORIC_COBALTITE_ORE.get());
                 output.accept(ModBlocks.ASTRAL_JEWEL_ORE.get());
                 output.accept(ModBlocks.METEORITE_COBBLE.get());
@@ -41,6 +46,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.METEORIC_EMERALD_ORE.get());
                 output.accept(ModBlocks.METEORIC_REDSTONE_ORE.get());
                 output.accept(ModBlocks.METEORIC_LAPIS_ORE.get());
+                output.accept(ModBlocks.ASTRAL_ALTAR.get());
                 output.accept(ModItems.COBALT_CATALYST.get());
                 output.accept(ModItems.FALLEN_SIGIL.get());
                 output.accept(ModItems.AWAKENED_SIGIL.get());
@@ -50,6 +56,14 @@ public class ModCreativeModeTabs {
 
             })
             .build());
+    public static final RegistryObject<CreativeModeTab> SPACERAIN_SCROLLS_TAB = CREATIVE_MODE_TABS.register("spacerain_scrolls_tab",
+            () -> CreativeModeTab.builder()
+                    .icon(() -> new ItemStack(ModItems.DEBUG_SCROLL.get()))
+                    .title(Component.translatable("creativetab.spacerain_scrolls_tab"))
+                    .displayItems((ItemDisplayParameters, output) -> {
+                        output.accept(ModItems.DEBUG_SCROLL.get());
+                    })
+                    .build());
 
 
 

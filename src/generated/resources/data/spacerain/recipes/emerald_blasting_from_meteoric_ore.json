@@ -1,1 +1,1 @@
-{"group":"spacerain","cookingtime":200,"category":"misc","ingredient":{"item":"spacerain:meteoric_emerald_ore"},"result":{"item":"minecraft:emerald","count":4},"type":"minecraft:blasting","experience":0.1}
+{"ingredient":{"item":"spacerain:meteoric_emerald_ore"},"cookingtime":200,"result":{"item":"minecraft:emerald","count":4},"type":"minecraft:blasting","experience":0.1,"category":"misc","group":"spacerain"}

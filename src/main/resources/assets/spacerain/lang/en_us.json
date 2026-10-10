@@ -11,6 +11,10 @@
   "item.spacerain.cobalt_axe": "Cobalt Axe",
   "item.spacerain.cobalt_shovel": "Cobalt Shovel",
   "item.spacerain.cobalt_hoe": "Cobalt Hoe",
+  "item.spacerain.cobalt_helmet": "Cobalt Helmet",
+  "item.spacerain.cobalt_chestplate": "Cobalt Chestplate",
+  "item.spacerain.cobalt_leggings": "Cobalt Leggings",
+  "item.spacerain.cobalt_boots": "Cobalt Boots",
   "item.spacerain.cobalt_omicron": "Cobalt Omicron",
   "item.spacerain.awakened_cobalt_omicron": "Awakened Cobalt Omicron",
   "item.spacerain.stellar_cobalt_omicron": "Stellar Cobalt Omicron",
@@ -34,6 +38,7 @@
   "block.spacerain.astral_altar": "Astral Altar",
 
   "creativetab.spacerain_tab": "Spacerain",
+  "creativetab.spacerain_scrolls_tab": "Spacerain Ritual Scrolls",
 
   "tooltip.scroll_info_text": "Ritual Requirements:",
   "item.spacerain.debug_scroll": "Debug Scroll"

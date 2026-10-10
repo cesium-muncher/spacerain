@@ -95,7 +95,7 @@ function toolstyleitemgen(name)
     file:close()
 end
 function scrollitemgen(name)
-    local im = {parent = "item/generated", textures = {layer0 = "spacerain:item/scroll"}}
+    local im = {parent = "spacerain:item/scroll"}
     local file, err = io.open("generated/resources/assets/spacerain/models/item/" .. name .. ".json", "w")
     file:write(json.encode(im))
     file:close()
@@ -125,6 +125,11 @@ basicitemgen("cobalt_catalyst")
 basicitemgen("fallen_sigil")
 basicitemgen("awakened_sigil")
 basicitemgen("astral_jewel")
+
+basicitemgen("cobalt_helmet")
+basicitemgen("cobalt_chestplate")
+basicitemgen("cobalt_leggings")
+basicitemgen("cobalt_boots")
 
 toolstyleitemgen("cobalt_sword")
 toolstyleitemgen("cobalt_pickaxe")

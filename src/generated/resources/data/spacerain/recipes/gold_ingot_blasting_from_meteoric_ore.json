@@ -1,1 +1,1 @@
-{"group":"spacerain","cookingtime":200,"category":"misc","ingredient":{"item":"spacerain:meteoric_gold_ore"},"result":{"item":"minecraft:gold_ingot","count":16},"type":"minecraft:blasting","experience":0.1}
+{"ingredient":{"item":"spacerain:meteoric_gold_ore"},"cookingtime":200,"result":{"item":"minecraft:gold_ingot","count":16},"type":"minecraft:blasting","experience":0.1,"category":"misc","group":"spacerain"}

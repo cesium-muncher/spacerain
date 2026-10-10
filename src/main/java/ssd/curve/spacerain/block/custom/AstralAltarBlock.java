@@ -1,8 +1,11 @@
 package ssd.curve.spacerain.block.custom;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Inventory;
@@ -27,6 +30,10 @@ public class AstralAltarBlock extends Block {
 
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        if (pLevel.isClientSide()) {
+            return InteractionResult.SUCCESS;
+        }
+
         Item originalItem = pPlayer.getItemInHand(InteractionHand.MAIN_HAND).getItem();
         if (RitualScrollItem.class.isAssignableFrom(originalItem.getClass())) {
             RitualScrollItem scrollItem = (RitualScrollItem) originalItem;
@@ -49,6 +56,7 @@ public class AstralAltarBlock extends Block {
                     inv.removeItem(inv.findSlotMatchingItem(reqitemstack), 1);
 
                 }
+                pLevel.playLocalSound(pPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1, 1, false);
 
                 scrollItem.performRitual(pLevel, pPos, pPlayer);
             } else {
@@ -59,6 +67,7 @@ public class AstralAltarBlock extends Block {
 
         return InteractionResult.SUCCESS;
     }
+
 
 
 }

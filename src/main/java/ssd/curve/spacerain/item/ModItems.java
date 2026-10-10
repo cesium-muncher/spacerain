@@ -35,6 +35,16 @@ public class ModItems {
     public static final RegistryObject<Item> STELLAR_COBALT_OMICRON = ITEMS.register("stellar_cobalt_omicron",
             () -> new OmicronItem(ModToolTiers.OMICRON, 9, -1.6f, new Item.Properties()));
 
+    public static final RegistryObject<Item> COBALT_HELMET = ITEMS.register("cobalt_helmet",
+            () -> new ArmorItem(ModArmorMaterials.COBALT, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> COBALT_CHESTPLATE = ITEMS.register("cobalt_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.COBALT, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<Item> COBALT_LEGGINGS = ITEMS.register("cobalt_leggings",
+            () -> new ArmorItem(ModArmorMaterials.COBALT, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final RegistryObject<Item> COBALT_BOOTS = ITEMS.register("cobalt_boots",
+            () -> new ArmorItem(ModArmorMaterials.COBALT, ArmorItem.Type.BOOTS, new Item.Properties()));
+
+
     public static final RegistryObject<Item> COBALT_CATALYST = ITEMS.register("cobalt_catalyst",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> FALLEN_SIGIL = ITEMS.register("fallen_sigil",
