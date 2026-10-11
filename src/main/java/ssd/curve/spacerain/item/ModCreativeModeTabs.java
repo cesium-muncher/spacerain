@@ -62,6 +62,13 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.spacerain_scrolls_tab"))
                     .displayItems((ItemDisplayParameters, output) -> {
                         output.accept(ModItems.DEBUG_SCROLL.get());
+                        output.accept(ModItems.SCROLL_TRANS_IRON.get());
+                        output.accept(ModItems.SCROLL_OMICRON.get());
+                        output.accept(ModItems.SCROLL_TRUE_LIGHT.get());
+                        output.accept(ModItems.SCROLL_RESIST.get());
+                        output.accept(ModItems.SCROLL_REGEN.get());
+                        output.accept(ModItems.SCROLL_FOOD.get());
+                        output.accept(ModItems.SCROLL_EVIL_CURSE.get());
                     })
                     .build());
 

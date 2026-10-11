@@ -94,8 +94,16 @@ function toolstyleitemgen(name)
     file:write(json.encode(im))
     file:close()
 end
-function scrollitemgen(name)
+function scrollitemgen(name, variant)
     local im = {parent = "spacerain:item/scroll"}
+    if variant == 1 then
+        im = {parent = "spacerain:item/scroll", textures = {}}
+        im.textures["0"] = "spacerain:item/scroll_red"
+    end
+    if variant == 2 then
+        im = {parent = "spacerain:item/scroll", textures = {}}
+        im.textures["0"] = "spacerain:item/scroll_grand"
+    end
     local file, err = io.open("generated/resources/assets/spacerain/models/item/" .. name .. ".json", "w")
     file:write(json.encode(im))
     file:close()
@@ -142,6 +150,13 @@ toolstyleitemgen("awakened_cobalt_omicron")
 toolstyleitemgen("stellar_cobalt_omicron")
 
 scrollitemgen("debug_scroll")
+scrollitemgen("scroll_transmutate_iron")
+scrollitemgen("scroll_omicron")
+scrollitemgen("scroll_true_light", 2)
+scrollitemgen("scroll_extended_endurance")
+scrollitemgen("scroll_extended_healing")
+scrollitemgen("scroll_saturate")
+scrollitemgen("scroll_evil_curse", 1)
 
 -- loot and recipes
 meteoricoresmeltrecipe("copper", "copper_ingot", 16)
@@ -150,7 +165,7 @@ meteoricoresmeltrecipe("gold", "gold_ingot", 16)
 meteoricoresmeltrecipe("diamond", "diamond", 4)
 meteoricoresmeltrecipe("lapis", "lapis_lazuli", 32)
 meteoricoresmeltrecipe("redstone", "redstone", 48)
-meteoricoresmeltrecipe("emerald", "emerald", 4)
+meteoricoresmeltrecipe("emerald", "emerald", 16)
 
 meteoricblocklootgen("meteorite_cobble")
 meteoricblocklootgen("meteorite_block")
@@ -201,4 +216,4 @@ setuptag("/mineable/pickaxe", {
 })
 
 meteoricblocklootgen("meteoric_cobaltite_ore")
-meteoricblocklootgen("astral_jewel_ore")
+--meteoricblocklootgen("astral_jewel_ore")

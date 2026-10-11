@@ -8,6 +8,7 @@ import net.minecraftforge.registries.RegistryObject;
 import ssd.curve.spacerain.Spacerain;
 import ssd.curve.spacerain.item.custom.OmicronItem;
 import ssd.curve.spacerain.item.custom.RitualScrollItem;
+import ssd.curve.spacerain.item.scrolls.*;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -56,6 +57,20 @@ public class ModItems {
 
     public static final RegistryObject<Item> DEBUG_SCROLL = ITEMS.register("debug_scroll",
             () -> new RitualScrollItem(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_TRANS_IRON = ITEMS.register("scroll_transmutate_iron",
+            () -> new ScrollTransmutateIron(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_OMICRON = ITEMS.register("scroll_omicron",
+            () -> new ScrollOmicronCreation(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_TRUE_LIGHT = ITEMS.register("scroll_true_light",
+            () -> new ScrollGoodEffects(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_RESIST = ITEMS.register("scroll_extended_endurance",
+            () -> new ScrollLongResist(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_REGEN = ITEMS.register("scroll_extended_healing",
+            () -> new ScrollLongRegen(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_FOOD = ITEMS.register("scroll_saturate",
+            () -> new ScrollFood(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_EVIL_CURSE = ITEMS.register("scroll_evil_curse",
+            () -> new ScrollEvilCurse(new Item.Properties()));
 
 
     public static void register(IEventBus eventBus) {

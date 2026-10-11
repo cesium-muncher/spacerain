@@ -1,1 +1,1 @@
-{"ingredient":{"item":"spacerain:meteoric_iron_ore"},"cookingtime":200,"result":{"item":"minecraft:iron_ingot","count":16},"type":"minecraft:blasting","experience":0.1,"category":"misc","group":"spacerain"}
+{"type":"minecraft:blasting","category":"misc","group":"spacerain","experience":0.1,"ingredient":{"item":"spacerain:meteoric_iron_ore"},"cookingtime":200,"result":{"count":16,"item":"minecraft:iron_ingot"}}

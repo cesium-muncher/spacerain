@@ -56,12 +56,14 @@ public class AstralAltarBlock extends Block {
                     inv.removeItem(inv.findSlotMatchingItem(reqitemstack), 1);
 
                 }
-                pLevel.playLocalSound(pPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1, 1, false);
+                pLevel.playSound(null, pPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.5f, 1f);
 
                 scrollItem.performRitual(pLevel, pPos, pPlayer);
             } else {
 
             }
+        } else {
+            pPlayer.sendSystemMessage(Component.translatable("altar.spacerain.need_scroll"));
         }
 
 

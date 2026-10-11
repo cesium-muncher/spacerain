@@ -4,14 +4,16 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import ssd.curve.spacerain.Spacerain;
 
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-    COBALT("cobalt", 26, new int[]{5, 7, 5, 4}, 25,
-            SoundEvents.ARMOR_EQUIP_IRON, 1f, 0f, () -> Ingredient.of(ModItems.COBALT_INGOT.get()));
+    COBALT("cobalt", 26, new int[]{2, 6, 5, 2}, 20,
+            SoundEvents.ARMOR_EQUIP_DIAMOND, 0.5f, 0.5f, () -> Ingredient.of(ModItems.COBALT_INGOT.get()));
+
 
     private final String name;
     private final int durabilityMultiplier;

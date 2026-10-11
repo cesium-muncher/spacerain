@@ -41,5 +41,17 @@
   "creativetab.spacerain_scrolls_tab": "Spacerain Ritual Scrolls",
 
   "tooltip.scroll_info_text": "Ritual Requirements:",
-  "item.spacerain.debug_scroll": "Debug Scroll"
+  "altar.spacerain.need_scroll": "§6Rituals need instructions. Seek out ancient scrolls.",
+  "altar.spacerain.need_catalyst": "§6This ritual requires a Cobalt Catalyst.",
+  "altar.spacerain.weakling": "§cYou are not worthy.",
+  "altar.spacerain.famine": "§cA great famine sweeps the land.",
+
+  "item.spacerain.debug_scroll": "Debug Scroll",
+  "item.spacerain.scroll_transmutate_iron": "Ritual Scroll of Catalytic Iron Transmutation",
+  "item.spacerain.scroll_omicron": "Ritual Scroll of the Weapon of Sacrifice",
+  "item.spacerain.scroll_extended_endurance": "Ritual Scroll of Extended Endurance",
+  "item.spacerain.scroll_extended_healing": "Ritual Scroll of Extended Healing",
+  "item.spacerain.scroll_saturate": "Ritual Scroll of the Hungry Monk",
+  "item.spacerain.scroll_true_light": "Grand Ritual Scroll of assistance from True Light",
+  "item.spacerain.scroll_evil_curse": "Dark Ritual Scroll of Famine"
 }
