@@ -27,6 +27,7 @@ public class ScrollOmicronCreation extends RitualScrollItem {
         //player.setSecondsOnFire(3); nahhhh idk
         if (player.getHealth() > 0) {
             player.drop(cobalt, false);
+            ominoussfx(level, pos);
         } else {
             player.sendSystemMessage(Component.translatable("altar.spacerain.weakling"));
         }

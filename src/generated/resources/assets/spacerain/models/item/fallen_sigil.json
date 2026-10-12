@@ -1,1 +1,1 @@
-{"textures":{"layer0":"spacerain:item/fallen_sigil"},"parent":"item/generated"}
+{"parent":"item/generated","textures":{"layer0":"spacerain:item/fallen_sigil"}}

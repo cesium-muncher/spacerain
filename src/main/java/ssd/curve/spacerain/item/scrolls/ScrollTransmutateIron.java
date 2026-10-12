@@ -20,13 +20,13 @@ public class ScrollTransmutateIron extends RitualScrollItem {
     @Override
     public void performRitual(Level level, BlockPos pos, Player player) {
         ItemStack cobalt = new ItemStack(ModItems.COBALT_INGOT.get(), 1);
-        ItemStack iron = new ItemStack(Items.IRON_INGOT, 1);
+
         ItemStack catalyst = new ItemStack(ModItems.COBALT_CATALYST.get(), 1);
         if (player.getInventory().contains(catalyst)) {
             player.drop(cobalt, false);
         } else {
             player.sendSystemMessage(Component.translatable("altar.spacerain.need_catalyst"));
-            player.drop(iron, false);
+            refundRitual(player);
         }
 
         //super.performRitual(level, pos, player);

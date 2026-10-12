@@ -6,6 +6,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Explosion;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -53,7 +54,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.ASTRAL_JEWEL.get());
                 output.accept(ModItems.COBALT_OMICRON.get());
                 output.accept(ModItems.AWAKENED_COBALT_OMICRON.get());
-
+                output.accept(ModItems.RITUAL_STAFF.get());
             })
             .build());
     public static final RegistryObject<CreativeModeTab> SPACERAIN_SCROLLS_TAB = CREATIVE_MODE_TABS.register("spacerain_scrolls_tab",
@@ -63,12 +64,23 @@ public class ModCreativeModeTabs {
                     .displayItems((ItemDisplayParameters, output) -> {
                         output.accept(ModItems.DEBUG_SCROLL.get());
                         output.accept(ModItems.SCROLL_TRANS_IRON.get());
-                        output.accept(ModItems.SCROLL_OMICRON.get());
+                        output.accept(ModItems.SCROLL_TRANS_OBSIDIAN.get());
+                        output.accept(ModItems.SCROLL_TOTEMIZATION.get());
+                        output.accept(ModItems.SCROLL_APPLECHANTMENT.get());
+                        output.accept(ModItems.SCROLL_LIGHTNING.get());
+                        output.accept(ModItems.SCROLL_FIREBALL.get());
+                        output.accept(ModItems.SCROLL_ATOMIC.get());
+                        output.accept(ModItems.SCROLL_WARP.get());
+                        output.accept(ModItems.SCROLL_RAIN.get());
                         output.accept(ModItems.SCROLL_TRUE_LIGHT.get());
                         output.accept(ModItems.SCROLL_RESIST.get());
                         output.accept(ModItems.SCROLL_REGEN.get());
                         output.accept(ModItems.SCROLL_FOOD.get());
                         output.accept(ModItems.SCROLL_EVIL_CURSE.get());
+                        output.accept(ModItems.SCROLL_GLOBAL_WARMING.get());
+                        output.accept(ModItems.SCROLL_OMICRON.get());
+                        output.accept(ModItems.SCROLL_AWAKEN.get());
+                        output.accept(ModItems.SCROLL_STELLARIS.get());
                     })
                     .build());
 

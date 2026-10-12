@@ -2,8 +2,10 @@ package ssd.curve.spacerain.block.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -57,10 +59,16 @@ public class AstralAltarBlock extends Block {
 
                 }
                 pLevel.playSound(null, pPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.5f, 1f);
-
                 scrollItem.performRitual(pLevel, pPos, pPlayer);
-            } else {
+                coolparticlefx((ServerLevel) pLevel, pPos);
 
+
+            } else if (pPlayer.isCreative()) {
+                pLevel.playSound(null, pPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1.5f, 1f);
+                scrollItem.performRitual(pLevel, pPos, pPlayer);
+                coolparticlefx((ServerLevel) pLevel, pPos);
+            } else {
+                pPlayer.sendSystemMessage(Component.translatable("altar.spacerain.need_items"));
             }
         } else {
             pPlayer.sendSystemMessage(Component.translatable("altar.spacerain.need_scroll"));
@@ -68,6 +76,40 @@ public class AstralAltarBlock extends Block {
 
 
         return InteractionResult.SUCCESS;
+    }
+    private static void coolparticlefx(ServerLevel pLevel, BlockPos pPos) {
+        for (int i=1; i<= 35; i++) {
+            pLevel.sendParticles(
+                    ParticleTypes.ENCHANT,
+                    pPos.getX() + ((Math.random() - 0.5) * 2.0) + 0.5,
+                    pPos.getY() + 1.0 + ((Math.random() - 0.5) * 1.0) + 0.5,
+                    pPos.getZ() + ((Math.random() - 0.5) * 2.0) + 0.5,
+                    3,
+                    0,
+                    0, 0, 0.1
+            );
+
+
+            pLevel.sendParticles(
+                    ParticleTypes.ENCHANT,
+                    pPos.getX() + ((Math.random() - 0.5) * 10.0) + 0.5,
+                    pPos.getY() + 1.0 + ((Math.random() - 0.5) * 3.0) + 0.5,
+                    pPos.getZ() + ((Math.random() - 0.5) * 10.0) + 0.5,
+                    3,
+                    0,
+                    0, 0, 0.1
+            );
+
+            pLevel.sendParticles(
+                    ParticleTypes.SOUL_FIRE_FLAME,
+                    pPos.getX() + ((Math.random() - 0.5) * 2.0) + 0.5,
+                    pPos.getY() + 1.0 + ((Math.random() - 0.5) * 1.0) + 0.5,
+                    pPos.getZ() + ((Math.random() - 0.5) * 2.0) + 0.5,
+                    2,
+                    0,
+                    0, 0, 0.1
+            );
+        }
     }
 
 

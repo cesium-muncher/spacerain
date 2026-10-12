@@ -94,7 +94,7 @@ function toolstyleitemgen(name)
     file:write(json.encode(im))
     file:close()
 end
-function scrollitemgen(name, variant)
+function scrollitemgen(name, variant) -- evil, grand, grand and evil, secret
     local im = {parent = "spacerain:item/scroll"}
     if variant == 1 then
         im = {parent = "spacerain:item/scroll", textures = {}}
@@ -103,6 +103,14 @@ function scrollitemgen(name, variant)
     if variant == 2 then
         im = {parent = "spacerain:item/scroll", textures = {}}
         im.textures["0"] = "spacerain:item/scroll_grand"
+    end
+    if variant == 3 then
+        im = {parent = "spacerain:item/scroll", textures = {}}
+        im.textures["0"] = "spacerain:item/scroll_grand_red"
+    end
+    if variant == 4 then
+        im = {parent = "spacerain:item/scroll", textures = {}}
+        im.textures["0"] = "spacerain:item/scroll_darkness"
     end
     local file, err = io.open("generated/resources/assets/spacerain/models/item/" .. name .. ".json", "w")
     file:write(json.encode(im))
@@ -126,6 +134,7 @@ basicblockmodelgen("meteoric_emerald_ore")
 
 basicblockmodelgen("meteoric_cobaltite_ore")
 basicblockmodelgen("astral_jewel_ore")
+basicblockmodelgen("stellar_blight")
 
 
 basicitemgen("cobalt_ingot")
@@ -133,6 +142,8 @@ basicitemgen("cobalt_catalyst")
 basicitemgen("fallen_sigil")
 basicitemgen("awakened_sigil")
 basicitemgen("astral_jewel")
+basicitemgen("stellar_jewel")
+basicitemgen("stellar_sigil")
 
 basicitemgen("cobalt_helmet")
 basicitemgen("cobalt_chestplate")
@@ -149,14 +160,24 @@ toolstyleitemgen("cobalt_omicron")
 toolstyleitemgen("awakened_cobalt_omicron")
 toolstyleitemgen("stellar_cobalt_omicron")
 
-scrollitemgen("debug_scroll")
+scrollitemgen("debug_scroll", 4)
 scrollitemgen("scroll_transmutate_iron")
-scrollitemgen("scroll_omicron")
+scrollitemgen("scroll_transmutate_obsidian", 2)
+scrollitemgen("scroll_totemization", 2)
+scrollitemgen("scroll_applechantment")
+scrollitemgen("scroll_lightning")
+scrollitemgen("scroll_fireball")
+scrollitemgen("scroll_atomic")
+scrollitemgen("scroll_warp")
+scrollitemgen("scroll_rain", 2)
+scrollitemgen("scroll_omicron", 1)
 scrollitemgen("scroll_true_light", 2)
 scrollitemgen("scroll_extended_endurance")
 scrollitemgen("scroll_extended_healing")
 scrollitemgen("scroll_saturate")
 scrollitemgen("scroll_evil_curse", 1)
+scrollitemgen("scroll_global_warming", 1)
+scrollitemgen("scroll_stellaris", 3)
 
 -- loot and recipes
 meteoricoresmeltrecipe("copper", "copper_ingot", 16)
@@ -187,14 +208,16 @@ setuptag("needs_stone_tool", {
     "spacerain:meteorite_block",
     "spacerain:molten_meteorite_block",
     "spacerain:frigid_meteorite_block",
-    "spacerain:meteorite_cobble"
+    "spacerain:meteorite_cobble",
+    "spacerain:stellar_blight"
 })
 setuptag("needs_iron_tool", {
     "spacerain:meteoric_gold_ore",
     "spacerain:meteoric_diamond_ore",
     "spacerain:meteoric_redstone_ore",
     "spacerain:meteoric_lapis_ore",
-    "spacerain:meteoric_emerald_ore"
+    "spacerain:meteoric_emerald_ore",
+    "spacerain:astral_altar"
 })
 setuptag("needs_diamond_tool", {
     "spacerain:astral_jewel_ore"
@@ -212,7 +235,9 @@ setuptag("/mineable/pickaxe", {
     "spacerain:meteorite_block",
     "spacerain:molten_meteorite_block",
     "spacerain:frigid_meteorite_block",
-    "spacerain:meteorite_cobble"
+    "spacerain:meteorite_cobble",
+    "spacerain:stellar_blight",
+    "spacerain:astral_altar"
 })
 
 meteoricblocklootgen("meteoric_cobaltite_ore")

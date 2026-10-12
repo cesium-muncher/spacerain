@@ -8,6 +8,7 @@ import net.minecraftforge.registries.RegistryObject;
 import ssd.curve.spacerain.Spacerain;
 import ssd.curve.spacerain.item.custom.OmicronItem;
 import ssd.curve.spacerain.item.custom.RitualScrollItem;
+import ssd.curve.spacerain.item.custom.StaffItem;
 import ssd.curve.spacerain.item.scrolls.*;
 
 public class ModItems {
@@ -35,6 +36,8 @@ public class ModItems {
             () -> new OmicronItem(ModToolTiers.OMICRON, 7, -1.8f, new Item.Properties()));
     public static final RegistryObject<Item> STELLAR_COBALT_OMICRON = ITEMS.register("stellar_cobalt_omicron",
             () -> new OmicronItem(ModToolTiers.OMICRON, 9, -1.6f, new Item.Properties()));
+    public static final RegistryObject<Item> RITUAL_STAFF = ITEMS.register("ritual_staff",
+            () -> new StaffItem(new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> COBALT_HELMET = ITEMS.register("cobalt_helmet",
             () -> new ArmorItem(ModArmorMaterials.COBALT, ArmorItem.Type.HELMET, new Item.Properties()));
@@ -54,11 +57,17 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ASTRAL_JEWEL = ITEMS.register("astral_jewel",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> STELLAR_JEWEL = ITEMS.register("stellar_jewel",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> STELLAR_SIGIL = ITEMS.register("stellar_sigil",
+            () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> DEBUG_SCROLL = ITEMS.register("debug_scroll",
             () -> new RitualScrollItem(new Item.Properties()));
     public static final RegistryObject<Item> SCROLL_TRANS_IRON = ITEMS.register("scroll_transmutate_iron",
             () -> new ScrollTransmutateIron(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_TRANS_OBSIDIAN = ITEMS.register("scroll_transmutate_obsidian",
+            () -> new ScrollTransmutateObsidian(new Item.Properties()));
     public static final RegistryObject<Item> SCROLL_OMICRON = ITEMS.register("scroll_omicron",
             () -> new ScrollOmicronCreation(new Item.Properties()));
     public static final RegistryObject<Item> SCROLL_TRUE_LIGHT = ITEMS.register("scroll_true_light",
@@ -71,6 +80,26 @@ public class ModItems {
             () -> new ScrollFood(new Item.Properties()));
     public static final RegistryObject<Item> SCROLL_EVIL_CURSE = ITEMS.register("scroll_evil_curse",
             () -> new ScrollEvilCurse(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_GLOBAL_WARMING = ITEMS.register("scroll_global_warming",
+            () -> new ScrollGlobalWarming(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_RAIN = ITEMS.register("scroll_rain",
+            () -> new ScrollRain(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_STELLARIS = ITEMS.register("scroll_stellaris",
+            () -> new ScrollBlight(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_AWAKEN = ITEMS.register("scroll_awaken",
+            () -> new ScrollAwaken(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_TOTEMIZATION = ITEMS.register("scroll_totemization",
+            () -> new ScrollTotemization(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_APPLECHANTMENT = ITEMS.register("scroll_applechantment",
+            () -> new ScrollApplechantment(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_LIGHTNING = ITEMS.register("scroll_lightning",
+            () -> new ScrollLightningStrike(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_FIREBALL = ITEMS.register("scroll_fireball",
+            () -> new ScrollFireBall(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_ATOMIC = ITEMS.register("scroll_atomic",
+            () -> new ScrollAtomic(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_WARP = ITEMS.register("scroll_warp",
+            () -> new ScrollWarp(new Item.Properties()));
 
 
     public static void register(IEventBus eventBus) {
