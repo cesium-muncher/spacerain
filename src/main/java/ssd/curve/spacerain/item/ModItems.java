@@ -78,6 +78,8 @@ public class ModItems {
             () -> new ScrollLongRegen(new Item.Properties()));
     public static final RegistryObject<Item> SCROLL_FOOD = ITEMS.register("scroll_saturate",
             () -> new ScrollFood(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_BOVINOMANCY = ITEMS.register("scroll_bovinomancy",
+            () -> new ScrollBovinomancy(new Item.Properties()));
     public static final RegistryObject<Item> SCROLL_EVIL_CURSE = ITEMS.register("scroll_evil_curse",
             () -> new ScrollEvilCurse(new Item.Properties()));
     public static final RegistryObject<Item> SCROLL_GLOBAL_WARMING = ITEMS.register("scroll_global_warming",

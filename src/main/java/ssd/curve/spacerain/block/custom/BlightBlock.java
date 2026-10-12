@@ -35,7 +35,7 @@ public class BlightBlock extends Block {
             // nothing happens
         } else if (pLevel.getBiome(pPos).is(BiomeTags.IS_OCEAN) || pLevel.getBiome(pPos).is(BiomeTags.SPAWNS_COLD_VARIANT_FROGS)) {
             pLevel.setBlockAndUpdate(pPos, ModBlocks.METEORITE_BLOCK.get().defaultBlockState());
-        } else if (bs.isSolid() && !bs.is(ModBlocks.METEORITE_BLOCK.get()) && !bs.is(ModBlocks.ASTRAL_JEWEL_ORE.get())) {
+        } else if (bs.isSolid() && !bs.is(ModBlocks.METEORITE_BLOCK.get()) && !bs.is(ModBlocks.ASTRAL_JEWEL_ORE.get()) && !bs.is(Blocks.BEDROCK)) { // please fix to do anything with high blast resist
             pLevel.setBlockAndUpdate(pPos, ModBlocks.STELLAR_BLIGHT.get().defaultBlockState());
         }
     }

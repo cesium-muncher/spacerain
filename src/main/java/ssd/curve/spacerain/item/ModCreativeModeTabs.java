@@ -72,6 +72,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SCROLL_ATOMIC.get());
                         output.accept(ModItems.SCROLL_WARP.get());
                         output.accept(ModItems.SCROLL_RAIN.get());
+                        output.accept(ModItems.SCROLL_BOVINOMANCY.get());
                         output.accept(ModItems.SCROLL_TRUE_LIGHT.get());
                         output.accept(ModItems.SCROLL_RESIST.get());
                         output.accept(ModItems.SCROLL_REGEN.get());

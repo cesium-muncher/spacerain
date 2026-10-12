@@ -18,7 +18,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.Nullable;
+import ssd.curve.spacerain.util.MeteorGenerator;
 
 import java.util.List;
 
@@ -29,10 +31,13 @@ public class RitualScrollItem extends Item {
 
     public void performRitual(Level level, BlockPos pos, Player player) {
         player.sendSystemMessage(Component.literal("developers please remember to like remove the super.performRitual thing i think"));
-        player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200));
-        Entity entity = EntityType.COW.create(level);
-        entity.moveTo(pos, 0, 0);
-        level.addFreshEntity(entity);
+        //player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200));
+        //Entity entity = EntityType.COW.create(level);
+        //entity.moveTo(pos, 0, 0);
+        //level.addFreshEntity(entity);
+        MeteorGenerator mg = new MeteorGenerator();
+        mg.generateAny(level, pos);
+
     }
 
     public List<Item> getItemRequirements() { // lmao get hardcoded nerd good luck kubejs people

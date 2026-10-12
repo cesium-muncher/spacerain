@@ -51,20 +51,23 @@
   "altar.spacerain.famine": "§cA great famine sweeps the land.",
   "altar.spacerain.famine_info": "§cEvery player except you will now have hunger.",
   "altar.spacerain.global_warming": "§cThe sky will darken, The rivers will dry, All will burn.",
-  "altar.spacerain.blight": "§cWhat have you done?",
+  "altar.spacerain.blight": "§cDestroy.",
   "altar.spacerain.atomic_self": "§6This ritual will not let you cast it on yourself.",
   "altar.spacerain.notarget": "§6This ritual requires a target.",
 
   "item.spacerain.debug_scroll": "Secret Scroll of Debugging",
+
   "item.spacerain.scroll_transmutate_iron": "Ritual Scroll of Catalytic Iron Transmutation",
   "item.spacerain.scroll_transmutate_obsidian": "Grand Ritual Scroll of Catalytic Obsidian Reinforcement",
   "item.spacerain.scroll_totemization": "Grand Ritual Scroll of Catalytic Totem Vitalysis",
   "item.spacerain.scroll_applechantment": "Ritual Scroll of Catalytic Apple Enchantment",
+  "item.spacerain.scroll_bovinomancy": "Ritual Scroll of the Eastern Bovinomancy Tribe",
 
   "item.spacerain.scroll_lightning": "Combative Ritual Scroll of Downward Electrical Discharge",
   "item.spacerain.scroll_fireball": "Combative Ritual Scroll of the Generic Magic Spell",
   "item.spacerain.scroll_atomic": "Combative Ritual Scroll of Instantaneous Player Combustion",
   "item.spacerain.scroll_warp": "Combative Ritual Scroll of Minor Evasion",
+
 
   "item.spacerain.scroll_omicron": "Dark Ritual Scroll of the Weapon of Sacrifice",
   "item.spacerain.scroll_extended_endurance": "Ritual Scroll of Extended Endurance",
@@ -75,5 +78,6 @@
 
   "item.spacerain.scroll_evil_curse": "Dark Ritual Scroll of Famine",
   "item.spacerain.scroll_global_warming": "Dark Ritual Scroll of Burning Skies",
+  "item.spacerain.scroll_awaken": "Dark Ritual Scroll of the Awakening",
   "item.spacerain.scroll_stellaris": "Apocalyptic Scroll of Stellaris"
 }

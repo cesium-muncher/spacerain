@@ -43,7 +43,7 @@ public class StaffItem extends BundleItem {
         if (castContents(itemstack, pPlayer)) {
             //this.playDropContentsSound(pPlayer);
             pPlayer.awardStat(Stats.ITEM_USED.get(this));
-            pPlayer.getCooldowns().addCooldown(this, 30);
+            pPlayer.getCooldowns().addCooldown(this, 100);
             return InteractionResultHolder.sidedSuccess(itemstack, pLevel.isClientSide());
         } else {
             return InteractionResultHolder.fail(itemstack);

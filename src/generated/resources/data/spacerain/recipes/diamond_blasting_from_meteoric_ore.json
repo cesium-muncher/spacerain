@@ -1,1 +1,1 @@
-{"ingredient":{"item":"spacerain:meteoric_diamond_ore"},"group":"spacerain","category":"misc","result":{"item":"minecraft:diamond","count":4},"experience":0.1,"cookingtime":200,"type":"minecraft:blasting"}
+{"experience":0.1,"result":{"item":"minecraft:diamond","count":4},"type":"minecraft:blasting","group":"spacerain","ingredient":{"item":"spacerain:meteoric_diamond_ore"},"cookingtime":200,"category":"misc"}
