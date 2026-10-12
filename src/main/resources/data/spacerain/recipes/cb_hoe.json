@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"key": {
+		"#": {
+			"item": "minecraft:stick"
+		},
+		"X": {
+			"item": "spacerain:cobalt_ingot"
+		}
+	},
+	"pattern": [
+		"XX",
+		" #",
+		" #"
+	],
+	"result": {
+		"item": "spacerain:cobalt_hoe"
+	},
+	"show_notification": true
+}

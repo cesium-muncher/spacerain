@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"key": {
+		"#": {
+			"item": "spacerain:astral_jewel"
+		},
+		"X": {
+			"item": "spacerain:cobalt_ingot"
+		}
+	},
+	"pattern": [
+		" X ",
+		"X#X",
+		" X "
+	],
+	"result": {
+		"item": "spacerain:cobalt_catalyst"
+	},
+	"show_notification": true
+}

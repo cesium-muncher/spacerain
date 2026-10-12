@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"key": {
+		"X": {
+			"item": "spacerain:cobalt_ingot"
+		}
+	},
+	"pattern": [
+		"XXX",
+		"X X"
+	],
+	"result": {
+		"item": "spacerain:cobalt_helmet"
+	},
+	"show_notification": true
+}

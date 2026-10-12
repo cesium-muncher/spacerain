@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"key": {
+		"#": {
+			"item": "minecraft:stick"
+		},
+		"X": {
+			"item": "spacerain:cobalt_ingot"
+		}
+	},
+	"pattern": [
+		"X",
+		"#",
+		"#"
+	],
+	"result": {
+		"item": "spacerain:cobalt_shovel"
+	},
+	"show_notification": true
+}
