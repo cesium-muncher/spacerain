@@ -17,8 +17,8 @@ import ssd.curve.spacerain.item.custom.RitualScrollItem;
 
 import java.util.List;
 
-public class ScrollEvilCurse extends RitualScrollItem {
-    public ScrollEvilCurse(Properties pProperties) {
+public class ScrollFamine extends RitualScrollItem {
+    public ScrollFamine(Properties pProperties) {
         super(pProperties);
     }
     private static final int radius = 5;

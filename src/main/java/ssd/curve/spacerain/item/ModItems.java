@@ -80,8 +80,8 @@ public class ModItems {
             () -> new ScrollFood(new Item.Properties()));
     public static final RegistryObject<Item> SCROLL_BOVINOMANCY = ITEMS.register("scroll_bovinomancy",
             () -> new ScrollBovinomancy(new Item.Properties()));
-    public static final RegistryObject<Item> SCROLL_EVIL_CURSE = ITEMS.register("scroll_evil_curse",
-            () -> new ScrollEvilCurse(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_FAMINE = ITEMS.register("scroll_famine",
+            () -> new ScrollFamine(new Item.Properties()));
     public static final RegistryObject<Item> SCROLL_GLOBAL_WARMING = ITEMS.register("scroll_global_warming",
             () -> new ScrollGlobalWarming(new Item.Properties()));
     public static final RegistryObject<Item> SCROLL_RAIN = ITEMS.register("scroll_rain",

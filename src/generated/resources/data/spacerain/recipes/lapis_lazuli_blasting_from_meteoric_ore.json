@@ -1,1 +1,1 @@
-{"experience":0.1,"result":{"item":"minecraft:lapis_lazuli","count":32},"type":"minecraft:blasting","group":"spacerain","ingredient":{"item":"spacerain:meteoric_lapis_ore"},"cookingtime":200,"category":"misc"}
+{"type":"minecraft:blasting","cookingtime":200,"group":"spacerain","result":{"count":32,"item":"minecraft:lapis_lazuli"},"experience":0.1,"ingredient":{"item":"spacerain:meteoric_lapis_ore"},"category":"misc"}

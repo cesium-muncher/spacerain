@@ -1,12 +1,19 @@
 package ssd.curve.spacerain.util;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import org.jetbrains.annotations.NotNull;
+import org.valkyrienskies.core.internal.world.VsiPlayer;
+import org.valkyrienskies.mod.api.ValkyrienSkies;
+import org.valkyrienskies.mod.common.assembly.ShipAssembler;
+import org.valkyrienskies.mod.mixinducks.world.entity.PlayerDuck;
 import ssd.curve.spacerain.block.ModBlocks;
 
-import java.util.List;
+import java.util.*;
 
 public class MeteorGenerator {
     public void generateAny(Level level, BlockPos pos) {
@@ -192,13 +199,31 @@ public class MeteorGenerator {
         int rand = (int) (Math.random() * weights) + 1;
         if (rand <= 5) {
             prefab_meteorsmall(level, pos);
-        } else if (rand <= 5+7) {
+        } else if (rand <= 5 + 7) {
             prefab_meteormedium(level, pos);
-        } else if (rand <= 5+7+3) {
+        } else if (rand <= 5 + 7 + 3) {
             prefab_meteorlargepoor(level, pos);
         } else if (rand <= weights) {
             prefab_meteorlargerich(level, pos);
         }
     }
+    public void generateMeteorAtExactCoords(ServerLevel level, BlockPos pos, PlayerDuck forceloader) {
+        level.setBlockAndUpdate(pos, ModBlocks.MGEBLOCK.get().defaultBlockState());
+        Set<BlockPos> posset = new HashSet<>();
+        posset.add(pos);
+        ShipAssembler.AssembleContext ctx = ShipAssembler.assembleToShipFull(level, posset, 1);
+        //BlockPos shipyardpos = (BlockPos) ctx.getShip().getShipTransform().getPositionInShip();
+        //generateAny(level, shipyardpos);
+        forceloader.vs_getPlayer().getForceWatchingShips().add(ctx.getShip().getId());
+    }
+    public void generateMeteorForRealThisTimeISwear(Player player) {
 
+        BlockPos playerpos = player.blockPosition();
+        int angle = (int) (Math.random() * 360); // random angle
+        int angledist = (int) (Math.random() * 50) + 25; // meteors spawn 25-75 blocks away from plr
+        int xoff = (int) (Math.sin(angle) * angledist);
+        int zoff = (int) (Math.cos(angle) * angledist);
+        BlockPos playerworldheightpos = new BlockPos(playerpos.getX() + xoff, player.level().getMaxBuildHeight() - 1, playerpos.getZ() + zoff);
+        generateMeteorAtExactCoords((ServerLevel) player.level(), playerworldheightpos, (PlayerDuck) player);
+    }
 }

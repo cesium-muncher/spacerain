@@ -13,10 +13,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import net.minecraftforge.registries.RegistryObject;
 import ssd.curve.spacerain.Spacerain;
-import ssd.curve.spacerain.block.custom.AstralAltarBlock;
-import ssd.curve.spacerain.block.custom.BlightBlock;
-import ssd.curve.spacerain.block.custom.FrigidMeteorite;
-import ssd.curve.spacerain.block.custom.MoltenMeteorite;
+import ssd.curve.spacerain.block.custom.*;
 import ssd.curve.spacerain.item.ModItems;
 
 import java.util.function.Supplier;
@@ -60,6 +57,8 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> STELLAR_BLIGHT = registerBlock("stellar_blight",
             () -> new BlightBlock(BlockBehaviour.Properties.copy(Blocks.END_STONE).mapColor(DyeColor.BLACK).randomTicks()));
+    public static final RegistryObject<Block> MGEBLOCK = registerBlock("meteor_spawner_block",
+            () -> new MeteorSpawnerBlock(BlockBehaviour.Properties.copy(Blocks.END_STONE).mapColor(DyeColor.BLACK)));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

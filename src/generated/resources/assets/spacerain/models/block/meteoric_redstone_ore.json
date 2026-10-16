@@ -1,1 +1,1 @@
-{"parent":"minecraft:block/cube_all","textures":{"all":"spacerain:block/meteoric_redstone_ore"}}
+{"textures":{"all":"spacerain:block/meteoric_redstone_ore"},"parent":"minecraft:block/cube_all"}

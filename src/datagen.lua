@@ -136,6 +136,8 @@ basicblockmodelgen("meteoric_cobaltite_ore")
 basicblockmodelgen("astral_jewel_ore")
 basicblockmodelgen("stellar_blight")
 
+basicblockmodelgen("meteor_spawner_block")
+
 
 basicitemgen("cobalt_ingot")
 basicitemgen("cobalt_catalyst")
@@ -176,7 +178,7 @@ scrollitemgen("scroll_true_light", 2)
 scrollitemgen("scroll_extended_endurance")
 scrollitemgen("scroll_extended_healing")
 scrollitemgen("scroll_saturate")
-scrollitemgen("scroll_evil_curse", 1)
+scrollitemgen("scroll_famine", 1)
 scrollitemgen("scroll_global_warming", 1)
 scrollitemgen("scroll_awaken", 1)
 scrollitemgen("scroll_stellaris", 3)

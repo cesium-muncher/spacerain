@@ -77,7 +77,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SCROLL_RESIST.get());
                         output.accept(ModItems.SCROLL_REGEN.get());
                         output.accept(ModItems.SCROLL_FOOD.get());
-                        output.accept(ModItems.SCROLL_EVIL_CURSE.get());
+                        output.accept(ModItems.SCROLL_FAMINE.get());
                         output.accept(ModItems.SCROLL_GLOBAL_WARMING.get());
                         output.accept(ModItems.SCROLL_OMICRON.get());
                         output.accept(ModItems.SCROLL_AWAKEN.get());
