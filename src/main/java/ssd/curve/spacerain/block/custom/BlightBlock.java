@@ -29,9 +29,9 @@ public class BlightBlock extends Block {
 
     private void blight(ServerLevel pLevel, BlockPos pPos) {
         BlockState bs = pLevel.getBlockState(pPos);
-        if (bs.is(ModBlocks.ASTRAL_JEWEL_ORE.get())) {
-            // sigil
-        } else if (bs.is(ModBlocks.METEORITE_BLOCK.get()) || !bs.isSolid()) {
+        if (bs.is(ModBlocks.ASTRAL_JEWEL_ORE.get()) || bs.is(ModBlocks.STELLAR_JEWEL_ORE.get())) {
+            pLevel.setBlockAndUpdate(pPos, ModBlocks.STELLAR_JEWEL_ORE.get().defaultBlockState());
+        } else if (bs.is(ModBlocks.METEORITE_BLOCK.get()) || !bs.isSolid() || bs.getBlock().getExplosionResistance() > 3000) {
             // nothing happens
         } else if (pLevel.getBiome(pPos).is(BiomeTags.IS_OCEAN) || pLevel.getBiome(pPos).is(BiomeTags.SPAWNS_COLD_VARIANT_FROGS)) {
             pLevel.setBlockAndUpdate(pPos, ModBlocks.METEORITE_BLOCK.get().defaultBlockState());

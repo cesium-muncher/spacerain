@@ -1,1 +1,1 @@
-{"textures":{"all":"spacerain:block/meteoric_lapis_ore"},"parent":"minecraft:block/cube_all"}
+{"parent":"minecraft:block/cube_all","textures":{"all":"spacerain:block/meteoric_lapis_ore"}}

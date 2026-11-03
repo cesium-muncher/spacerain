@@ -61,5 +61,15 @@
       <option name="name" value="Kotlin for Forge" />
       <option name="url" value="https://thedarkcolour.github.io/KotlinForForge/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="Curios maven" />
+      <option name="name" value="Curios maven" />
+      <option name="url" value="https://maven.theillusivec4.top/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="Modrinth" />
+      <option name="name" value="Modrinth" />
+      <option name="url" value="https://api.modrinth.com/maven" />
+    </remote-repository>
   </component>
 </project>

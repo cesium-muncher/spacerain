@@ -1,0 +1,66 @@
+package ssd.curve.spacerain.util;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.levelgen.synth.ImprovedNoise;
+import net.minecraftforge.event.TickEvent;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class GradualCraterGenerator {
+    private BlockPos pos;
+    private Level plevel;
+    private int layer = 0;
+    private int radius;
+    private ImprovedNoise noise;
+    private boolean stop;
+
+    public static List<GradualCraterGenerator> gcds = new ArrayList<>(); // why can i do this
+    public GradualCraterGenerator(Level pLevel, BlockPos pos, int radius) {
+        this.pos = pos;
+        this.plevel = pLevel;
+        this.layer = 0;
+        RandomSource rs = RandomSource.create((long) (Math.random()*100000));
+        this.noise = new ImprovedNoise(rs);
+        this.stop = false;
+        this.radius = radius;
+    }
+    public void advance() {
+        if (!stop) {
+            if (layer == 0) {
+                SupernovaManager.SupernovaGenVericalColumn(plevel, pos, radius, pos, noise);
+            } else {
+                SupernovaManager.SupernovaGenSquareLayer(plevel, pos, radius, layer, noise);
+            }
+            layer++;
+            if (layer > radius) {
+                // uhhh... stop?
+                stop = true;
+            }
+        }
+
+    }
+    public boolean isstopped() {
+        return stop;
+    }
+    private static List<GradualCraterGenerator> kill_me = new ArrayList<>();
+    public static void gcd_tickevent(TickEvent.ServerTickEvent event) {
+
+        for (GradualCraterGenerator gcd : gcds) {
+            gcd.advance();
+            if (gcd.isstopped()) {
+                kill_me.add(gcd);
+            }
+        }
+        for (GradualCraterGenerator kill : kill_me) {
+            gcds.remove(kill);
+        }
+        kill_me.clear();
+    }
+    public static void generic_supernova_spawn(Level level, BlockPos pos) {
+        GradualCraterGenerator gcd = new GradualCraterGenerator(level, pos, 50);
+        gcds.add(gcd);
+    }
+}

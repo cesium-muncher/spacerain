@@ -22,7 +22,8 @@ public class ScrollFireBall extends RitualScrollItem {
 
         Entity entity = EntityType.FIREBALL.create(level);
         entity.moveTo(player.getEyePosition());
-        entity.addDeltaMovement(player.getLookAngle());
+        //entity.addDeltaMovement(player.getLookAngle());
+        entity.setDeltaMovement(player.getLookAngle()); // the bob
         level.addFreshEntity(entity);
 
 

@@ -49,10 +49,24 @@ function meteoricblocklootgen(name)
     else
         print(err)
     end
+    addtoweightjson(name, 5000, 0.6, 0.1)
 end
 
 function clearoutdirectory() -- doesnt work
     os.remove("generated/resources/data/spacerain")
+end
+local vsweightjson = {}
+function addtoweightjson(name, weight, friction, elasticity) -- default values are 1000, 0.5, and 0.3. most meteor blocks use 5000, 0.6, 0.1
+    table.insert(vsweightjson, {block = "spacerain:" .. name, mass = weight, friction = friction, elasticity = elasticity})
+end
+function weightjson(values)
+    local file, err = io.open("generated/resources/data/spacerain/vs_mass/spacerain_mass_values.json", "w")
+    if file then
+        file:write(json.encode(values))
+        file:close()
+    else
+        print(err)
+    end
 end
 function setuptag(name, values)
     local file, err = io.open("generated/resources/data/minecraft/tags/blocks/" .. name .. ".json", "w")
@@ -64,7 +78,22 @@ function setuptag(name, values)
     else
         print(err)
     end
+    
 end
+local thesoundjson = {}
+function addtosoundjson(name, subtitle) 
+    thesoundjson[name] = {subtitles = subtitle, sounds = {"spacerain:" .. name}}
+end
+function soundjson(values)
+    local file, err = io.open("generated/resources/assets/spacerain/sounds.json", "w")
+    if file then
+        file:write(json.encode(values))
+        file:close()
+    else
+        print(err)
+    end
+end
+
 function basicblockmodelgen(name)
     local bs = {variants = {}}
     bs.variants[""] = {}
@@ -134,9 +163,19 @@ basicblockmodelgen("meteoric_emerald_ore")
 
 basicblockmodelgen("meteoric_cobaltite_ore")
 basicblockmodelgen("astral_jewel_ore")
+basicblockmodelgen("stellar_jewel_ore")
 basicblockmodelgen("stellar_blight")
 
 basicblockmodelgen("meteor_spawner_block")
+basicblockmodelgen("star")
+
+basicblockmodelgen("solarfield")
+basicblockmodelgen("shimmering_solarfield")
+basicblockmodelgen("glowing_solarfield")
+basicblockmodelgen("blazing_solarfield")
+basicblockmodelgen("astral_solarfield")
+
+basicblockmodelgen("solarbed")
 
 
 basicitemgen("cobalt_ingot")
@@ -146,6 +185,15 @@ basicitemgen("awakened_sigil")
 basicitemgen("astral_jewel")
 basicitemgen("stellar_jewel")
 basicitemgen("stellar_sigil")
+
+basicitemgen("solar_tongs")
+basicitemgen("spectrograph")
+
+basicitemgen("cobalt_bottle")
+basicitemgen("light_elements")
+basicitemgen("medium_elements")
+basicitemgen("heavy_elements")
+basicitemgen("exotic_elements")
 
 basicitemgen("cobalt_helmet")
 basicitemgen("cobalt_chestplate")
@@ -205,6 +253,13 @@ meteoricblocklootgen("meteoric_lapis_ore")
 meteoricblocklootgen("meteoric_redstone_ore")
 meteoricblocklootgen("meteoric_emerald_ore")
 
+meteoricblocklootgen("solarfield")
+meteoricblocklootgen("shimmering_solarfield")
+meteoricblocklootgen("glowing_solarfield")
+meteoricblocklootgen("blazing_solarfield")
+meteoricblocklootgen("astral_solarfield")
+
+
 setuptag("needs_stone_tool", {
     "spacerain:meteoric_copper_ore",
     "spacerain:meteoric_iron_ore",
@@ -224,7 +279,8 @@ setuptag("needs_iron_tool", {
     "spacerain:astral_altar"
 })
 setuptag("needs_diamond_tool", {
-    "spacerain:astral_jewel_ore"
+    "spacerain:astral_jewel_ore",
+    "spacerain:stellar_jewel_ore"
 })
 setuptag("/mineable/pickaxe", {
     "spacerain:meteoric_copper_ore",
@@ -236,13 +292,27 @@ setuptag("/mineable/pickaxe", {
     "spacerain:meteoric_lapis_ore",
     "spacerain:meteoric_emerald_ore",
     "spacerain:astral_jewel_ore",
+    "spacerain:stellar_jewel_ore",
     "spacerain:meteorite_block",
     "spacerain:molten_meteorite_block",
     "spacerain:frigid_meteorite_block",
     "spacerain:meteorite_cobble",
     "spacerain:stellar_blight",
-    "spacerain:astral_altar"
+    "spacerain:astral_altar",
+    "spacerain:solarfield",
+    "spacerain:shimmering_solarfield",
+    "spacerain:glowing_solarfield",
+    "spacerain:blazing_solarfield",
+    "spacerain:astral_solarfield",
 })
 
 meteoricblocklootgen("meteoric_cobaltite_ore")
 --meteoricblocklootgen("astral_jewel_ore")
+
+addtosoundjson("meteor_spawn", "sounds.spacerain.meteor_spawn")
+soundjson(thesoundjson)
+addtoweightjson("astral_jewel_ore", 5000, 0.6, 0.1)
+addtoweightjson("stellar_jewel_ore", 5000, 0.6, 0.1)
+addtoweightjson("star", 1000000, 0, 0)
+weightjson(vsweightjson)
+

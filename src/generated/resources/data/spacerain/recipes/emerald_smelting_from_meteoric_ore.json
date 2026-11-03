@@ -1,1 +1,1 @@
-{"type":"minecraft:smelting","cookingtime":200,"group":"spacerain","result":{"count":16,"item":"minecraft:emerald"},"experience":0.1,"ingredient":{"item":"spacerain:meteoric_emerald_ore"},"category":"misc"}
+{"experience":0.1,"result":{"item":"minecraft:emerald","count":16},"category":"misc","group":"spacerain","cookingtime":200,"ingredient":{"item":"spacerain:meteoric_emerald_ore"},"type":"minecraft:smelting"}

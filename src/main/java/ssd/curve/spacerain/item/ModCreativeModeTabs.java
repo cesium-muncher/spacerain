@@ -55,6 +55,22 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.COBALT_OMICRON.get());
                 output.accept(ModItems.AWAKENED_COBALT_OMICRON.get());
                 output.accept(ModItems.RITUAL_STAFF.get());
+
+                output.accept(ModBlocks.STAR.get());
+                output.accept(ModItems.SPECTROGRAPH.get());
+                output.accept(ModItems.SOLAR_TONGS.get());
+                output.accept(ModItems.COBALT_BOTTLE.get());
+                output.accept(ModItems.LIGHT_ELEMENTS.get());
+                output.accept(ModItems.MEDIUM_ELEMENTS.get());
+                output.accept(ModItems.HEAVY_ELEMENTS.get());
+                output.accept(ModItems.EXOTIC_ELEMENTS.get());
+
+                output.accept(ModBlocks.SOLARFIELD_1.get());
+                output.accept(ModBlocks.SOLARFIELD_2.get());
+                output.accept(ModBlocks.SOLARFIELD_3.get());
+                output.accept(ModBlocks.SOLARFIELD_4.get());
+                output.accept(ModBlocks.SOLARFIELD_5.get());
+                output.accept(ModBlocks.SOLARBED.get());
             })
             .build());
     public static final RegistryObject<CreativeModeTab> SPACERAIN_SCROLLS_TAB = CREATIVE_MODE_TABS.register("spacerain_scrolls_tab",

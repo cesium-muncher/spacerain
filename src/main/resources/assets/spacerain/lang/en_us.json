@@ -1,5 +1,8 @@
 {
 
+  "sounds.spacerain.meteor_spawn": "Meteor enters atmosphere in distance",
+
+
   "item.spacerain.cobalt_ingot": "Cobalt Ingot",
   "item.spacerain.cobalt_catalyst": "Cobalt Catalyst",
   "item.spacerain.fallen_sigil": "Fallen Sigil",
@@ -17,8 +20,8 @@
   "item.spacerain.cobalt_boots": "Cobalt Boots",
   "item.spacerain.cobalt_omicron": "Cobalt Omicron",
   "item.spacerain.ritual_staff": "Ritual Staff",
-  "item.spacerain.awakened_cobalt_omicron": "§6Awakened Cobalt Omicron",
-  "item.spacerain.stellar_cobalt_omicron": "§cStellar Cobalt Omicron",
+  "item.spacerain.awakened_cobalt_omicron": "Awakened Cobalt Omicron",
+  "item.spacerain.stellar_cobalt_omicron": "Stellar Cobalt Omicron",
 
   "block.spacerain.meteorite_cobble": "Meteorite Cobble",
   "block.spacerain.meteorite_block": "Meteorite Block",
@@ -35,12 +38,29 @@
 
   "block.spacerain.meteoric_cobaltite_ore": "Meteoric Cobaltite Ore",
   "block.spacerain.astral_jewel_ore": "Astral Jewel Ore",
-  "block.spacerain.stellar_blight": "§cStellar Blight",
+  "block.spacerain.stellar_blight": "Stellar Blight",
 
   "block.spacerain.astral_altar": "Astral Altar",
+  "block.spacerain.star": "Star",
+
+  "block.spacerain.solarfield": "Solarfield",
+  "block.spacerain.solarsoil": "Solarsoil",
+  "block.spacerain.solarslate": "Solarslate",
+  "block.spacerain.solarbed": "Solarbed",
+
+  "block.spacerain.stellar_jewel_ore": "Stellar Jewel Ore",
+  "item.spacerain.stellar_jewel": "Stellar Jewel",
+  "item.spacerain.stellar_sigil": "Stellar Sigil",
 
   "creativetab.spacerain_tab": "Spacerain",
   "creativetab.spacerain_scrolls_tab": "Spacerain Ritual Scrolls",
+  "death.attack.stellarized": "%s was stellarized",
+  "death.attack.stellarized.player": "%s was stellarized by %s",
+  "death.attack.stellarized.item": "%s was stellarized by %s using %s",
+  "death.attack.melted": "%s was melted",
+  "death.attack.melted.player": "%s was melted by %s",
+  "death.attack.melted.item": "%s was melted by %s using %s",
+  "death.attack.unworthy": "%s was not worthy",
 
   "tooltip.scroll_info_text": "Ritual Requirements:",
   "altar.spacerain.need_scroll": "§6Rituals need instructions. Seek out ancient scrolls.",
@@ -54,6 +74,23 @@
   "altar.spacerain.blight": "§cDestroy.",
   "altar.spacerain.atomic_self": "§6This ritual will not let you cast it on yourself.",
   "altar.spacerain.notarget": "§6This ritual requires a target.",
+
+
+  "star.spacerain.element.light": "Light Elements: ",
+  "star.spacerain.element.medium": "Medium Elements: ",
+  "star.spacerain.element.heavy": "Heavy Elements: ",
+  "star.spacerain.element.exotic": "Exotic Elements: ",
+  "star.spacerain.temp": "Temperature: ",
+  "star.spacerain.evil": "Evil: ",
+  "star.spacerain.instability": "Instability: ",
+
+  "item.spacerain.solar_tongs": "Solar Tongs",
+  "item.spacerain.spectrograph": "Spectrograph",
+  "item.spacerain.cobalt_bottle": "Cobalt Bottle",
+  "item.spacerain.light_elements": "Light Elements",
+  "item.spacerain.medium_elements": "Medium Elements",
+  "item.spacerain.heavy_elements": "Heavy Elements",
+  "item.spacerain.exotic_elements": "Exotic Elements",
 
   "item.spacerain.debug_scroll": "Secret Scroll of Debugging",
 
@@ -76,7 +113,7 @@
   "item.spacerain.scroll_rain": "Grand Ritual Scroll of the Tearing Skies",
   "item.spacerain.scroll_true_light": "Grand Ritual Scroll of assistance from True Light",
 
-  "item.spacerain.scroll_evil_curse": "Dark Ritual Scroll of Famine",
+  "item.spacerain.scroll_famine": "Dark Ritual Scroll of Famine",
   "item.spacerain.scroll_global_warming": "Dark Ritual Scroll of Burning Skies",
   "item.spacerain.scroll_awaken": "Dark Ritual Scroll of the Awakening",
   "item.spacerain.scroll_stellaris": "Apocalyptic Scroll of Stellaris"

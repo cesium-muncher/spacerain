@@ -10,6 +10,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import ssd.curve.spacerain.item.ModItems;
 import ssd.curve.spacerain.item.custom.RitualScrollItem;
+import ssd.curve.spacerain.util.ModDamageSources;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class ScrollOmicronCreation extends RitualScrollItem {
         ItemStack cobalt = new ItemStack(ModItems.COBALT_OMICRON.get(), 1);
 
 
-        player.hurt(level.damageSources().magic(), 20);
+        player.hurt(ModDamageSources.causeDmg(level, null, ModDamageSources.UNWORTHY), 20);
         //player.setSecondsOnFire(3); nahhhh idk
         if (player.getHealth() > 0) {
             player.drop(cobalt, false);

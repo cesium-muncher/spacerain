@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -20,8 +21,12 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.synth.ImprovedNoise;
 import org.jetbrains.annotations.Nullable;
+import ssd.curve.spacerain.util.GradualCraterGenerator;
 import ssd.curve.spacerain.util.MeteorGenerator;
+import ssd.curve.spacerain.util.MeteorImpactCraterManager;
+import ssd.curve.spacerain.util.SupernovaManager;
 
 import java.util.List;
 
@@ -36,9 +41,14 @@ public class RitualScrollItem extends Item {
         //Entity entity = EntityType.COW.create(level);
         //entity.moveTo(pos, 0, 0);
         //level.addFreshEntity(entity);
-        MeteorGenerator mg = new MeteorGenerator();
-        mg.generateMeteorForRealThisTimeISwear(player);
-
+        //MeteorGenerator.generateMeteorForRealThisTimeISwear(player);
+        //MeteorImpactCraterManager.cratergen(level, pos);
+        //MeteorGenerator.prefab_ufo(level, pos);
+        //RandomSource rs = RandomSource.create((long) (Math.random()*100000));
+        //ImprovedNoise noise = new ImprovedNoise(rs);
+        //SupernovaManager.SupernovaTest(level, pos, 50);
+        //SupernovaManager.SupernovaGenSquareLayer(level, pos, 50, 5, noise);
+        GradualCraterGenerator.generic_supernova_spawn(level, pos);
     }
 
     public List<Item> getItemRequirements() { // lmao get hardcoded nerd good luck kubejs people

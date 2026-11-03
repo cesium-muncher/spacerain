@@ -9,7 +9,9 @@ import ssd.curve.spacerain.Spacerain;
 import ssd.curve.spacerain.item.custom.OmicronItem;
 import ssd.curve.spacerain.item.custom.RitualScrollItem;
 import ssd.curve.spacerain.item.custom.StaffItem;
+import ssd.curve.spacerain.item.custom.StellarOmicronItem;
 import ssd.curve.spacerain.item.scrolls.*;
+import ssd.curve.spacerain.util.ModRarities;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -33,9 +35,9 @@ public class ModItems {
     public static final RegistryObject<Item> COBALT_OMICRON = ITEMS.register("cobalt_omicron",
             () -> new OmicronItem(ModToolTiers.COBALT, 5, -2f, new Item.Properties()));
     public static final RegistryObject<Item> AWAKENED_COBALT_OMICRON = ITEMS.register("awakened_cobalt_omicron",
-            () -> new OmicronItem(ModToolTiers.OMICRON, 7, -1.8f, new Item.Properties()));
+            () -> new OmicronItem(ModToolTiers.OMICRON, 7, -1.8f, new Item.Properties().rarity(ModRarities.RARITY_AWAKENED)));
     public static final RegistryObject<Item> STELLAR_COBALT_OMICRON = ITEMS.register("stellar_cobalt_omicron",
-            () -> new OmicronItem(ModToolTiers.OMICRON, 9, -1.6f, new Item.Properties()));
+            () -> new StellarOmicronItem(ModToolTiers.OMICRON, 9, -1.6f, new Item.Properties().rarity(ModRarities.RARITY_STELLAR)));
     public static final RegistryObject<Item> RITUAL_STAFF = ITEMS.register("ritual_staff",
             () -> new StaffItem(new Item.Properties().stacksTo(1)));
 
@@ -54,13 +56,31 @@ public class ModItems {
     public static final RegistryObject<Item> FALLEN_SIGIL = ITEMS.register("fallen_sigil",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> AWAKENED_SIGIL = ITEMS.register("awakened_sigil",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().rarity(ModRarities.RARITY_AWAKENED)));
     public static final RegistryObject<Item> ASTRAL_JEWEL = ITEMS.register("astral_jewel",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> STELLAR_JEWEL = ITEMS.register("stellar_jewel",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().rarity(ModRarities.RARITY_STELLAR)));
     public static final RegistryObject<Item> STELLAR_SIGIL = ITEMS.register("stellar_sigil",
+            () -> new Item(new Item.Properties().rarity(ModRarities.RARITY_STELLAR)));
+
+    public static final RegistryObject<Item> SOLAR_TONGS = ITEMS.register("solar_tongs",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SPECTROGRAPH = ITEMS.register("spectrograph",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> COBALT_BOTTLE = ITEMS.register("cobalt_bottle",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LIGHT_ELEMENTS = ITEMS.register("light_elements",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MEDIUM_ELEMENTS = ITEMS.register("medium_elements",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> HEAVY_ELEMENTS = ITEMS.register("heavy_elements",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> EXOTIC_ELEMENTS = ITEMS.register("exotic_elements",
+            () -> new Item(new Item.Properties()));
+
+
 
     public static final RegistryObject<Item> DEBUG_SCROLL = ITEMS.register("debug_scroll",
             () -> new RitualScrollItem(new Item.Properties()));
@@ -87,7 +107,7 @@ public class ModItems {
     public static final RegistryObject<Item> SCROLL_RAIN = ITEMS.register("scroll_rain",
             () -> new ScrollRain(new Item.Properties()));
     public static final RegistryObject<Item> SCROLL_STELLARIS = ITEMS.register("scroll_stellaris",
-            () -> new ScrollBlight(new Item.Properties()));
+            () -> new ScrollBlight(new Item.Properties().rarity(ModRarities.RARITY_AWAKENED)));
     public static final RegistryObject<Item> SCROLL_AWAKEN = ITEMS.register("scroll_awaken",
             () -> new ScrollAwaken(new Item.Properties()));
     public static final RegistryObject<Item> SCROLL_TOTEMIZATION = ITEMS.register("scroll_totemization",

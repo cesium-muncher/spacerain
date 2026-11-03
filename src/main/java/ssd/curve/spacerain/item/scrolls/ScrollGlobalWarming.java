@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import ssd.curve.spacerain.item.ModItems;
 import ssd.curve.spacerain.item.custom.RitualScrollItem;
+import ssd.curve.spacerain.util.ModDamageSources;
 
 import java.util.List;
 import java.util.Random;
@@ -26,7 +27,7 @@ public class ScrollGlobalWarming extends RitualScrollItem {
     public void performRitual(Level level, BlockPos pos, Player player) {
 
 
-        player.hurt(level.damageSources().magic(), 2000);
+        player.hurt(ModDamageSources.causeDmg(level, null, ModDamageSources.UNWORTHY), 2000);
         //player.setSecondsOnFire(3); nahhhh idk
         if (player.getHealth() > 0) {
             ominoussfx(level, pos);
