@@ -1,14 +1,22 @@
 package ssd.curve.spacerain.util;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LightningBolt;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.synth.ImprovedNoise;
+import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.common.Mod;
 import ssd.curve.spacerain.block.ModBlocks;
@@ -51,35 +59,35 @@ public class SupernovaManager {
         // dirt is 0.5
 
 
-        if (blastres > 3000000f) {
-            pLevel.setBlockAndUpdate(pos, solarbed);
-        } else {
 
-            if (radius2 > 2*dist) {
+
+        if (radius2 > 2*dist) {
+            if (blastres > 3000000f) {
+                pLevel.setBlockAndUpdate(pos, solarbed);
+            } else {
                 pLevel.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
-            } else if (radius2 > dist) {
-                if (blockstate.is(tag_repl) || blockstate.is(tag_tree)) {
-                    pLevel.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
-                } else {
-                    if (hdist < radius * 0.2) {
-                        pLevel.setBlockAndUpdate(pos, solarfield5);
-                    } else if (hdist < radius * 0.4) {
-                        pLevel.setBlockAndUpdate(pos, solarfield4);
-                    } else if (hdist < radius * 0.6) {
-                        pLevel.setBlockAndUpdate(pos, solarfield3);
-                    } else if (hdist < radius * 0.8) {
-                        pLevel.setBlockAndUpdate(pos, solarfield2);
-                    } else if (hdist < radius * 1) {
-                        pLevel.setBlockAndUpdate(pos, solarfield1);
-                    }
-
-                }
             }
 
-
-
-
+        } else if (radius2 > dist) {
+            if (blastres > 3000000f) {
+                pLevel.setBlockAndUpdate(pos, solarbed);
+            } else if (blockstate.is(tag_repl) || blockstate.is(tag_tree)) { // le desintegrate
+                pLevel.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+            } else {
+                if (hdist < radius * 0.2) {
+                    pLevel.setBlockAndUpdate(pos, solarfield5);
+                } else if (hdist < radius * 0.4) {
+                    pLevel.setBlockAndUpdate(pos, solarfield4);
+                } else if (hdist < radius * 0.6) {
+                    pLevel.setBlockAndUpdate(pos, solarfield3);
+                } else if (hdist < radius * 0.8) {
+                    pLevel.setBlockAndUpdate(pos, solarfield2);
+                } else if (hdist < radius * 1) {
+                    pLevel.setBlockAndUpdate(pos, solarfield1);
+                }
+            }
         }
+
 
     }
     //private static double heightmult = 1;
@@ -90,7 +98,7 @@ public class SupernovaManager {
             for (int y = (int) -(radius); y <= (int) (radius); y++) {
                 for (int z = -radius; z <= radius; z++) {
                     double dist = Math.sqrt(x*x + (y*y*(1.0) + (radius/2.0)) + z*z);
-                    double hdist = Math.sqrt(x*x + z*z) + (Math.random() * 8.0) - 4.0;
+                    double hdist = Math.sqrt(x*x + z*z) - (Math.random() * 8.0);
                     SupernovaAtBlockPos(pLevel, pos.offset(x, y, z), dist, hdist, noise, radius);
                 }
             }
@@ -140,6 +148,26 @@ public class SupernovaManager {
         }
 
 
+
+    }
+    public static void fuckingkilleveryone(Level level, BlockPos center, int radius) {
+
+        for (Entity e : level.getEntities(null, AABB.ofSize(center.getCenter(), radius * 6, radius * 6, radius * 6))) {
+            double dist = center.getCenter().distanceTo(e.position());
+            //int damage = (int) (-8* (dist/radius)+26);
+            int damage = (int) (Math.pow(0.1, dist/radius) * 200); // 200 dmg at 0 blocks, 20 at 1 dist, 2 at 2 dist, 0.2 at 3 dist
+            e.hurt(ModDamageSources.causeDmg(level, null, ModDamageSources.STELLARIZED), damage);
+        }
+
+    }
+    public static void loudassnoise(Level level, BlockPos center) {
+        level.playSound(null, center, SoundEvents.LIGHTNING_BOLT_THUNDER, SoundSource.BLOCKS);
+        for (Player e : level.players()) {
+            //double dist = center.getCenter().distanceTo(e.position());
+            //int damage = (int) (-8* (dist/radius)+26);
+            //e
+            //e.hurt(ModDamageSources.causeDmg(level, null, ModDamageSources.STELLARIZED), damage);
+        }
 
     }
 

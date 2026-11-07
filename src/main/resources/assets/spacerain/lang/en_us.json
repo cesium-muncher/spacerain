@@ -44,8 +44,10 @@
   "block.spacerain.star": "Star",
 
   "block.spacerain.solarfield": "Solarfield",
-  "block.spacerain.solarsoil": "Solarsoil",
-  "block.spacerain.solarslate": "Solarslate",
+  "block.spacerain.shimmering_solarfield": "Shimmering Solarfield",
+  "block.spacerain.glowing_solarfield": "Glowing Solarfield",
+  "block.spacerain.blazing_solarfield": "Blazing Solarfield",
+  "block.spacerain.astral_solarfield": "Astral Solarfield",
   "block.spacerain.solarbed": "Solarbed",
 
   "block.spacerain.stellar_jewel_ore": "Stellar Jewel Ore",
@@ -67,6 +69,7 @@
   "altar.spacerain.need_items": "§6You lack the material components for this ritual.",
   "altar.spacerain.need_catalyst": "§6This ritual requires a Cobalt Catalyst.",
   "altar.spacerain.need_experience": "§6This ritual requires more experience levels.",
+  "altar.spacerain.need_altar": "§6This ritual must be performed at an altar.",
   "altar.spacerain.weakling": "§cYou are not worthy.",
   "altar.spacerain.famine": "§cA great famine sweeps the land.",
   "altar.spacerain.famine_info": "§cEvery player except you will now have hunger.",
@@ -111,6 +114,7 @@
   "item.spacerain.scroll_extended_healing": "Ritual Scroll of Extended Healing",
   "item.spacerain.scroll_saturate": "Ritual Scroll of the Hungry Monk",
   "item.spacerain.scroll_rain": "Grand Ritual Scroll of the Tearing Skies",
+  "item.spacerain.scroll_meteor": "Grand Ritual Scroll of Astral Attraction",
   "item.spacerain.scroll_true_light": "Grand Ritual Scroll of assistance from True Light",
 
   "item.spacerain.scroll_famine": "Dark Ritual Scroll of Famine",

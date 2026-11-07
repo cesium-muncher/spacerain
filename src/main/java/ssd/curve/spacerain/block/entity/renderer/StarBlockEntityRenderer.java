@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.client.model.data.ModelData;
 import ssd.curve.spacerain.block.ModBlocks;
 import ssd.curve.spacerain.block.entity.StarBlockEntity;
@@ -47,8 +48,8 @@ public class StarBlockEntityRenderer implements BlockEntityRenderer<StarBlockEnt
                 rvaltranslate(Inst));
         */
         //ResourceLocation tex = new ResourceLocation("textures/entity/beacon_beam.png");
-        br.renderSingleBlock(ModBlocks.STAR.get().defaultBlockState(), pPoseStack, pBuffer, 15, pPackedOverlay,
-                ModelData.EMPTY, RenderType.solid());
+        br.renderSingleBlock(Blocks.GLOWSTONE.defaultBlockState(), pPoseStack, pBuffer, 15, pPackedOverlay,
+                ModelData.EMPTY, RenderType.lightning());
         pPoseStack.popPose();
     }
     private static double rvaltranslate(int val) {

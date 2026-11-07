@@ -5,6 +5,8 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.synth.ImprovedNoise;
 import net.minecraftforge.event.TickEvent;
+import team.lodestar.lodestone.registry.common.particle.LodestoneParticleRegistry;
+import team.lodestar.lodestone.systems.particle.type.LodestoneParticleType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +32,14 @@ public class GradualCraterGenerator {
     public void advance() {
         if (!stop) {
             if (layer == 0) {
+                SupernovaManager.fuckingkilleveryone(plevel, pos, radius);
+                SupernovaManager.loudassnoise(plevel, pos);
                 SupernovaManager.SupernovaGenVericalColumn(plevel, pos, radius, pos, noise);
             } else {
                 SupernovaManager.SupernovaGenSquareLayer(plevel, pos, radius, layer, noise);
+                SupernovaManager.loudassnoise(plevel, pos);
             }
+
             layer++;
             if (layer > radius) {
                 // uhhh... stop?

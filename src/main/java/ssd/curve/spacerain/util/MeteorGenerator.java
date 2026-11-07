@@ -285,18 +285,23 @@ public class MeteorGenerator {
         BlockPos playerworldheightpos = new BlockPos(playerpos.getX() + xoff, player.level().getMaxBuildHeight() - 1, playerpos.getZ() + zoff);
         generateMeteorAtExactCoords((ServerLevel) player.level(), playerworldheightpos, (PlayerDuck) player);
         //player.sendSystemMessage(Component.literal(String.valueOf(player.level().players())));
-        for (Player plr : ((ServerLevel) player.level()).players()) {
+        playmeteorspawnsfx(player.level(), playerworldheightpos);
+    }
+    public static void playmeteorspawnsfx(Level level, BlockPos soundcenter) {
+        for (Player plr : ((ServerLevel) level).players()) {
             // distance falloff maybe? but make it very giant and large n shit
             //plr.sendSystemMessage(Component.literal("test"));
             // cap at 2x
-            double dist = plr.blockPosition().getCenter().distanceTo(playerworldheightpos.getCenter());
+            double dist = plr.blockPosition().getCenter().distanceTo(soundcenter.getCenter());
             double volume = 2 * Math.pow(0.5, (dist/350.0));
-            plr.sendSystemMessage(Component.literal("debug, dist: " + dist));
-            plr.sendSystemMessage(Component.literal("debug, volume: " + volume));
-            //plr.sendSystemMessage(Component.literal("test2"));
-            plr.playSound(ModSounds.METEOR_SPAWN.get(), (float) volume, 1); //sfx not sfxing ffs
-            player.level().playSound(plr, plr.position().x, plr.position().y, plr.position().z, ModSounds.METEOR_SPAWN.get(), SoundSource.AMBIENT, (float) volume, 1);
+            //plr.sendSystemMessage(Component.literal("debug, dist: " + dist));
+            //plr.sendSystemMessage(Component.literal("debug, volume: " + volume));
+            plr.sendSystemMessage(Component.literal("meteor sfx real"));
+            //plr.playSound(ModSounds.METEOR_SPAWN.get(), (float) volume, 1); //sfx not sfxing ffs
+            //level.playSound(plr, plr.position().x, plr.position().y, plr.position().z, ModSounds.METEOR_SPAWN.get(), SoundSource.AMBIENT, (float) volume, 1);
             //plr.sendSystemMessage(Component.literal("test3holyfuckingshitcanyouplaythissfx"));
+
         }
+
     }
 }

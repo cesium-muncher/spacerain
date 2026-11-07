@@ -47,7 +47,8 @@ public class StarBlock extends BaseEntityBlock {
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
         if(pLevel.isClientSide()) {
-            return null;
+            return createTickerHelper(pBlockEntityType, ModBlockEntities.STAR_BLOCK_BE.get(),
+                    (pLevel1, pPos, pState1, pBlockEntity) -> pBlockEntity.clientTick(pLevel1, pPos, pState1));
         }
         return createTickerHelper(pBlockEntityType, ModBlockEntities.STAR_BLOCK_BE.get(),
                 (pLevel1, pPos, pState1, pBlockEntity) -> pBlockEntity.tick(pLevel1, pPos, pState1));

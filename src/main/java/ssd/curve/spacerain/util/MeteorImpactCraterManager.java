@@ -94,9 +94,9 @@ public class MeteorImpactCraterManager {
 
 
                 if (level != null) {
-                    for (ServerPlayer plr : people) {
-                        plr.sendSystemMessage(Component.literal("particletastic"));
-                    }
+                    //for (ServerPlayer plr : people) {
+                        //plr.sendSystemMessage(Component.literal("particletastic"));
+                    //}
 
                     Vector3dc shipcenter = servermeteor.getTransform().getPosition();
                     Vector3d worldcenter = ValkyrienSkies.positionToWorld(level, shipcenter, new Vector3d());

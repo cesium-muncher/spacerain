@@ -122,6 +122,8 @@ public class ModItems {
             () -> new ScrollAtomic(new Item.Properties()));
     public static final RegistryObject<Item> SCROLL_WARP = ITEMS.register("scroll_warp",
             () -> new ScrollWarp(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_METEOR = ITEMS.register("scroll_meteor",
+            () -> new ScrollMeteor(new Item.Properties()));
 
 
     public static void register(IEventBus eventBus) {

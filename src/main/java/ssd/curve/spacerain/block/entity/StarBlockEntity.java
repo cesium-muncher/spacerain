@@ -8,6 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -21,14 +22,23 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import ssd.curve.spacerain.item.ModItems;
 import ssd.curve.spacerain.util.MeteorImpactCraterManager;
+import team.lodestar.lodestone.registry.common.particle.LodestoneParticleRegistry;
+import team.lodestar.lodestone.systems.easing.Easing;
+import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
+import team.lodestar.lodestone.systems.particle.data.GenericParticleData;
+import team.lodestar.lodestone.systems.particle.data.color.ColorParticleData;
+import team.lodestar.lodestone.systems.particle.data.spin.SpinParticleData;
+
+import java.awt.*;
 
 public class StarBlockEntity extends BlockEntity {
     private int light = 0;
     private int medium = 0;
-    private int heavy = 0;
+    public int heavy = 0;
     private int exotic = 0;
     private int temperature = 5000; // 5k - 50k
     private int evil = 0;
@@ -60,6 +70,62 @@ public class StarBlockEntity extends BlockEntity {
         temperature = pTag.getInt("spacerain_star.temperature");
         evil = pTag.getInt("spacerain_star.evil");
         instability = pTag.getInt("spacerain_star.instability");
+    }
+
+    public void clientTick(Level level, BlockPos pos, BlockState state) {
+        // ouhhh ai code ooooo vibecoding oooooo goggle ai overview
+        if (level.isClientSide) {
+            Color particlecolor = new Color((int) (heavy * 2.55), 0, 0);
+
+
+            // ok so uhh umm
+            // temp: set color
+            // instability: randomness in size
+            // evil: make slightly redder
+            // sum of elements: change particle size
+
+            float size = (float) (((light+medium+heavy+exotic) / 100.0f) + Math.random() * instability * 0.01f);
+
+            // blackbody radiation super approximated
+            float t = temperature/100.0f;
+            float bbr = 255;
+            float bbg = 0;
+            float bbb = 0;
+
+            if (t>66) {
+                bbr = t - 60;
+                bbr = (float) (329.698727446 * (Math.pow(bbr, -0.1332047592)));
+            }
+            if (t<=66) {
+                bbg = t;
+                bbg = (float) (99.4708025861 * Math.log(bbg) - 161.1195681661);
+
+            } else {
+                bbg = t-60;
+                bbg = (float) (288.1221695283 * (Math.pow(bbg, -0.0755148492)));
+            }
+            if (t<=66) {
+                if (t <= 19) {
+                    bbb = 0;
+                } else {
+                    bbb = t - 10;
+                    bbb = (float) (138.5177312231 * Math.log(bbg) - 305.0447927307);
+                }
+
+            }
+            bbr = Math.min(255, Math.max(0, bbr));
+            bbg = Math.min(255, Math.max(0, bbg));
+            bbb = Math.min(255, Math.max(0, bbb));
+            Color BlackbodyColor = new Color(bbr, bbg, bbb);
+
+
+            WorldParticleBuilder.create(LodestoneParticleRegistry.STAR_PARTICLE)
+                    .setScaleData(GenericParticleData.create(5f, 0).build())
+                    .enableNoClip()
+                    .setLifetime(40)
+                    .setColorData(ColorParticleData.create(BlackbodyColor, BlackbodyColor).build())
+                    .spawn(level, pos.getCenter().x, pos.getCenter().y, pos.getCenter().z);
+        }
     }
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
@@ -114,9 +180,34 @@ public class StarBlockEntity extends BlockEntity {
             //MeteorImpactCraterManager.cratergen(pLevel, pPos);
 
         }
-        for (Player plr : pLevel.getServer().getPlayerList().getPlayers()) {
+        //for (Player plr : pLevel.getServer().getPlayerList().getPlayers()) {
             //plr.sendSystemMessage(Component.literal("fart, " + light));
-        }
+        //}
+
+
+
+
+
+
+
+
+
+
+
+    }
+    public static void spawnExampleParticles(Level level, Vec3 pos) {
+        Color startingColor = new Color(100, 0, 100);
+        Color endingColor = new Color(0, 100, 200);
+        WorldParticleBuilder.create(LodestoneParticleRegistry.WISP_PARTICLE)
+                .setScaleData(GenericParticleData.create(0.5f, 0).build())
+                .setTransparencyData(GenericParticleData.create(0.75f, 0.25f).build())
+                .setColorData(ColorParticleData.create(startingColor, endingColor).setCoefficient(1.4f).setEasing(Easing.BOUNCE_IN_OUT).build())
+                .setSpinData(SpinParticleData.create(0.2f, 0.4f).setSpinOffset((level.getGameTime() * 0.2f) % 6.28f).setEasing(Easing.QUARTIC_IN).build())
+                .setLifetime(40)
+                .addMotion(0, 0.01f, 0)
+                .enableNoClip()
+                .spawn(level, pos.x, pos.y, pos.z);
+
     }
     public int getTemperature() {
         return temperature;

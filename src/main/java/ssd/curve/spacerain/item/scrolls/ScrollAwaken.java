@@ -24,17 +24,20 @@ public class ScrollAwaken extends RitualScrollItem {
     @Override
     public void performRitual(Level level, BlockPos pos, Player player) {
 
-        player.hurt(ModDamageSources.causeDmg(level, null, ModDamageSources.UNWORTHY), 20000);
-        //player.setSecondsOnFire(3); nahhhh idk
-        if (player.getHealth() > 0) {
-            Entity entity = EntityType.WITHER_SKELETON.create(level);
-            entity.moveTo(pos.above(), 0, 0);
-            entity.setCustomName(Component.literal("Astral Sleeper"));
 
-            level.addFreshEntity(entity);
+        if (level.getBlockState(pos).getBlock() == ModBlocks.ASTRAL_ALTAR.get()) {
+            player.hurt(ModDamageSources.causeDmg(level, null, ModDamageSources.UNWORTHY), 20000);
+            //player.setSecondsOnFire(3); nahhhh idk
+            if (player.getHealth() > 0) {
+                level.destroyBlock(pos.above(2), true, null);
+                level.setBlockAndUpdate(pos.above(2), ModBlocks.STAR.get().defaultBlockState());
+            } else {
+                player.sendSystemMessage(Component.translatable("altar.spacerain.weakling"));
+            }
         } else {
-            player.sendSystemMessage(Component.translatable("altar.spacerain.weakling"));
+            player.sendSystemMessage(Component.translatable("altar.spacerain.need_altar"));
         }
+
 
     }
 

@@ -1,1 +1,1 @@
-{"pools":[{"bonus_rolls":0,"rolls":1,"conditions":[{"condition":"minecraft:survives_explosion"}],"entries":[{"name":"spacerain:meteoric_cobaltite_ore","type":"minecraft:item"}]}],"random_sequence":"spacerain:block/meteoric_cobaltite_ore","type":"minecraft:block"}
+{"pools":[{"entries":[{"type":"minecraft:item","name":"spacerain:meteoric_cobaltite_ore"}],"conditions":[{"condition":"minecraft:survives_explosion"}],"rolls":1,"bonus_rolls":0}],"type":"minecraft:block","random_sequence":"spacerain:block/meteoric_cobaltite_ore"}
