@@ -1,1 +1,1 @@
-{"experience":0.1,"type":"minecraft:smelting","cookingtime":200,"result":{"count":16,"item":"minecraft:copper_ingot"},"category":"misc","ingredient":{"item":"spacerain:meteoric_copper_ore"},"group":"spacerain"}
+{"result":{"item":"minecraft:copper_ingot","count":16},"ingredient":{"item":"spacerain:meteoric_copper_ore"},"cookingtime":200,"category":"misc","type":"minecraft:smelting","group":"spacerain","experience":0.1}

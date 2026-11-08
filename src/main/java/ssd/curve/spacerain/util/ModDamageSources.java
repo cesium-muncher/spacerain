@@ -22,6 +22,14 @@ public class ModDamageSources {
             Registries.DAMAGE_TYPE,
             new ResourceLocation(Spacerain.MODID, "stellarized")
     );
+    public static final ResourceKey<DamageType> SUPERNOVA = ResourceKey.create(
+            Registries.DAMAGE_TYPE,
+            new ResourceLocation(Spacerain.MODID, "supernova")
+    );
+    public static final ResourceKey<DamageType> MELTED = ResourceKey.create(
+            Registries.DAMAGE_TYPE,
+            new ResourceLocation(Spacerain.MODID, "melted")
+    );
     public static DamageSource causeDmg(Level level, @Nullable LivingEntity plr, ResourceKey<DamageType> dt) {
 
         Holder<DamageType> h = level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(dt);

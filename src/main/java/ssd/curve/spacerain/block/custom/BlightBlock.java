@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.fml.common.Mod;
 import ssd.curve.spacerain.block.ModBlocks;
+import ssd.curve.spacerain.util.ModDamageSources;
 
 public class BlightBlock extends Block {
 
@@ -72,7 +73,7 @@ public class BlightBlock extends Block {
                 pEntity2.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 3600, 2));
                 pEntity2.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 3600, 1));
                 pEntity2.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 3600, 0));
-                pEntity2.addEffect(new MobEffectInstance(MobEffects.WITHER, 3600, 0));
+                pEntity2.hurt(ModDamageSources.causeDmg(pLevel, pEntity2, ModDamageSources.MELTED), 3);
             }
         }
 

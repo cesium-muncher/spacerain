@@ -1,0 +1,26 @@
+{
+  "name": "Cobalt",
+  "icon": "spacerain:cobalt_ingot",
+  "category": "spacerain:meteors",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Cobalt is an earlygame alternative to Iron, found exclusivley in meteors. $(br)"
+    },
+    {
+      "type": "patchouli:smelting",
+      "recipe": "spacerain:cobalt_smelting_from_meteoric_ore",
+      "text": "Just like all regular metoric ores, cobalt ore blocks must be smelted directly into ingots."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "spacerain:cobalt_catalyst",
+      "text": "Catalysts are used for certian spells, and for creating a ritual staff."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "spacerain:cobalt_bottle",
+      "text": "Cobalt Bottles are used for storing different Elements, and are required for the use of Stars."
+    }
+  ]
+}

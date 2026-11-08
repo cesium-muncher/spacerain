@@ -1,1 +1,1 @@
-{"parent":"minecraft:block/cube_all","textures":{"all":"spacerain:block/solarfield"}}
+{"textures":{"all":"spacerain:block/solarfield"},"parent":"minecraft:block/cube_all"}

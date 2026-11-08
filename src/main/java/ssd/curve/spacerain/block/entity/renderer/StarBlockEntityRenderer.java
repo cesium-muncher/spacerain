@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.client.model.data.ModelData;
@@ -17,6 +18,8 @@ import ssd.curve.spacerain.block.entity.StarBlockEntity;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneOffset;
+
+import static net.minecraftforge.common.extensions.IForgeBlockEntity.INFINITE_EXTENT_AABB;
 
 public class StarBlockEntityRenderer implements BlockEntityRenderer<StarBlockEntity> {
     public StarBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
@@ -42,6 +45,7 @@ public class StarBlockEntityRenderer implements BlockEntityRenderer<StarBlockEnt
         pPoseStack.mulPose(Axis.ZN.rotationDegrees(time*49)); // 7*7
         pPoseStack.mulPose(Axis.YN.rotationDegrees(time*27)); // 3*3*3
         pPoseStack.translate(-0.5, -0.5, -0.5);
+
         /*pPoseStack.translate(
                 rvaltranslate(Inst),
                 rvaltranslate(Inst),
@@ -52,6 +56,17 @@ public class StarBlockEntityRenderer implements BlockEntityRenderer<StarBlockEnt
                 ModelData.EMPTY, RenderType.lightning());
         pPoseStack.popPose();
     }
+
+    @Override
+    public boolean shouldRenderOffScreen(StarBlockEntity pBlockEntity) {
+        return true;
+    }
+
+    @Override
+    public int getViewDistance() {
+        return 9999999;
+    }
+
     private static double rvaltranslate(int val) {
         return Math.random() * 0.1 * 0.01 * val - 0.05;
     };

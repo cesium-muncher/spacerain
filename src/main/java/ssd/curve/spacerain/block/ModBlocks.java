@@ -7,6 +7,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.RedStoneOreBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -45,7 +46,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> METEORIC_LAPIS_ORE = registerBlock("meteoric_lapis_ore",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE).mapColor(DyeColor.BLACK)));
     public static final RegistryObject<Block> METEORIC_REDSTONE_ORE = registerBlock("meteoric_redstone_ore",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE).mapColor(DyeColor.BLACK)));
+            () -> new RedStoneOreBlock(BlockBehaviour.Properties.copy(Blocks.END_STONE).mapColor(DyeColor.BLACK)));
     public static final RegistryObject<Block> METEORIC_EMERALD_ORE = registerBlock("meteoric_emerald_ore",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE).mapColor(DyeColor.BLACK)));
 

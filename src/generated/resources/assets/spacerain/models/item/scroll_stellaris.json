@@ -1,1 +1,1 @@
-{"parent":"spacerain:item/scroll","textures":{"0":"spacerain:item/scroll_grand_red"}}
+{"textures":{"0":"spacerain:item/scroll_grand_red"},"parent":"spacerain:item/scroll"}

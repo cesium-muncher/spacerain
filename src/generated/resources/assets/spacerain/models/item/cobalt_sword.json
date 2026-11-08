@@ -1,1 +1,1 @@
-{"parent":"item/handheld","textures":{"layer0":"spacerain:item/cobalt_sword"}}
+{"textures":{"layer0":"spacerain:item/cobalt_sword"},"parent":"item/handheld"}

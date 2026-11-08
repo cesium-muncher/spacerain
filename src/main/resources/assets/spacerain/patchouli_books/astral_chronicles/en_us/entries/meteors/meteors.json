@@ -1,0 +1,19 @@
+{
+  "name": "Meteors",
+  "icon": "spacerain:molten_meteorite_block",
+  "category": "spacerain:meteors",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Randomly over time, you may sometimes see Meteors fall from the sky. $(br2)Meteors come generally as one of 2 forms. Meteors (orange), and Comets (blue)."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Meteors spawn with Meteoric Gold and Molten shells. $(br)The insides typically contain one or two layers. The outermost can contain all basic ores except for diamond and emerald. The inner layer usually contains Cobalt, Diamond, and Emerald."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Comets spawn with Cobalt and Frozen shells. $(br)The insides typically contain one or two layers. The outermost can contain either Diamond, Cobalt, or Astral Jewels. The inner layer usually contains Astral Jewels but they can have Cobalt. Some comets spawn with a layer of Ice."
+    }
+  ]
+}

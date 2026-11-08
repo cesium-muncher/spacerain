@@ -1,1 +1,1 @@
-{"experience":0.1,"type":"minecraft:blasting","cookingtime":200,"result":{"count":48,"item":"minecraft:redstone"},"category":"misc","ingredient":{"item":"spacerain:meteoric_redstone_ore"},"group":"spacerain"}
+{"result":{"item":"minecraft:redstone","count":48},"ingredient":{"item":"spacerain:meteoric_redstone_ore"},"cookingtime":200,"category":"misc","type":"minecraft:blasting","group":"spacerain","experience":0.1}

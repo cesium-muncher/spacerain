@@ -9,6 +9,8 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -17,6 +19,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -24,8 +27,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
+import ssd.curve.spacerain.client.SupernovaRenderer;
 import ssd.curve.spacerain.item.ModItems;
+import ssd.curve.spacerain.util.GradualCraterGenerator;
 import ssd.curve.spacerain.util.MeteorImpactCraterManager;
+import ssd.curve.spacerain.util.SupernovaManager;
 import team.lodestar.lodestone.registry.common.particle.LodestoneParticleRegistry;
 import team.lodestar.lodestone.systems.easing.Easing;
 import team.lodestar.lodestone.systems.particle.builder.WorldParticleBuilder;
@@ -50,6 +56,7 @@ public class StarBlockEntity extends BlockEntity {
 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
+        super.saveAdditional(pTag);
         pTag.putInt("spacerain_star.light", light);
         pTag.putInt("spacerain_star.medium", medium);
         pTag.putInt("spacerain_star.heavy", heavy);
@@ -57,7 +64,7 @@ public class StarBlockEntity extends BlockEntity {
         pTag.putInt("spacerain_star.temperature", temperature);
         pTag.putInt("spacerain_star.evil", evil);
         pTag.putInt("spacerain_star.instability", instability);
-        super.saveAdditional(pTag);
+
     }
 
     @Override
@@ -71,10 +78,57 @@ public class StarBlockEntity extends BlockEntity {
         evil = pTag.getInt("spacerain_star.evil");
         instability = pTag.getInt("spacerain_star.instability");
     }
+    private static Color colorLerp(Color c1, Color c2, double ratio) {
+        int r = (int) (c1.getRed() * (1-ratio) + c2.getRed() * ratio);
+        int g = (int) (c1.getGreen() * (1-ratio) + c2.getGreen() * ratio);
+        int b = (int) (c1.getBlue() * (1-ratio) + c2.getBlue() * ratio);
+        r = Math.min(255, Math.max(0, r));
+        g = Math.min(255, Math.max(0, g));
+        b = Math.min(255, Math.max(0, b));
+        return new Color(r, g, b);
+    }
+    /**
+     * IMPORTANT PLS READ IF YOU ARE WEIRD AND USING THIS FOR SOME REASON (this is a blockentity twin????)
+     * temp is actually off by a factor of like 5 btw
+     * to get 1:1 uhh you should umm multiply input by 5
+     * this thing sees 33000K as 6600K
+     */
+    public static Color blackbodyRadiationCalc(int temp) { // actually the incorrect values but idc
+        float t = temp/500.0f;
+        float bbr;
+        float bbg;
+        float bbb;
+
+        if (t<= 66) {
+            bbr = 255;
+            bbg = t;
+            bbg = (float) (99.4708025861 * Math.log(bbg) - 161.1195681661);
+            if (t <= 19) {
+                bbb = 0;
+            } else {
+                bbb = t-10;
+                bbb = (float) (138.5177312231 * Math.log(bbb) - 305.0447927307);
+            }
+        } else {
+            bbr = t-60;
+            bbr = (float) (329.698727446 * Math.pow(bbr, -0.1332047592));
+            bbg = t-60;
+            bbg = (float) (288.1221695283 * Math.pow(bbg, -0.0755148492 ));
+            bbb = 255;
+        }
+
+        bbr = Math.min(255, Math.max(0, bbr));
+        bbg = Math.min(255, Math.max(0, bbg));
+        bbb = Math.min(255, Math.max(0, bbb));
+        return new Color((int)bbr, (int)bbg, (int)bbb);
+    }
 
     public void clientTick(Level level, BlockPos pos, BlockState state) {
-        // ouhhh ai code ooooo vibecoding oooooo goggle ai overview
+        // ouhhh ai code ooooo vibecoding oooooo goggle ai overview (just clienttick stuff not the colors shit)
         if (level.isClientSide) {
+            if (instability == 99) { // remove later when u figure out packets, will only work on singleplayer or legendary connection prob
+                SupernovaRenderer.debugSupernovaRender(level, pos);
+            }
             Color particlecolor = new Color((int) (heavy * 2.55), 0, 0);
 
 
@@ -84,51 +138,26 @@ public class StarBlockEntity extends BlockEntity {
             // evil: make slightly redder
             // sum of elements: change particle size
 
-            float size = (float) (((light+medium+heavy+exotic) / 100.0f) + Math.random() * instability * 0.01f);
+            float size = (float) (((light+medium+heavy+exotic) / 100.0f) + Math.random() * instability * 0.01f) + 1.5f;
 
-            // blackbody radiation super approximated
-            float t = temperature/100.0f;
-            float bbr = 255;
-            float bbg = 0;
-            float bbb = 0;
-
-            if (t>66) {
-                bbr = t - 60;
-                bbr = (float) (329.698727446 * (Math.pow(bbr, -0.1332047592)));
-            }
-            if (t<=66) {
-                bbg = t;
-                bbg = (float) (99.4708025861 * Math.log(bbg) - 161.1195681661);
-
-            } else {
-                bbg = t-60;
-                bbg = (float) (288.1221695283 * (Math.pow(bbg, -0.0755148492)));
-            }
-            if (t<=66) {
-                if (t <= 19) {
-                    bbb = 0;
-                } else {
-                    bbb = t - 10;
-                    bbb = (float) (138.5177312231 * Math.log(bbg) - 305.0447927307);
-                }
-
-            }
-            bbr = Math.min(255, Math.max(0, bbr));
-            bbg = Math.min(255, Math.max(0, bbg));
-            bbb = Math.min(255, Math.max(0, bbb));
-            Color BlackbodyColor = new Color(bbr, bbg, bbb);
+            Color BlackbodyColor = blackbodyRadiationCalc(temperature);
+            Color evilColor = new Color(255, 0, 0);
+            Color FinalColor = colorLerp(BlackbodyColor, evilColor, evil*0.01);
 
 
             WorldParticleBuilder.create(LodestoneParticleRegistry.STAR_PARTICLE)
-                    .setScaleData(GenericParticleData.create(5f, 0).build())
+                    .setScaleData(GenericParticleData.create(size, 0).build())
                     .enableNoClip()
-                    .setLifetime(40)
+                    .setLifetime(5)
                     .setColorData(ColorParticleData.create(BlackbodyColor, BlackbodyColor).build())
+                    .enableForcedSpawn()
                     .spawn(level, pos.getCenter().x, pos.getCenter().y, pos.getCenter().z);
         }
     }
-
+    private static int tickcounter = 0;
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
+        tickcounter++;
+
         // uhhh something idfk yeah
         // light -> medium + temp DONE
         // medium -> heavy + temp DONE
@@ -176,16 +205,19 @@ public class StarBlockEntity extends BlockEntity {
         if (temperature <= 6000 && heavy >= 95) {
             pLevel.setBlockAndUpdate(pPos, Blocks.IRON_BLOCK.defaultBlockState());
         }
-        if (instability >= 101) {
-            //MeteorImpactCraterManager.cratergen(pLevel, pPos);
-
+        level.sendBlockUpdated(pPos, pState, pState, Block.UPDATE_ALL); // moved here specifically just because i need to test the kaboom fx
+        if (instability >= 100) {
+            GradualCraterGenerator.generic_supernova_spawn(pLevel, pPos);
+            // kablewy
         }
         //for (Player plr : pLevel.getServer().getPlayerList().getPlayers()) {
             //plr.sendSystemMessage(Component.literal("fart, " + light));
         //}
 
 
-
+        if (tickcounter % 20 == 0) {
+            setChanged();
+        }
 
 
 
@@ -195,20 +227,7 @@ public class StarBlockEntity extends BlockEntity {
 
 
     }
-    public static void spawnExampleParticles(Level level, Vec3 pos) {
-        Color startingColor = new Color(100, 0, 100);
-        Color endingColor = new Color(0, 100, 200);
-        WorldParticleBuilder.create(LodestoneParticleRegistry.WISP_PARTICLE)
-                .setScaleData(GenericParticleData.create(0.5f, 0).build())
-                .setTransparencyData(GenericParticleData.create(0.75f, 0.25f).build())
-                .setColorData(ColorParticleData.create(startingColor, endingColor).setCoefficient(1.4f).setEasing(Easing.BOUNCE_IN_OUT).build())
-                .setSpinData(SpinParticleData.create(0.2f, 0.4f).setSpinOffset((level.getGameTime() * 0.2f) % 6.28f).setEasing(Easing.QUARTIC_IN).build())
-                .setLifetime(40)
-                .addMotion(0, 0.01f, 0)
-                .enableNoClip()
-                .spawn(level, pos.x, pos.y, pos.z);
 
-    }
     public int getTemperature() {
         return temperature;
     }
@@ -249,6 +268,7 @@ public class StarBlockEntity extends BlockEntity {
                 }
                 pPlayer.getInventory().removeItem(slot, 1);
                 giveitem(pPlayer, ModItems.COBALT_BOTTLE.get());
+                pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1, 1, 1);
             }
         } else if (item == ModItems.MEDIUM_ELEMENTS.get()) {
             if (medium <= 90) {
@@ -259,6 +279,7 @@ public class StarBlockEntity extends BlockEntity {
                 }
                 pPlayer.getInventory().removeItem(slot, 1);
                 giveitem(pPlayer, ModItems.COBALT_BOTTLE.get());
+                pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1, 1, 1);
             }
         } else if (item == ModItems.HEAVY_ELEMENTS.get()) {
             if (heavy <= 90) {
@@ -269,6 +290,7 @@ public class StarBlockEntity extends BlockEntity {
                 }
                 pPlayer.getInventory().removeItem(slot, 1);
                 giveitem(pPlayer, ModItems.COBALT_BOTTLE.get());
+                pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1, 1, 1);
             }
         } else if (item == ModItems.EXOTIC_ELEMENTS.get()) {
             if (exotic <= 90) {
@@ -279,6 +301,7 @@ public class StarBlockEntity extends BlockEntity {
                 }
                 pPlayer.getInventory().removeItem(slot, 1);
                 giveitem(pPlayer, ModItems.COBALT_BOTTLE.get());
+                pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1, 1, 1);
             }
         } else if (item == ModItems.COBALT_BOTTLE.get()) {
             if (heavy >= 10) {
@@ -289,6 +312,7 @@ public class StarBlockEntity extends BlockEntity {
                 }
                 pPlayer.getInventory().removeItem(slot, 1);
                 giveitem(pPlayer, ModItems.HEAVY_ELEMENTS.get());
+                pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BOTTLE_FILL_DRAGONBREATH, SoundSource.BLOCKS, 1, 1, 1);
             }
         } else if (item == ModItems.FALLEN_SIGIL.get()) {
             if (evil >= 10) {
@@ -318,4 +342,14 @@ public class StarBlockEntity extends BlockEntity {
             pPlayer.drop(new ItemStack(pItem), false);
         }
     }
+
+    @Override
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
+        CompoundTag tag = pkt.getTag();
+        if (tag != null) {
+            load(tag); // bro just load ffs load it you have the fucken tag
+        }
+        super.onDataPacket(net, pkt);
+    }
+
 }

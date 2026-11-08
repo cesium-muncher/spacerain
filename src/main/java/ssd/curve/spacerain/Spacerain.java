@@ -1,6 +1,7 @@
 package ssd.curve.spacerain;
 
 import com.mojang.logging.LogUtils;
+import kotlin.jvm.JvmClassMappingKt;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -18,13 +19,15 @@ import org.slf4j.Logger;
 import org.valkyrienskies.mod.common.ValkyrienSkiesMod;
 import ssd.curve.spacerain.block.ModBlocks;
 import ssd.curve.spacerain.block.entity.ModBlockEntities;
+import ssd.curve.spacerain.client.SupernovaData;
+import ssd.curve.spacerain.client.SupernovaRenderer;
 import ssd.curve.spacerain.item.ModCreativeModeTabs;
 import ssd.curve.spacerain.item.ModItems;
+import ssd.curve.spacerain.network.SupernovaRenderPacket;
 import ssd.curve.spacerain.sound.ModSounds;
 import ssd.curve.spacerain.util.GradualCraterGenerator;
 import ssd.curve.spacerain.util.MeteorImpactCraterManager;
 import ssd.curve.spacerain.util.MeteorListenerAttachment;
-import ssd.curve.spacerain.util.ModDamageSources;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +64,19 @@ public class Spacerain {
 
             }
         });
+        /*ValkyrienSkiesMod.getVsCore().getSimplePacketNetworking().register(
+                JvmClassMappingKt.getKotlinClass(SupernovaRenderPacket.class)
+
+        );
+        ValkyrienSkiesMod.getVsCore().getSimplePacketNetworking().registerClientHandler(
+                JvmClassMappingKt.getKotlinClass(SupernovaRenderPacket.class),
+                (packet) -> {
+                    SupernovaRenderer.SupernovasToRender.add(new SupernovaData(packet.where(), packet.radius()));
+                    return null;
+                }
+        );*/
+
+        //FIX THIS SHIT WHEN VS UPDATES THEIR PACKET API TO WORK FOR JAVA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         modEventBus.addListener(this::commonSetup);
 
@@ -104,6 +120,12 @@ public class Spacerain {
         MeteorImpactCraterManager.renderparticles(event);
         GradualCraterGenerator.gcd_tickevent(event);
         //}
+    }
+
+    @SubscribeEvent
+    public void onClientTick(TickEvent.ClientTickEvent event) {
+        // the bob
+        SupernovaRenderer.tickevent(event);
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent

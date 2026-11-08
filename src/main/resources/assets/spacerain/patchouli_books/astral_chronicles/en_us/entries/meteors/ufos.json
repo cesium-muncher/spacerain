@@ -1,0 +1,12 @@
+{
+  "name": "Ufos",
+  "icon": "minecraft:slime_block",
+  "category": "spacerain:meteors",
+  "secret": true,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "yeah so like 0.1% of meteors or whatever are ufos. this page is only visible if you've encountered one before, and have the advancement. $(br2) Ufos can contain Stellar Jewels or Stellar Blight occasionally. $(br) if someone makes a vs addon that dissassembles inactive ships please tell me because stellar blight is like evil asf and will wipe your world if not stopped"
+    }
+  ]
+}

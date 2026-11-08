@@ -63,6 +63,7 @@
   "death.attack.melted.player": "%s was melted by %s",
   "death.attack.melted.item": "%s was melted by %s using %s",
   "death.attack.unworthy": "%s was not worthy",
+  "death.attack.supernova": "%s was reduced to ash in a supernova",
 
   "tooltip.scroll_info_text": "Ritual Requirements:",
   "altar.spacerain.need_scroll": "§6Rituals need instructions. Seek out ancient scrolls.",

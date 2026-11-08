@@ -76,13 +76,13 @@ public class SupernovaManager {
             } else {
                 if (hdist < radius * 0.2) {
                     pLevel.setBlockAndUpdate(pos, solarfield5);
-                } else if (hdist < radius * 0.4) {
+                } else if (hdist < radius * 0.4 && blockstate != solarfield5) {
                     pLevel.setBlockAndUpdate(pos, solarfield4);
-                } else if (hdist < radius * 0.6) {
+                } else if (hdist < radius * 0.6 && blockstate != solarfield5 && blockstate != solarfield4) {
                     pLevel.setBlockAndUpdate(pos, solarfield3);
-                } else if (hdist < radius * 0.8) {
+                } else if (hdist < radius * 0.8 && blockstate != solarfield5 && blockstate != solarfield4 && blockstate != solarfield3) { // long things retain gradients with multiple explosions
                     pLevel.setBlockAndUpdate(pos, solarfield2);
-                } else if (hdist < radius * 1) {
+                } else if (hdist < radius * 1 && blockstate != solarfield5 && blockstate != solarfield4 && blockstate != solarfield3 && blockstate != solarfield2) {
                     pLevel.setBlockAndUpdate(pos, solarfield1);
                 }
             }

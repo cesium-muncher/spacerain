@@ -1,0 +1,8 @@
+{
+  "name": "Astral Chronicles",
+  "landing_text": "Welcome to Spacerain",
+  "version": 1000394006,
+  "creative_tab": "spacerain:spacerain_tab",
+  "use_resource_pack": true,
+  "book_texture" : "patchouli:textures/gui/book_cyan.png"
+}

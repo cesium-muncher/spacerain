@@ -44,9 +44,9 @@ public class MeteorImpactCraterManager {
 
 
                 if (level != null) {
-                    for (ServerPlayer plr : people) {
-                        plr.sendSystemMessage(Component.literal("d: " + servermeteor.getChunkClaimDimension()));
-                    }
+                    //for (ServerPlayer plr : people) {
+                        //plr.sendSystemMessage(Component.literal("d: " + servermeteor.getChunkClaimDimension()));
+                    //} shut the fuh up
 
                     Vector3dc shipcenter = servermeteor.getTransform().getPosition();
                     Vector3d worldcenter = ValkyrienSkies.positionToWorld(level, shipcenter, new Vector3d());

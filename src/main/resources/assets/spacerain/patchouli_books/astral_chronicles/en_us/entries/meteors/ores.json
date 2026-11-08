@@ -1,0 +1,33 @@
+{
+  "name": "Meteoric Ores",
+  "icon": "spacerain:cobalt_ingot",
+  "category": "spacerain:meteors",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Meteoric Ores are ores found within meteors. Unlike regular ores, Meteoric ores do not drop raw ore. Instead, smelting the ore gains a large number of ingots, depending on the ore."
+    },
+    {
+      "type": "patchouli:smelting",
+      "recipe1": "spacerain:iron_smelting_from_meteoric_ore",
+      "recipe2": "spacerain:diamond_smelting_from_meteoric_ore",
+      "text": "Iron smelts into 16 ingots, whilst diamond, will only smelt into 4."
+    },
+    {
+      "type": "patchouli:smelting",
+      "recipe1": "spacerain:lapis_smelting_from_meteoric_ore",
+      "recipe2": "spacerain:redstone_smelting_from_meteoric_ore",
+      "text": "Lapis and Redstone give much larger quantities."
+    },
+    {
+      "type": "patchouli:smelting",
+      "recipe": "spacerain:cobalt_smelting_from_meteoric_ore",
+      "text": "Just like all regular metoric ores, cobalt ore blocks must be smelted directly into ingots."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "spacerain:astral_jewel_ore",
+      "text": "Astral Jewel Ore is the one exception to this smelting rule. Along with Astral Jewels, they also drop Fallen Sigils, which are an important item for certian spells. Fortune can increase jewel drops, but only 1 sigil is dropped from each ore."
+    }
+  ]
+}
