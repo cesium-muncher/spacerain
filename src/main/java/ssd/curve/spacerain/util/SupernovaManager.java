@@ -156,7 +156,7 @@ public class SupernovaManager {
             double dist = center.getCenter().distanceTo(e.position());
             //int damage = (int) (-8* (dist/radius)+26);
             int damage = (int) (Math.pow(0.1, dist/radius) * 200); // 200 dmg at 0 blocks, 20 at 1 dist, 2 at 2 dist, 0.2 at 3 dist
-            e.hurt(ModDamageSources.causeDmg(level, null, ModDamageSources.STELLARIZED), damage);
+            e.hurt(ModDamageSources.causeDmg(level, null, ModDamageSources.SUPERNOVA), damage);
         }
 
     }

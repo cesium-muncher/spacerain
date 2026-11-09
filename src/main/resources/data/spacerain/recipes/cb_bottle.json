@@ -1,0 +1,22 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+	"key": {
+		"G": {
+			"item": "minecraft:glass"
+		},
+		"C": {
+			"item": "spacerain:cobalt_ingot"
+		}
+	},
+	"pattern": [
+		" C ",
+		"GCG",
+		" G "
+	],
+	"result": {
+		"item": "spacerain:cobalt_bottle",
+		"count": 3
+	},
+	"show_notification": true
+}

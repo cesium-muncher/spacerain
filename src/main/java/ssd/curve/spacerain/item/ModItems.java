@@ -76,7 +76,7 @@ public class ModItems {
     public static final RegistryObject<Item> MEDIUM_ELEMENTS = ITEMS.register("medium_elements",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> HEAVY_ELEMENTS = ITEMS.register("heavy_elements",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().craftRemainder(COBALT_BOTTLE.get())));
     public static final RegistryObject<Item> EXOTIC_ELEMENTS = ITEMS.register("exotic_elements",
             () -> new Item(new Item.Properties()));
 

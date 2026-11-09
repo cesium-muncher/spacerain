@@ -1,0 +1,39 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"category": "misc",
+
+	"ingredients": [
+		{
+			"item": "spacerain:cobalt_bottle"
+		},
+		{
+			"tag": "minecraft:coals"
+		},
+		{
+			"tag": "minecraft:coals"
+		},
+		{
+			"tag": "minecraft:coals"
+		},
+		{
+			"tag": "minecraft:coals"
+		},
+		{
+			"tag": "minecraft:coals"
+		},
+		{
+			"tag": "minecraft:coals"
+		},
+		{
+			"tag": "minecraft:coals"
+		},
+		{
+			"tag": "minecraft:coals"
+		}
+	],
+	"result": {
+		"item": "spacerain:light_elements",
+		"count": 1
+	},
+	"show_notification": true
+}

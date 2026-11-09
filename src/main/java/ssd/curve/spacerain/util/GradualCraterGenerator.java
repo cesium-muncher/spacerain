@@ -66,7 +66,7 @@ public class GradualCraterGenerator {
         kill_me.clear();
     }
     public static void generic_supernova_spawn(Level level, BlockPos pos) {
-        GradualCraterGenerator gcd = new GradualCraterGenerator(level, pos, 50);
+        GradualCraterGenerator gcd = new GradualCraterGenerator(level, pos, 250);
         gcds.add(gcd);
     }
 }

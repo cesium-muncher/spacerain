@@ -21,6 +21,7 @@ import ssd.curve.spacerain.block.ModBlocks;
 import ssd.curve.spacerain.block.entity.ModBlockEntities;
 import ssd.curve.spacerain.client.SupernovaData;
 import ssd.curve.spacerain.client.SupernovaRenderer;
+import ssd.curve.spacerain.forgepackets.ModChannel;
 import ssd.curve.spacerain.item.ModCreativeModeTabs;
 import ssd.curve.spacerain.item.ModItems;
 import ssd.curve.spacerain.network.SupernovaRenderPacket;
@@ -50,7 +51,7 @@ public class Spacerain {
 
 
         ModItems.register(modEventBus);
-
+        ModChannel.register();
         ModBlockEntities.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);

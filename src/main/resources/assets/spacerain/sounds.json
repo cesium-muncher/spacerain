@@ -1,0 +1,56 @@
+{
+  "meteor_spawn":{
+    "subtitles":"sounds.spacerain.meteor_spawn",
+    "min_distance": 20,
+    "max distance": 500,
+    "sounds":[
+      "spacerain:meteor_spawn1",
+      "spacerain:meteor_spawn2"
+    ]
+  },
+  "meteor_impact":{
+    "subtitles":"sounds.spacerain.meteor_impact",
+    "min_distance": 20,
+    "max distance": 500,
+    "sounds":[
+      "spacerain:meteor_impact"
+    ]
+  },
+  "star_spark":{
+    "subtitles":"sounds.spacerain.star_spark",
+    "min_distance": 2,
+    "max distance": 25,
+    "sounds":[
+      "spacerain:spark1",
+      "spacerain:spark2",
+      "spacerain:spark3",
+      "spacerain:spark4",
+      "spacerain:spark5",
+      "spacerain:spark6"
+    ]
+  },
+  "star_unstable":{
+    "subtitles":"sounds.spacerain.star_unstable",
+    "min_distance": 2,
+    "max distance": 25,
+    "sounds":[
+      "spacerain:unstable1",
+      "spacerain:unstable2",
+      "spacerain:unstable3"
+    ]
+  },
+  "star_ambience":{
+    "subtitles":"sounds.spacerain.star_ambience",
+    "sounds":[
+      "spacerain:star_ambience_loop"
+    ]
+  },
+  "supernova":{
+    "subtitles":"sounds.spacerain.supernova",
+    "min_distance": 2000,
+    "max distance": 2000000,
+    "sounds":[
+      "spacerain:supernova"
+    ]
+  }
+}

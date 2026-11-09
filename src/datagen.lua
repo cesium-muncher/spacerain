@@ -311,8 +311,8 @@ setuptag("/mineable/pickaxe", {
 meteoricblocklootgen("meteoric_cobaltite_ore")
 --meteoricblocklootgen("astral_jewel_ore")
 
-addtosoundjson("meteor_spawn", "sounds.spacerain.meteor_spawn")
-soundjson(thesoundjson)
+
+--soundjson(thesoundjson)
 addtoweightjson("astral_jewel_ore", 5000, 0.6, 0.1)
 addtoweightjson("stellar_jewel_ore", 5000, 0.6, 0.1)
 addtoweightjson("star", 1000000, 0, 0)

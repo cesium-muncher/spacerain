@@ -1,5 +1,7 @@
 package ssd.curve.spacerain.block.entity;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -9,6 +11,7 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -25,10 +28,16 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
+import org.spongepowered.asm.mixin.Final;
+import ssd.curve.spacerain.client.StarSpectrographScreen;
 import ssd.curve.spacerain.client.SupernovaRenderer;
+import ssd.curve.spacerain.forgepackets.ForgeSNPacket;
+import ssd.curve.spacerain.forgepackets.ModChannel;
 import ssd.curve.spacerain.item.ModItems;
+import ssd.curve.spacerain.sound.ModSounds;
 import ssd.curve.spacerain.util.GradualCraterGenerator;
 import ssd.curve.spacerain.util.MeteorImpactCraterManager;
 import ssd.curve.spacerain.util.SupernovaManager;
@@ -42,13 +51,13 @@ import team.lodestar.lodestone.systems.particle.data.spin.SpinParticleData;
 import java.awt.*;
 
 public class StarBlockEntity extends BlockEntity {
-    private int light = 0;
-    private int medium = 0;
+    public int light = 0;
+    public int medium = 0;
     public int heavy = 0;
-    private int exotic = 0;
-    private int temperature = 5000; // 5k - 50k
-    private int evil = 0;
-    private int instability = 0;
+    public int exotic = 0;
+    public int temperature = 5000; // 5k - 50k
+    public int evil = 0;
+    public int instability = 0;
     public StarBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.STAR_BLOCK_BE.get(), pPos, pBlockState);
     }
@@ -88,9 +97,9 @@ public class StarBlockEntity extends BlockEntity {
         return new Color(r, g, b);
     }
     /**
-     * IMPORTANT PLS READ IF YOU ARE WEIRD AND USING THIS FOR SOME REASON (this is a blockentity twin????)
-     * temp is actually off by a factor of like 5 btw
-     * to get 1:1 uhh you should umm multiply input by 5
+     * IMPORTANT PLS READ IF YOU ARE WEIRD AND USING THIS FOR SOME REASON (this is a blockentity twin????).
+     * temp is actually off by a factor of like 5 btw.
+     * to get 1:1 uhh you should umm multiply input by 5.
      * this thing sees 33000K as 6600K
      */
     public static Color blackbodyRadiationCalc(int temp) { // actually the incorrect values but idc
@@ -126,9 +135,7 @@ public class StarBlockEntity extends BlockEntity {
     public void clientTick(Level level, BlockPos pos, BlockState state) {
         // ouhhh ai code ooooo vibecoding oooooo goggle ai overview (just clienttick stuff not the colors shit)
         if (level.isClientSide) {
-            if (instability == 99) { // remove later when u figure out packets, will only work on singleplayer or legendary connection prob
-                SupernovaRenderer.debugSupernovaRender(level, pos);
-            }
+
             Color particlecolor = new Color((int) (heavy * 2.55), 0, 0);
 
 
@@ -149,9 +156,24 @@ public class StarBlockEntity extends BlockEntity {
                     .setScaleData(GenericParticleData.create(size, 0).build())
                     .enableNoClip()
                     .setLifetime(5)
-                    .setColorData(ColorParticleData.create(BlackbodyColor, BlackbodyColor).build())
+                    .setColorData(ColorParticleData.create(FinalColor, FinalColor).build())
                     .enableForcedSpawn()
                     .spawn(level, pos.getCenter().x, pos.getCenter().y, pos.getCenter().z);
+            /*LocalPlayer plr = Minecraft.getInstance().player;
+            HitResult hr = plr.pick(plr.getBlockReach(), 0, false);
+            if (hr.getType() == HitResult.Type.BLOCK) {
+                BlockHitResult bhr = (BlockHitResult) hr;
+                if (bhr.getBlockPos() == pos) {
+                    StarSpectrographScreen.temp = temperature; MAY BE USELESS CUZ I MIGHT JS GET VALUES FROM WITHIN RENDERER(???)
+                    StarSpectrographScreen.light = light;
+                    StarSpectrographScreen.medium = medium;
+                    StarSpectrographScreen.heavy = heavy;
+                    StarSpectrographScreen.exotic = exotic;
+                    StarSpectrographScreen.evil = evil;
+                    StarSpectrographScreen.instability = instability;
+                }
+
+            }*/
         }
     }
     private static int tickcounter = 0;
@@ -186,35 +208,60 @@ public class StarBlockEntity extends BlockEntity {
             temperature += 100;
             evil++;
         }
-        if (heavy >= 100 && instability < 101&& (int) (Math.random()*3) == 0) {
+        if (heavy >= 100 && instability < 101&& (int) (Math.random()*2) == 0) {
             instability++;
         }
         if (heavy >= 95 && instability < 101) {
             instability++;
         }
-        if (evil >= 50&& (int) (Math.random()*20) == 0) {
+        if (evil >= 50 && (int) (Math.random()*5) == 1 && instability < 101) {
             instability++;
         }
-        if (instability > 0) {
+        if (evil >= 100 && (int) (Math.random()*5) == 1 && instability < 101) {
+            instability++;
+        }
+        if (evil >= 150 && instability < 101) {
+            instability++;
+        }
+        if (instability > 0 && instability < 101) {
             instability--;
         }
 
         if (temperature > 5000) {
             temperature -= 1;
         }
-        if (temperature <= 6000 && heavy >= 95) {
-            pLevel.setBlockAndUpdate(pPos, Blocks.IRON_BLOCK.defaultBlockState());
+        if (temperature > 50000 && (int) (Math.random()*5) == 2 && instability < 101) {
+            instability++;
         }
-        level.sendBlockUpdated(pPos, pState, pState, Block.UPDATE_ALL); // moved here specifically just because i need to test the kaboom fx
+        if (temperature <= 6000 && heavy >= 95) {
+            pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1, 1, pLevel.random.nextLong());
+            pLevel.setBlockAndUpdate(pPos, Blocks.IRON_BLOCK.defaultBlockState());
+
+        }
+
         if (instability >= 100) {
             GradualCraterGenerator.generic_supernova_spawn(pLevel, pPos);
             // kablewy
+            for (Player plr : level.players()) {
+                ModChannel.sendToPlayer(new ForgeSNPacket(pPos, 250), (ServerPlayer) plr);
+                //plr.sendSystemMessage(Component.literal("server: " + pPos.toShortString()));
+            }
+
         }
-        //for (Player plr : pLevel.getServer().getPlayerList().getPlayers()) {
-            //plr.sendSystemMessage(Component.literal("fart, " + light));
-        //}
+        if (Math.random() * 1000 < instability) {
+            level.playSeededSound(null, pPos.getCenter().x, pPos.getCenter().y, pPos.getCenter().z, ModSounds.STAR_UNSTABLE.get(), SoundSource.BLOCKS, 1, 1, pLevel.random.nextLong());
+        }
+        if ((int) (Math.random() * (400 - evil)) == 1) {
+            level.playSeededSound(null, pPos.getCenter().x, pPos.getCenter().y, pPos.getCenter().z, ModSounds.STAR_SPARK.get(), SoundSource.BLOCKS, 0.25f, 1, pLevel.random.nextLong());
+        }
+        if ((int) (Math.random() * (400 - heavy)) == 1) {
+            level.playSeededSound(null, pPos.getCenter().x, pPos.getCenter().y, pPos.getCenter().z, ModSounds.STAR_SPARK.get(), SoundSource.BLOCKS, 0.25f, 1, pLevel.random.nextLong());
+        }
+        if ((int) (Math.random() * 500) == 1 && temperature > 50000) {
+            level.playSeededSound(null, pPos.getCenter().x, pPos.getCenter().y, pPos.getCenter().z, ModSounds.STAR_SPARK.get(), SoundSource.BLOCKS, 0.25f, 1, pLevel.random.nextLong());
+        }
 
-
+        level.sendBlockUpdated(pPos, pState, pState, Block.UPDATE_ALL);
         if (tickcounter % 20 == 0) {
             setChanged();
         }
@@ -244,22 +291,7 @@ public class StarBlockEntity extends BlockEntity {
         // spectrograph: says element contents
 
         Item item = pPlayer.getItemInHand(pHand).getItem();
-        if (item == ModItems.SPECTROGRAPH.get()) {
-            pPlayer.sendSystemMessage(Component.literal(Component.translatable("star.spacerain.element.light").getString() + light));
-            pPlayer.sendSystemMessage(Component.literal(Component.translatable("star.spacerain.element.medium").getString() + medium));
-            pPlayer.sendSystemMessage(Component.literal(Component.translatable("star.spacerain.element.heavy").getString() + heavy));
-            pPlayer.sendSystemMessage(Component.literal(Component.translatable("star.spacerain.element.exotic").getString() + exotic));
-            pPlayer.sendSystemMessage(Component.literal(Component.translatable("star.spacerain.temp").getString() + temperature));
-            pPlayer.sendSystemMessage(Component.literal(Component.translatable("star.spacerain.evil").getString() + evil));
-            pPlayer.sendSystemMessage(Component.literal(Component.translatable("star.spacerain.instability").getString() + instability));
-        } else if (item == ModItems.SOLAR_TONGS.get()) {
-            if (heavy >= 10) {
-                heavy -= 10;
-                if (!pPlayer.getInventory().add(new ItemStack(Items.IRON_INGOT))) {
-                   pPlayer.drop(new ItemStack(Items.IRON_INGOT), false);
-                }
-            }
-        } else if (item == ModItems.LIGHT_ELEMENTS.get()) {
+        if (item == ModItems.LIGHT_ELEMENTS.get()) {
             if (light <= 90) {
                 light += 10;
                 int slot = Inventory.SLOT_OFFHAND;
@@ -268,7 +300,7 @@ public class StarBlockEntity extends BlockEntity {
                 }
                 pPlayer.getInventory().removeItem(slot, 1);
                 giveitem(pPlayer, ModItems.COBALT_BOTTLE.get());
-                pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1, 1, 1);
+                pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1, 1, pLevel.random.nextLong());
             }
         } else if (item == ModItems.MEDIUM_ELEMENTS.get()) {
             if (medium <= 90) {
@@ -279,7 +311,7 @@ public class StarBlockEntity extends BlockEntity {
                 }
                 pPlayer.getInventory().removeItem(slot, 1);
                 giveitem(pPlayer, ModItems.COBALT_BOTTLE.get());
-                pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1, 1, 1);
+                pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1, 1, pLevel.random.nextLong());
             }
         } else if (item == ModItems.HEAVY_ELEMENTS.get()) {
             if (heavy <= 90) {
@@ -290,7 +322,7 @@ public class StarBlockEntity extends BlockEntity {
                 }
                 pPlayer.getInventory().removeItem(slot, 1);
                 giveitem(pPlayer, ModItems.COBALT_BOTTLE.get());
-                pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1, 1, 1);
+                pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1, 1, pLevel.random.nextLong());
             }
         } else if (item == ModItems.EXOTIC_ELEMENTS.get()) {
             if (exotic <= 90) {
@@ -301,7 +333,7 @@ public class StarBlockEntity extends BlockEntity {
                 }
                 pPlayer.getInventory().removeItem(slot, 1);
                 giveitem(pPlayer, ModItems.COBALT_BOTTLE.get());
-                pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1, 1, 1);
+                pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1, 1, pLevel.random.nextLong());
             }
         } else if (item == ModItems.COBALT_BOTTLE.get()) {
             if (heavy >= 10) {
@@ -312,7 +344,7 @@ public class StarBlockEntity extends BlockEntity {
                 }
                 pPlayer.getInventory().removeItem(slot, 1);
                 giveitem(pPlayer, ModItems.HEAVY_ELEMENTS.get());
-                pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BOTTLE_FILL_DRAGONBREATH, SoundSource.BLOCKS, 1, 1, 1);
+                pLevel.playSeededSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundEvents.BOTTLE_FILL_DRAGONBREATH, SoundSource.BLOCKS, 1, 1, pLevel.random.nextLong());
             }
         } else if (item == ModItems.FALLEN_SIGIL.get()) {
             if (evil >= 10) {

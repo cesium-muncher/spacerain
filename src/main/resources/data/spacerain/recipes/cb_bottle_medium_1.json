@@ -1,0 +1,27 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"category": "misc",
+
+	"ingredients": [
+		{
+			"item": "spacerain:cobalt_bottle"
+		},
+		{
+			"item": "minecraft:sand"
+		},
+		{
+			"item": "minecraft:sand"
+		},
+		{
+			"item": "minecraft:sand"
+		},
+		{
+			"item": "minecraft:sand"
+		}
+	],
+	"result": {
+		"item": "spacerain:medium_elements",
+		"count": 1
+	},
+	"show_notification": true
+}
