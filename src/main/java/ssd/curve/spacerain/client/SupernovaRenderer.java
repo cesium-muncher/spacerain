@@ -68,11 +68,20 @@ public class SupernovaRenderer {
                 WorldParticleBuilder.create(LodestoneParticleRegistry.STAR_PARTICLE)
                         .setScaleData(GenericParticleData.create(r * 3, 0).build())
                         .enableNoClip()
-                        .setLifetime(100)
-                        .setColorData(ColorParticleData.create(Color.white, Color.red).build())
+                        .setLifetime(400)
+                        .setColorData(ColorParticleData.create(Color.red, Color.red).build())
 
                         .enableForcedSpawn()
                         .spawn(l, p.getCenter().x, p.getCenter().y, p.getCenter().z);
+                /*WorldParticleBuilder.create(LodestoneParticleRegistry.WISP_PARTICLE)
+                        .setScaleData(GenericParticleData.create(0, r).build())
+                        .enableNoClip()
+                        .setLifetime(r*3)
+                        .setColorData(ColorParticleData.create(pcol1, pcol2).build())
+                        .setSpinData(SpinParticleData.create((float) (Math.random() * 360 - 180)).build())
+                        .enableForcedSpawn()
+                        .spawn(l, p.getCenter().x, p.getCenter().y, p.getCenter().z);
+*/
             }
 
         }

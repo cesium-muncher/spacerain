@@ -49,6 +49,7 @@ import team.lodestar.lodestone.systems.particle.data.color.ColorParticleData;
 import team.lodestar.lodestone.systems.particle.data.spin.SpinParticleData;
 
 import java.awt.*;
+import java.util.concurrent.Callable;
 
 public class StarBlockEntity extends BlockEntity {
     public int light = 0;
@@ -242,10 +243,7 @@ public class StarBlockEntity extends BlockEntity {
         if (instability >= 100) {
             GradualCraterGenerator.generic_supernova_spawn(pLevel, pPos);
             // kablewy
-            for (Player plr : level.players()) {
-                ModChannel.sendToPlayer(new ForgeSNPacket(pPos, 250), (ServerPlayer) plr);
-                //plr.sendSystemMessage(Component.literal("server: " + pPos.toShortString()));
-            }
+
 
         }
         if (Math.random() * 1000 < instability) {

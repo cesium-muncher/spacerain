@@ -64,8 +64,7 @@ public class ModItems {
     public static final RegistryObject<Item> STELLAR_SIGIL = ITEMS.register("stellar_sigil",
             () -> new Item(new Item.Properties().rarity(ModRarities.RARITY_STELLAR)));
 
-    public static final RegistryObject<Item> SOLAR_TONGS = ITEMS.register("solar_tongs",
-            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> SPECTROGRAPH = ITEMS.register("spectrograph",
             () -> new Item(new Item.Properties()));
 
@@ -78,7 +77,18 @@ public class ModItems {
     public static final RegistryObject<Item> HEAVY_ELEMENTS = ITEMS.register("heavy_elements",
             () -> new Item(new Item.Properties().craftRemainder(COBALT_BOTTLE.get())));
     public static final RegistryObject<Item> EXOTIC_ELEMENTS = ITEMS.register("exotic_elements",
+            () -> new Item(new Item.Properties().rarity(ModRarities.RARITY_AWAKENED)));
+
+    public static final RegistryObject<Item> INKWELL = ITEMS.register("inkwell",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ASTRAL_INK = ITEMS.register("astral_ink",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> REFINED_INK = ITEMS.register("refined_ink",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> HATEFUL_INK = ITEMS.register("hateful_ink",
+            () -> new Item(new Item.Properties().rarity(ModRarities.RARITY_AWAKENED)));
+    public static final RegistryObject<Item> SOLAR_INK = ITEMS.register("stellar_ink",
+            () -> new Item(new Item.Properties().rarity(ModRarities.RARITY_STELLAR)));
 
 
 
@@ -124,6 +134,8 @@ public class ModItems {
             () -> new ScrollWarp(new Item.Properties()));
     public static final RegistryObject<Item> SCROLL_METEOR = ITEMS.register("scroll_meteor",
             () -> new ScrollMeteor(new Item.Properties()));
+
+
 
 
     public static void register(IEventBus eventBus) {

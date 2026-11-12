@@ -18,6 +18,10 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("star_block_be", () ->
                     BlockEntityType.Builder.of(StarBlockEntity::new,
                             ModBlocks.STAR.get()).build(null));
+    public static final RegistryObject<BlockEntityType<ScribingTableBlockEntity>> SCRIBING_TABLE_BE =
+            BLOCK_ENTITIES.register("scribing_table_be", () ->
+                    BlockEntityType.Builder.of(ScribingTableBlockEntity::new,
+                            ModBlocks.SCRIBING_TABLE.get()).build(null));
 
     public static void register(IEventBus eventbus) {
         BLOCK_ENTITIES.register(eventbus);

@@ -12,11 +12,13 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.SpawnerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 import ssd.curve.spacerain.block.ModBlocks;
 import ssd.curve.spacerain.block.entity.ModBlockEntities;
 import ssd.curve.spacerain.block.entity.StarBlockEntity;
+import ssd.curve.spacerain.util.GradualCraterGenerator;
 
 public class StarBlock extends BaseEntityBlock {
     public StarBlock(Properties pProperties) {
@@ -30,7 +32,18 @@ public class StarBlock extends BaseEntityBlock {
 
     @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
+        //GradualCraterGenerator.supernova_soawn(pLevel, pPos, 5);
+
         super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+    }
+
+    @Override
+    public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
+        if (!player.isCreative()) {
+            GradualCraterGenerator.supernova_soawn(level, pos, 5);
+        }
+
+        return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
     }
 
     @Override

@@ -26,17 +26,21 @@ import org.valkyrienskies.mod.common.ValkyrienSkiesMod;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class MeteorImpactCraterManager {
-    public static List<Long> meteorsExploding = new ArrayList<>();
-    public static List<Long> meteorfallparticles = new ArrayList<>();
-    public static boolean dontFUCKINGmodifytheselists = false;
+    public static Queue<Long> meteorsExploding = new ConcurrentLinkedQueue<>();
+    public static Queue<Long> meteorfallparticles = new ConcurrentLinkedQueue<>();
+    public volatile static boolean dontFUCKINGmodifytheselists = false; // useless cuz im using concurrent linked queue now
 
     public static void checkChanges(TickEvent.ServerTickEvent event) {
         //System.out.println("freaking, armenia");
         if (!meteorsExploding.isEmpty()) {
-            dontFUCKINGmodifytheselists = true;
-            for (Long meteorid : meteorsExploding) {
+            Queue<Long> newmetexp = new ConcurrentLinkedQueue<>(meteorsExploding);
+
+            for (Long meteorid : newmetexp) {
+                meteorsExploding.remove(meteorid);
                 List<ServerPlayer> people = event.getServer().getPlayerList().getPlayers();
                 ServerShip servermeteor = ValkyrienSkiesMod.getApi().getServerShipWorld(event.getServer()).getAllShips().getById(meteorid);
 
@@ -44,9 +48,7 @@ public class MeteorImpactCraterManager {
 
 
                 if (level != null) {
-                    //for (ServerPlayer plr : people) {
-                        //plr.sendSystemMessage(Component.literal("d: " + servermeteor.getChunkClaimDimension()));
-                    //} shut the fuh up
+
 
                     Vector3dc shipcenter = servermeteor.getTransform().getPosition();
                     Vector3d worldcenter = ValkyrienSkies.positionToWorld(level, shipcenter, new Vector3d());
@@ -57,8 +59,8 @@ public class MeteorImpactCraterManager {
 
 
             }
-            meteorsExploding.clear();
-            dontFUCKINGmodifytheselists = false;
+
+
         }
     }
 
@@ -85,18 +87,16 @@ public class MeteorImpactCraterManager {
     public static void renderparticles(TickEvent.ServerTickEvent event) {
 
         if (!meteorfallparticles.isEmpty()) {
-            dontFUCKINGmodifytheselists = true;
-            for (Long meteorid : meteorfallparticles) {
+            Queue<Long> newmfp = new ConcurrentLinkedQueue<>(meteorfallparticles);
+            for (Long meteorid : newmfp) {
                 List<ServerPlayer> people = event.getServer().getPlayerList().getPlayers();
                 ServerShip servermeteor = ValkyrienSkiesMod.getApi().getServerShipWorld(event.getServer()).getAllShips().getById(meteorid);
 
                 ServerLevel level = VSGameUtilsKt.getLevelFromDimensionId(event.getServer(), servermeteor.getChunkClaimDimension());
-
+                meteorfallparticles.remove(newmfp);
 
                 if (level != null) {
-                    //for (ServerPlayer plr : people) {
-                        //plr.sendSystemMessage(Component.literal("particletastic"));
-                    //}
+
 
                     Vector3dc shipcenter = servermeteor.getTransform().getPosition();
                     Vector3d worldcenter = ValkyrienSkies.positionToWorld(level, shipcenter, new Vector3d());
@@ -106,8 +106,8 @@ public class MeteorImpactCraterManager {
 
 
             }
-            meteorfallparticles.clear();
-            dontFUCKINGmodifytheselists = false;
+
+
         }
     }
 }

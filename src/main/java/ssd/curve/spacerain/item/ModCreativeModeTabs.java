@@ -58,7 +58,6 @@ public class ModCreativeModeTabs {
 
                 output.accept(ModBlocks.STAR.get());
                 output.accept(ModItems.SPECTROGRAPH.get());
-                output.accept(ModItems.SOLAR_TONGS.get());
                 output.accept(ModItems.COBALT_BOTTLE.get());
                 output.accept(ModItems.LIGHT_ELEMENTS.get());
                 output.accept(ModItems.MEDIUM_ELEMENTS.get());

@@ -1,15 +1,21 @@
 package ssd.curve.spacerain.util;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.synth.ImprovedNoise;
 import net.minecraftforge.event.TickEvent;
+import ssd.curve.spacerain.forgepackets.ForgeSNPacket;
+import ssd.curve.spacerain.forgepackets.ModChannel;
 import team.lodestar.lodestone.registry.common.particle.LodestoneParticleRegistry;
 import team.lodestar.lodestone.systems.particle.type.LodestoneParticleType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class GradualCraterGenerator {
     private BlockPos pos;
@@ -19,7 +25,7 @@ public class GradualCraterGenerator {
     private ImprovedNoise noise;
     private boolean stop;
 
-    public static List<GradualCraterGenerator> gcds = new ArrayList<>(); // why can i do this
+    public static Queue<GradualCraterGenerator> gcds = new ConcurrentLinkedQueue<>(); // why can i do this
     public GradualCraterGenerator(Level pLevel, BlockPos pos, int radius) {
         this.pos = pos;
         this.plevel = pLevel;
@@ -51,7 +57,7 @@ public class GradualCraterGenerator {
     public boolean isstopped() {
         return stop;
     }
-    private static List<GradualCraterGenerator> kill_me = new ArrayList<>();
+    private static Queue<GradualCraterGenerator> kill_me = new ConcurrentLinkedQueue<>();
     public static void gcd_tickevent(TickEvent.ServerTickEvent event) {
 
         for (GradualCraterGenerator gcd : gcds) {
@@ -66,7 +72,14 @@ public class GradualCraterGenerator {
         kill_me.clear();
     }
     public static void generic_supernova_spawn(Level level, BlockPos pos) {
-        GradualCraterGenerator gcd = new GradualCraterGenerator(level, pos, 250);
+        supernova_soawn(level, pos, 50);
+    }
+    public static void supernova_soawn(Level level, BlockPos pos, int radius) {
+        GradualCraterGenerator gcd = new GradualCraterGenerator(level, pos, radius);
         gcds.add(gcd);
+        for (Player plr : level.players()) {
+            ModChannel.sendToPlayer(new ForgeSNPacket(pos, radius), (ServerPlayer) plr);
+            //plr.sendSystemMessage(Component.literal("server: " + pPos.toShortString()));
+        }
     }
 }

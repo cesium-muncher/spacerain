@@ -67,6 +67,9 @@ public class ModBlocks {
             () -> new MeteorSpawnerBlock(BlockBehaviour.Properties.copy(Blocks.END_STONE).mapColor(DyeColor.BLACK)));
     public static final RegistryObject<Block> STAR = registerBlock("star",
             () -> new StarBlock(BlockBehaviour.Properties.copy(Blocks.GLOWSTONE).mapColor(DyeColor.WHITE).noOcclusion()));
+    public static final RegistryObject<Block> SCRIBING_TABLE = registerBlock("scribing_table",
+            () -> new ScribingTableBlock(BlockBehaviour.Properties.copy(Blocks.GLOWSTONE).mapColor(DyeColor.WHITE).noOcclusion()));
+
 
     public static final RegistryObject<Block> SOLARFIELD_1 = registerBlock("solarfield",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).mapColor(DyeColor.GREEN)));

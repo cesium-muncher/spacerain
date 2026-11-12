@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.valkyrienskies.mod.common.ValkyrienSkiesMod;
 import ssd.curve.spacerain.block.ModBlocks;
 import ssd.curve.spacerain.block.entity.ModBlockEntities;
+import ssd.curve.spacerain.client.ModMenuTypes;
 import ssd.curve.spacerain.client.SupernovaData;
 import ssd.curve.spacerain.client.SupernovaRenderer;
 import ssd.curve.spacerain.forgepackets.ModChannel;
@@ -56,6 +57,7 @@ public class Spacerain {
         ModBlocks.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         ModSounds.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
         ValkyrienSkiesMod.getApi().registerAttachment(MeteorListenerAttachment.class);
 
         ValkyrienSkiesMod.getApi().getShipLoadEvent().on((event) -> {

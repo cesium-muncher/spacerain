@@ -32,6 +32,12 @@ public class ModChannel {
                 .consumerMainThread(ForgeSNPacket::handle)
                 .add();
 
+        net.messageBuilder(ForgeMPPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(ForgeMPPacket::new)
+                .encoder(ForgeMPPacket::toBytes)
+                .consumerMainThread(ForgeMPPacket::handle)
+                .add();
+
 
     }
 
