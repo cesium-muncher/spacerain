@@ -1,0 +1,26 @@
+{
+  "name": "Basic Scrolls",
+  "icon": "spacerain:scroll_transmutate_iron",
+  "category": "spacerain:scrolls",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "These scrolls require Refined Ink, and take 5 minutes to scribe."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "spacerain:fallen_sigil",
+      "text": "Fallen Sigils can be obtained from Astral Jewel Ore. Most grand scrolls use them."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "spacerain:awakened_sigil",
+      "text": "Awakened sigils may be used for some grand scrolls."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "spacerain:refined_ink",
+      "text": ""
+    }
+  ]
+}

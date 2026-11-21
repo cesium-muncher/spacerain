@@ -42,6 +42,18 @@
 
   "block.spacerain.astral_altar": "Astral Altar",
   "block.spacerain.star": "Star",
+  "block.spacerain.scribing_table": "Scribing Table",
+  "item.spacerain.inkwell": "Inkwell",
+  "item.spacerain.parchment": "Parchment",
+  "item.spacerain.astral_ink": "Astral Ink",
+  "item.spacerain.refined_ink": "Refined Ink",
+  "item.spacerain.hateful_ink": "Hateful Ink",
+  "item.spacerain.stellar_ink": "Stellar Ink",
+
+  "item.spacerain.beryllium_powder": "Beryllium Powder",
+  "item.spacerain.carbon_powder": "Carbon Powder",
+  "item.spacerain.silicon_powder": "Silicon Powder",
+  "item.spacerain.cobalt_mortar": "Cobalt Mortar",
 
   "block.spacerain.solarfield": "Solarfield",
   "block.spacerain.shimmering_solarfield": "Shimmering Solarfield",
@@ -120,6 +132,6 @@
 
   "item.spacerain.scroll_famine": "Dark Ritual Scroll of Famine",
   "item.spacerain.scroll_global_warming": "Dark Ritual Scroll of Burning Skies",
-  "item.spacerain.scroll_awaken": "Dark Ritual Scroll of the Awakening",
-  "item.spacerain.scroll_stellaris": "Apocalyptic Scroll of Stellaris"
+  "item.spacerain.scroll_awaken": "Ancient Scroll of the Awakening",
+  "item.spacerain.scroll_stellaris": "Ancient Scroll of Stellaris"
 }

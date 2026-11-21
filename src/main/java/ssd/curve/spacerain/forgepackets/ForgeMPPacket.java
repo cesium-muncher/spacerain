@@ -4,6 +4,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
+import ssd.curve.spacerain.client.MeteorFXRenderer;
+import ssd.curve.spacerain.client.MeteorVisualData;
 import ssd.curve.spacerain.client.SupernovaData;
 import ssd.curve.spacerain.client.SupernovaRenderer;
 
@@ -36,7 +38,7 @@ public class ForgeMPPacket { // meteor particle packet
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
 
-
+            MeteorFXRenderer.MeteorsToRender.add(new MeteorVisualData(this.pos, this.info));
 
         });
         return true;

@@ -1,15 +1,13 @@
 package ssd.curve.spacerain.item;
 
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import ssd.curve.spacerain.Spacerain;
-import ssd.curve.spacerain.item.custom.OmicronItem;
-import ssd.curve.spacerain.item.custom.RitualScrollItem;
-import ssd.curve.spacerain.item.custom.StaffItem;
-import ssd.curve.spacerain.item.custom.StellarOmicronItem;
+import ssd.curve.spacerain.item.custom.*;
 import ssd.curve.spacerain.item.scrolls.*;
 import ssd.curve.spacerain.util.ModRarities;
 
@@ -89,7 +87,18 @@ public class ModItems {
             () -> new Item(new Item.Properties().rarity(ModRarities.RARITY_AWAKENED)));
     public static final RegistryObject<Item> SOLAR_INK = ITEMS.register("stellar_ink",
             () -> new Item(new Item.Properties().rarity(ModRarities.RARITY_STELLAR)));
+    public static final RegistryObject<Item> PARCHMENT = ITEMS.register("parchment",
+            () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> BERYLLIUM = ITEMS.register("beryllium_powder",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SILICON = ITEMS.register("silicon_powder",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CARBON = ITEMS.register("carbon_powder",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> MORTAR = ITEMS.register("cobalt_mortar",
+            () -> new MortarItem(new Item.Properties()));
 
 
     public static final RegistryObject<Item> DEBUG_SCROLL = ITEMS.register("debug_scroll",

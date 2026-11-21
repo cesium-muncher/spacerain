@@ -8,6 +8,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -21,6 +22,8 @@ import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 import ssd.curve.spacerain.block.entity.ModBlockEntities;
 import ssd.curve.spacerain.block.entity.ScribingTableBlockEntity;
+import ssd.curve.spacerain.block.entity.StarBlockEntity;
+import ssd.curve.spacerain.client.ScribingTableMenu;
 
 public class ScribingTableBlock extends BaseEntityBlock {
 
@@ -55,6 +58,7 @@ public class ScribingTableBlock extends BaseEntityBlock {
                         Component.translatable("block.spacerain.scribing_table")
                 );
                 NetworkHooks.openScreen(((ServerPlayer)pPlayer), prov, pPos);
+                //NetworkHooks.openScreen(((ServerPlayer)pPlayer), (MenuProvider) entity, pPos);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }

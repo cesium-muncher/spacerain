@@ -5,15 +5,15 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.synth.ImprovedNoise;
 import net.minecraftforge.event.TickEvent;
+import org.valkyrienskies.core.api.ships.Ship;
+import org.valkyrienskies.mod.api.ValkyrienSkies;
 import ssd.curve.spacerain.forgepackets.ForgeSNPacket;
 import ssd.curve.spacerain.forgepackets.ModChannel;
-import team.lodestar.lodestone.registry.common.particle.LodestoneParticleRegistry;
-import team.lodestar.lodestone.systems.particle.type.LodestoneParticleType;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.Nullable;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -72,9 +72,17 @@ public class GradualCraterGenerator {
         kill_me.clear();
     }
     public static void generic_supernova_spawn(Level level, BlockPos pos) {
-        supernova_soawn(level, pos, 50);
+        supernova_spawn(level, pos, 50);
     }
-    public static void supernova_soawn(Level level, BlockPos pos, int radius) {
+    public static void supernova_spawn(Level level, BlockPos pos, int radius) {
+        level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
+        @Nullable Ship ship = ValkyrienSkies.getShipManagingBlock(level, pos);
+        if (ship != null) {
+            pos = BlockPos.containing(ValkyrienSkies.positionToWorld(ship, pos.getCenter()));
+        }
+
+
+
         GradualCraterGenerator gcd = new GradualCraterGenerator(level, pos, radius);
         gcds.add(gcd);
         for (Player plr : level.players()) {

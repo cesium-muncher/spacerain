@@ -9,8 +9,8 @@ public class MeteorVisualData {
     public BlockPos pos;
 
 
-    public MeteorVisualData(BlockPos p, int r, Level l) {
-        this.info = r;
+    public MeteorVisualData(BlockPos p, int i) {
+        this.info = i;
         this.pos = p;
 
     }

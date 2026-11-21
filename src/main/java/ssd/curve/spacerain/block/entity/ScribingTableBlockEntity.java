@@ -4,6 +4,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -12,19 +17,26 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
+import ssd.curve.spacerain.Spacerain;
 import ssd.curve.spacerain.client.ScribingTableMenu;
 import ssd.curve.spacerain.item.ModItems;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class ScribingTableBlockEntity extends BlockEntity {
     private final ItemStackHandler itemHandler = new ItemStackHandler(3);
@@ -36,8 +48,8 @@ public class ScribingTableBlockEntity extends BlockEntity {
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
     protected final ContainerData data;
-    private int progress = 0;
-    private int maxProgress = 78;
+    public int progress = 0;
+    private int maxProgress = 20 * 120;
 
     public ScribingTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.SCRIBING_TABLE_BE.get(), pPos, pBlockState);
@@ -114,11 +126,15 @@ public class ScribingTableBlockEntity extends BlockEntity {
         super.saveAdditional(pTag);
     }
 
+    public ItemStack getRenderStack() {
+        return itemHandler.getStackInSlot(INK_SLOT);
+    }
+
     @Override
     public void load(CompoundTag pTag) {
         super.load(pTag);
         itemHandler.deserializeNBT(pTag.getCompound("inventory"));
-        progress = pTag.getInt("scribing_table.progress"); // change ts pls twin
+        progress = pTag.getInt("scribing_table.progress");
     }
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
@@ -129,6 +145,7 @@ public class ScribingTableBlockEntity extends BlockEntity {
             if(hasProgressFinished()) {
                 craftItem();
                 resetProgress();
+                pLevel.playSound(null, pPos, SoundEvents.UI_LOOM_TAKE_RESULT, SoundSource.BLOCKS);
             }
         } else {
             resetProgress();
@@ -140,27 +157,88 @@ public class ScribingTableBlockEntity extends BlockEntity {
     }
 
     private void craftItem() {
-        ItemStack result = new ItemStack(ModItems.COBALT_INGOT.get(), 1);
+        //ItemStack result = new ItemStack(ModItems.COBALT_INGOT.get(), 1);
         this.itemHandler.extractItem(INPUT_SLOT, 1, false);
+        Item ink = this.itemHandler.getStackInSlot(INK_SLOT).getItem();
+        this.itemHandler.extractItem(INK_SLOT, 1, false);
 
-        this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
-                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + result.getCount()));
+        if (ink == ModItems.ASTRAL_INK.get()) {
+            this.itemHandler.setStackInSlot(OUTPUT_SLOT, getLootFromTable((ServerLevel) this.level, "basic_scroll_loot"));
+        } else if (ink == ModItems.REFINED_INK.get()) {
+            this.itemHandler.setStackInSlot(OUTPUT_SLOT, getLootFromTable((ServerLevel) this.level, "grand_scroll_loot"));
+        } else if (ink == ModItems.HATEFUL_INK.get()) {
+            this.itemHandler.setStackInSlot(OUTPUT_SLOT, getLootFromTable((ServerLevel) this.level, "evil_scroll_loot"));
+        } else if (ink == ModItems.SOLAR_INK.get()) {
+            this.itemHandler.setStackInSlot(OUTPUT_SLOT, getLootFromTable((ServerLevel) this.level, "solar_scroll_loot"));
+        }
+
+
+
+
     }
 
     private boolean hasRecipe() {
-        boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.COBALT_INGOT.get();
-        ItemStack result = new ItemStack(ModItems.COBALT_CATALYST.get());
+        boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.PARCHMENT.get();
+        //ItemStack result = new ItemStack(ModItems.COBALT_CATALYST.get());
 
-        return hasCraftingItem && canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
+
+        return hasCraftingItem && hasInk() && isOutputEmpty();
+    }
+    private boolean hasInk() {
+        Item ink = this.itemHandler.getStackInSlot(INK_SLOT).getItem();
+
+        if (ink == ModItems.ASTRAL_INK.get()) {
+            if (maxProgress != 20 * 120) {
+                progress = 0;
+                maxProgress = 20*120;
+            }
+        }
+        if (ink == ModItems.REFINED_INK.get()) {
+            if (maxProgress != 20 * 600) {
+                progress = 0;
+                maxProgress = 20*600;
+            }
+        }
+        if (ink == ModItems.HATEFUL_INK.get()) {
+            if (maxProgress != 20 * 1800) {
+                progress = 0;
+                maxProgress = 20*1800;
+            }
+        }
+        if (ink == ModItems.SOLAR_INK.get()) {
+            if (maxProgress != 20 * 3600) {
+                progress = 0;
+                maxProgress = 20*3600;
+            }
+        }
+
+
+
+        return (
+                ink == ModItems.ASTRAL_INK.get() ||
+                ink == ModItems.REFINED_INK.get() ||
+                ink == ModItems.HATEFUL_INK.get() ||
+                ink == ModItems.SOLAR_INK.get()
+                );
+    }
+    private boolean isOutputEmpty() {
+        ItemStack out = this.itemHandler.getStackInSlot(OUTPUT_SLOT);
+        return out == ItemStack.EMPTY;
     }
 
-    private boolean canInsertItemIntoOutputSlot(Item item) {
+    public ItemStack getLootFromTable(ServerLevel level, String tableid) {
+        LootTable lt = level.getServer().getLootData().getLootTable(new ResourceLocation(Spacerain.MODID, tableid));
+        List<ItemStack> items = lt.getRandomItems(new LootParams.Builder(level).create(LootContextParamSets.EMPTY));
+        return items.get(0);
+    }
+
+    /*private boolean canInsertItemIntoOutputSlot(Item item) {
         return this.itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() || this.itemHandler.getStackInSlot(OUTPUT_SLOT).is(item);
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {
         return this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + count <= this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
-    }
+    }*/
 
     private boolean hasProgressFinished() {
         return progress >= maxProgress;

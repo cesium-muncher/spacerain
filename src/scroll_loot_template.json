@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "entries": [
+
+      ],
+      "rolls": 1
+    }
+  ],
+  "random_sequence": "spacerain:scrolls/SCROLLNAMEHERE"
+}

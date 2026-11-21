@@ -4,14 +4,14 @@
 
 	"ingredients": [
 		{
-			"item": "spacerain:cobalt_bottle"
+			"item": "spacerain:cobalt_mortar"
 		},
 		{
-			"item": "spacerain:meteorite_block"
+			"item": "spacerain:meteorite_cobble"
 		}
 	],
 	"result": {
-		"item": "spacerain:light_elements",
+		"item": "spacerain:beryllium_powder",
 		"count": 1
 	},
 	"show_notification": true

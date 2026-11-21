@@ -1,1 +1,1 @@
-{"textures":{"layer0":"spacerain:item/solar_tongs"},"parent":"item/generated"}
+{"parent":"item/generated","textures":{"layer0":"spacerain:item/solar_tongs"}}

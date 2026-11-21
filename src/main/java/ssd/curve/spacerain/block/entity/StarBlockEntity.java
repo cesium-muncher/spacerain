@@ -160,21 +160,6 @@ public class StarBlockEntity extends BlockEntity {
                     .setColorData(ColorParticleData.create(FinalColor, FinalColor).build())
                     .enableForcedSpawn()
                     .spawn(level, pos.getCenter().x, pos.getCenter().y, pos.getCenter().z);
-            /*LocalPlayer plr = Minecraft.getInstance().player;
-            HitResult hr = plr.pick(plr.getBlockReach(), 0, false);
-            if (hr.getType() == HitResult.Type.BLOCK) {
-                BlockHitResult bhr = (BlockHitResult) hr;
-                if (bhr.getBlockPos() == pos) {
-                    StarSpectrographScreen.temp = temperature; MAY BE USELESS CUZ I MIGHT JS GET VALUES FROM WITHIN RENDERER(???)
-                    StarSpectrographScreen.light = light;
-                    StarSpectrographScreen.medium = medium;
-                    StarSpectrographScreen.heavy = heavy;
-                    StarSpectrographScreen.exotic = exotic;
-                    StarSpectrographScreen.evil = evil;
-                    StarSpectrographScreen.instability = instability;
-                }
-
-            }*/
         }
     }
     private static int tickcounter = 0;

@@ -1,0 +1,8 @@
+{
+	"parent": "block/cube_bottom_top",
+	"textures": {
+		"bottom": "spacerain:block/meteorite_block",
+		"top": "spacerain:block/scribing_table_top",
+		"side": "spacerain:block/scribing_table_side"
+	}
+}

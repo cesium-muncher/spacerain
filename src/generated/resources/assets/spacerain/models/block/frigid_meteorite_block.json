@@ -1,1 +1,1 @@
-{"textures":{"all":"spacerain:block/frigid_meteorite_block"},"parent":"minecraft:block/cube_all"}
+{"parent":"minecraft:block/cube_all","textures":{"all":"spacerain:block/frigid_meteorite_block"}}

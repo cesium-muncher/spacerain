@@ -8,6 +8,7 @@ local originalsmeltingrecipe = json.decode(io.open("smelt_template.json", "r"):r
 io.close()
 local originalbreaktempl = json.decode(io.open("break_template.json", "r"):read("*a"))
 io.close()
+
 local tagtemplate = {replace = false, values = {}}
 local filepath1 = "generated/resources/data/spacerain/recipes/"
 local filepath2 = "generated/resources/data/spacerain/loot_tables/blocks/"
@@ -123,19 +124,30 @@ function toolstyleitemgen(name)
     file:write(json.encode(im))
     file:close()
 end
+
+local basicscrolls = {}
+local grandscrolls = {}
+local evilscrolls = {}
+local solarscrolls = {}
 function scrollitemgen(name, variant) -- evil, grand, grand and evil, secret
     local im = {parent = "spacerain:item/scroll"}
+    if variant == 0 or variant == nil then
+        table.insert(basicscrolls, "spacerain:" .. name)
+    end
     if variant == 1 then
         im = {parent = "spacerain:item/scroll", textures = {}}
         im.textures["0"] = "spacerain:item/scroll_red"
+        table.insert(evilscrolls, "spacerain:" .. name)
     end
     if variant == 2 then
         im = {parent = "spacerain:item/scroll", textures = {}}
         im.textures["0"] = "spacerain:item/scroll_grand"
+        table.insert(grandscrolls, "spacerain:" .. name)
     end
     if variant == 3 then
         im = {parent = "spacerain:item/scroll", textures = {}}
         im.textures["0"] = "spacerain:item/scroll_grand_red"
+        table.insert(solarscrolls, "spacerain:" .. name)
     end
     if variant == 4 then
         im = {parent = "spacerain:item/scroll", textures = {}}
@@ -144,6 +156,22 @@ function scrollitemgen(name, variant) -- evil, grand, grand and evil, secret
     local file, err = io.open("generated/resources/assets/spacerain/models/item/" .. name .. ".json", "w")
     file:write(json.encode(im))
     file:close()
+end
+function setupscrollloottables(name, tabl)
+    local originalscrlloot = json.decode(io.open("scroll_loot_template.json", "r"):read("*a"))
+    io.close()
+
+    for i, oname in pairs(tabl) do
+        local newlist = {}
+        table.insert(originalscrlloot.pools[1].entries, {type = "minecraft:item", name = oname})
+    end
+
+    originalscrlloot.random_sequence = "spacerain:" .. name
+
+    local file, err = io.open("generated/resources/data/spacerain/loot_tables/" .. name .. ".json", "w")
+    file:write(json.encode(originalscrlloot))
+    file:close()
+
 end
 
 
@@ -186,6 +214,19 @@ basicitemgen("astral_jewel")
 basicitemgen("stellar_jewel")
 basicitemgen("stellar_sigil")
 basicitemgen("star")
+
+basicitemgen("inkwell")
+basicitemgen("parchment")
+basicitemgen("astral_ink")
+basicitemgen("refined_ink")
+basicitemgen("hateful_ink")
+basicitemgen("stellar_ink")
+basicitemgen("patch_book_model")
+
+basicitemgen("beryllium_powder")
+basicitemgen("silicon_powder")
+basicitemgen("carbon_powder")
+basicitemgen("cobalt_mortar")
 
 basicitemgen("solar_tongs")
 basicitemgen("spectrograph")
@@ -230,8 +271,13 @@ scrollitemgen("scroll_extended_healing")
 scrollitemgen("scroll_saturate")
 scrollitemgen("scroll_famine", 1)
 scrollitemgen("scroll_global_warming", 1)
-scrollitemgen("scroll_awaken", 1)
+scrollitemgen("scroll_awaken", 3)
 scrollitemgen("scroll_stellaris", 3)
+
+setupscrollloottables("basic_scroll_loot", basicscrolls)
+setupscrollloottables("grand_scroll_loot", grandscrolls)
+setupscrollloottables("evil_scroll_loot", evilscrolls)
+setupscrollloottables("solar_scroll_loot", solarscrolls)
 
 -- loot and recipes
 meteoricoresmeltrecipe("copper", "copper_ingot", 16)

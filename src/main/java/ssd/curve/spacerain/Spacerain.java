@@ -2,6 +2,7 @@ package ssd.curve.spacerain;
 
 import com.mojang.logging.LogUtils;
 import kotlin.jvm.JvmClassMappingKt;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -19,9 +20,7 @@ import org.slf4j.Logger;
 import org.valkyrienskies.mod.common.ValkyrienSkiesMod;
 import ssd.curve.spacerain.block.ModBlocks;
 import ssd.curve.spacerain.block.entity.ModBlockEntities;
-import ssd.curve.spacerain.client.ModMenuTypes;
-import ssd.curve.spacerain.client.SupernovaData;
-import ssd.curve.spacerain.client.SupernovaRenderer;
+import ssd.curve.spacerain.client.*;
 import ssd.curve.spacerain.forgepackets.ModChannel;
 import ssd.curve.spacerain.item.ModCreativeModeTabs;
 import ssd.curve.spacerain.item.ModItems;
@@ -57,7 +56,8 @@ public class Spacerain {
         ModBlocks.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         ModSounds.register(modEventBus);
-        ModMenuTypes.register(modEventBus);
+        ModLodestoneParticles.register(modEventBus);
+
         ValkyrienSkiesMod.getApi().registerAttachment(MeteorListenerAttachment.class);
 
         ValkyrienSkiesMod.getApi().getShipLoadEvent().on((event) -> {
@@ -83,7 +83,7 @@ public class Spacerain {
 
         modEventBus.addListener(this::commonSetup);
 
-
+        ModMenuTypes.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -129,6 +129,7 @@ public class Spacerain {
     public void onClientTick(TickEvent.ClientTickEvent event) {
         // the bob
         SupernovaRenderer.tickevent(event);
+        MeteorFXRenderer.tickevent(event);
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
@@ -137,7 +138,8 @@ public class Spacerain {
 
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
+            //ModMenuTypes.register(modEventBus);
+            MenuScreens.register(ModMenuTypes.SCRIBING_TABLE_MENU.get(), ScribingTableScreen::new);
         }
     }
 }

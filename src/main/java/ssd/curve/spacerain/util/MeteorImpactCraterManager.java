@@ -11,6 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.resources.Resource;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -23,6 +24,9 @@ import org.valkyrienskies.core.api.ships.Ship;
 import org.valkyrienskies.mod.api.ValkyrienSkies;
 import org.valkyrienskies.mod.common.VSGameUtilsKt;
 import org.valkyrienskies.mod.common.ValkyrienSkiesMod;
+import ssd.curve.spacerain.forgepackets.ForgeMPPacket;
+import ssd.curve.spacerain.forgepackets.ForgeSNPacket;
+import ssd.curve.spacerain.forgepackets.ModChannel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,23 +42,27 @@ public class MeteorImpactCraterManager {
         //System.out.println("freaking, armenia");
         if (!meteorsExploding.isEmpty()) {
             Queue<Long> newmetexp = new ConcurrentLinkedQueue<>(meteorsExploding);
-
+            meteorsExploding.clear();
             for (Long meteorid : newmetexp) {
-                meteorsExploding.remove(meteorid);
+
+                //meteorsExploding.remove(meteorid);
                 List<ServerPlayer> people = event.getServer().getPlayerList().getPlayers();
                 ServerShip servermeteor = ValkyrienSkiesMod.getApi().getServerShipWorld(event.getServer()).getAllShips().getById(meteorid);
-
-                Level level = VSGameUtilsKt.getLevelFromDimensionId(event.getServer(), servermeteor.getChunkClaimDimension());
-
-
-                if (level != null) {
+                if (servermeteor != null) {
 
 
-                    Vector3dc shipcenter = servermeteor.getTransform().getPosition();
-                    Vector3d worldcenter = ValkyrienSkies.positionToWorld(level, shipcenter, new Vector3d());
-                    BlockPos center = BlockPos.containing(worldcenter.x, worldcenter.y, worldcenter.z);
-                    BlockPos floor = center.below(3);
-                    cratergen(level, floor);
+                    Level level = VSGameUtilsKt.getLevelFromDimensionId(event.getServer(), servermeteor.getChunkClaimDimension());
+
+
+                    if (level != null) {
+
+
+                        Vector3dc shipcenter = servermeteor.getTransform().getPosition();
+                        Vector3d worldcenter = ValkyrienSkies.positionToWorld(level, shipcenter, new Vector3d());
+                        BlockPos center = BlockPos.containing(worldcenter.x, worldcenter.y, worldcenter.z);
+                        BlockPos floor = center.below(3);
+                        cratergen(level, floor);
+                    }
                 }
 
 
@@ -88,22 +96,31 @@ public class MeteorImpactCraterManager {
 
         if (!meteorfallparticles.isEmpty()) {
             Queue<Long> newmfp = new ConcurrentLinkedQueue<>(meteorfallparticles);
+            meteorfallparticles.clear();
             for (Long meteorid : newmfp) {
                 List<ServerPlayer> people = event.getServer().getPlayerList().getPlayers();
                 ServerShip servermeteor = ValkyrienSkiesMod.getApi().getServerShipWorld(event.getServer()).getAllShips().getById(meteorid);
 
-                ServerLevel level = VSGameUtilsKt.getLevelFromDimensionId(event.getServer(), servermeteor.getChunkClaimDimension());
-                meteorfallparticles.remove(newmfp);
-
-                if (level != null) {
+                if (servermeteor != null) {
 
 
-                    Vector3dc shipcenter = servermeteor.getTransform().getPosition();
-                    Vector3d worldcenter = ValkyrienSkies.positionToWorld(level, shipcenter, new Vector3d());
-                    BlockPos center = BlockPos.containing(worldcenter.x, worldcenter.y, worldcenter.z);
-                    level.sendParticles(ParticleTypes.CLOUD, worldcenter.x, worldcenter.y, worldcenter.z, 25, 1, 1,1,0.1);
+                    ServerLevel level = VSGameUtilsKt.getLevelFromDimensionId(event.getServer(), servermeteor.getChunkClaimDimension());
+                    //meteorfallparticles.remove(newmfp);
+
+                    if (level != null) {
+
+
+                        Vector3dc shipcenter = servermeteor.getTransform().getPosition();
+                        Vector3d worldcenter = ValkyrienSkies.positionToWorld(level, shipcenter, new Vector3d());
+                        BlockPos center = BlockPos.containing(worldcenter.x, worldcenter.y, worldcenter.z);
+                        level.sendParticles(ParticleTypes.CLOUD, worldcenter.x, worldcenter.y, worldcenter.z, 25, 1, 1, 1, 0.1);
+                        for (Player plr : level.players()) {
+                            ModChannel.sendToPlayer(new ForgeMPPacket(center, 2), (ServerPlayer) plr);
+                            //plr.sendSystemMessage(Component.literal("server: " + pPos.toShortString()));
+                        }
+
+                    }
                 }
-
 
             }
 

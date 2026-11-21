@@ -4,5 +4,6 @@
   "version": 1000394006,
   "creative_tab": "spacerain:spacerain_tab",
   "use_resource_pack": true,
-  "book_texture" : "patchouli:textures/gui/book_cyan.png"
+  "book_texture" : "patchouli:textures/gui/book_cyan.png",
+  "model": "spacerain:patch_book_model"
 }

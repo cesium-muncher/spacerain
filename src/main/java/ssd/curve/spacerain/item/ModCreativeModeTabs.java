@@ -56,6 +56,13 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.AWAKENED_COBALT_OMICRON.get());
                 output.accept(ModItems.RITUAL_STAFF.get());
 
+                output.accept(ModBlocks.SCRIBING_TABLE.get());
+                output.accept(ModItems.INKWELL.get());
+                output.accept(ModItems.PARCHMENT.get());
+                output.accept(ModItems.ASTRAL_INK.get());
+                output.accept(ModItems.REFINED_INK.get());
+                output.accept(ModItems.HATEFUL_INK.get());
+
                 output.accept(ModBlocks.STAR.get());
                 output.accept(ModItems.SPECTROGRAPH.get());
                 output.accept(ModItems.COBALT_BOTTLE.get());
@@ -63,6 +70,10 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.MEDIUM_ELEMENTS.get());
                 output.accept(ModItems.HEAVY_ELEMENTS.get());
                 output.accept(ModItems.EXOTIC_ELEMENTS.get());
+                output.accept(ModItems.MORTAR.get());
+                output.accept(ModItems.BERYLLIUM.get());
+                output.accept(ModItems.CARBON.get());
+                output.accept(ModItems.SILICON.get());
 
                 output.accept(ModBlocks.SOLARFIELD_1.get());
                 output.accept(ModBlocks.SOLARFIELD_2.get());

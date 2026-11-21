@@ -1,0 +1,26 @@
+{
+  "name": "Basic Scrolls",
+  "icon": "spacerain:scroll_transmutate_iron",
+  "category": "spacerain:scrolls",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "These scrolls are some of the first you will be able to unlock. "
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "spacerain:cobalt_catalyst",
+      "text": "Catalysts are used for certian spells, and for creating a ritual staff."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "spacerain:fallen_sigil",
+      "text": "Fallen Sigils can be obtained from Astral Jewel Ore. Some spells may use them."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "spacerain:astral_ink",
+      "text": "Most basic spells are created with Astral Ink, the most basic form."
+    }
+  ]
+}

@@ -55,7 +55,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> ASTRAL_JEWEL_ORE = registerBlock("astral_jewel_ore",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE).mapColor(DyeColor.BLACK)));
     public static final RegistryObject<Block> STELLAR_JEWEL_ORE = registerBlock("stellar_jewel_ore",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE).mapColor(DyeColor.BLACK)));
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.END_STONE).mapColor(DyeColor.BLACK)), ModRarities.RARITY_AWAKENED);
 
 
     public static final RegistryObject<Block> ASTRAL_ALTAR = registerBlock("astral_altar",
@@ -68,7 +68,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> STAR = registerBlock("star",
             () -> new StarBlock(BlockBehaviour.Properties.copy(Blocks.GLOWSTONE).mapColor(DyeColor.WHITE).noOcclusion()));
     public static final RegistryObject<Block> SCRIBING_TABLE = registerBlock("scribing_table",
-            () -> new ScribingTableBlock(BlockBehaviour.Properties.copy(Blocks.GLOWSTONE).mapColor(DyeColor.WHITE).noOcclusion()));
+            () -> new ScribingTableBlock(BlockBehaviour.Properties.copy(Blocks.END_STONE).mapColor(DyeColor.BLACK).noOcclusion()));
 
 
     public static final RegistryObject<Block> SOLARFIELD_1 = registerBlock("solarfield",

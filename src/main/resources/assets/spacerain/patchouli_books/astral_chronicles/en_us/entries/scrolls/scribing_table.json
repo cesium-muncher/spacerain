@@ -1,0 +1,38 @@
+{
+  "name": "Scribing",
+  "icon": "spacerain:parchment",
+  "category": "spacerain:scrolls",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "spacerain:parchment",
+      "text": "To create any scroll, place parchment and ink inside a Scribing Table. Parchment is created by coating paper in Beryllium."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "spacerain:scribing_table",
+      "text": "Scribing is a very slow process. Different inks take different times to complete scribing."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "spacerain:astral_ink",
+      "text": "The most basic spells are created with Astral Ink, the most basic form. Scribing takes 2 minutes."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "spacerain:refined_ink",
+      "text": "Refined Ink creates Grand Scrolls. It is created with Light Elements, and Astral Ink. Scribing this ink takes 5 minutes."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "spacerain:hateful_ink",
+      "text": "Hateful Ink creates Evil Scrolls. it is only attainable by using Refined Ink on an Evil Star. Scribing this ink takes 30 minutes."
+    }
+  ,
+    {
+      "type": "patchouli:spotlight",
+      "item": "spacerain:stellar_ink",
+      "text": "$(k)the men who ask lie fake despairing truths$(). $(k)this ink takes $()$(#f00)1 hour $(k)off of your lifespan$()."
+    }
+  ]
+}
