@@ -1,0 +1,36 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "icon": {
+            "item": "spacerain:exotic_elements"
+        },
+        "title": {
+            "text": "Its glowing"
+        },
+        "description": {
+            "text": "Create exotic elements"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": false,
+        "hidden": false
+    },
+    "criteria": {
+        "elm4": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["spacerain:exotic_elements"]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "elm4"
+        ]
+    ],
+    "parent": "spacerain:elm3"
+}

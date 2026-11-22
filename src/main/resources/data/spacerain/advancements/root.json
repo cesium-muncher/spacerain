@@ -1,0 +1,24 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "Spacerain"
+        },
+        "description": {
+            "text": "Cool Meteor Magic!"
+        },
+        "icon": {
+            "item": "spacerain:cobalt_catalyst"
+        },
+        "frame": "task",
+        "show_toast": false,
+        "announce_to_chat": false,
+        "hidden": false,
+        "background": "spacerain:textures/block/meteorite_block.png"
+    },
+    "criteria": {
+        "spr": {
+            "trigger": "minecraft:impossible"
+        }
+    }
+}

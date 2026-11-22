@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"category": "misc",
+
+	"ingredients": [
+		{
+			"item": "spacerain:astral_ink"
+		},
+		{
+			"item": "spacerain:light_elements"
+		}
+	],
+	"result": {
+		"item": "spacerain:refined_ink",
+		"count": 1
+	},
+	"show_notification": true
+}

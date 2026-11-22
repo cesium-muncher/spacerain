@@ -1,0 +1,29 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "icon": {
+            "item": "spacerain:star"
+        },
+        "title": {
+            "text": "Dumbass"
+        },
+        "description": {
+            "text": "Explode a star"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "criteria": {
+        "star_explode": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [
+        [
+            "star_explode"
+        ]
+    ],
+    "parent": "spacerain:star_spawn"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Ancient Scrolls",
+  "icon": "spacerain:scroll_stellaris",
+  "category": "spacerain:scrolls",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "These scrolls require Stellar Ink to scribe, which itself requires ancient scrolls. Ancient scrolls can also be found deep within ancient cities, or end cities. "
+    },
+    {
+      "type": "patchouli:spotlight",
+      "title": "Awakening",
+      "item": "spacerain:scroll_awaken",
+      "text": "This scroll will summon a Star. Stars are vital for the creation of Hateful Ink and Awakened Sigils."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "spacerain:scroll_stellaris",
+      "title": "Stellaris",
+      "text": "DO. NOT. USE."
+    }
+  ]
+}

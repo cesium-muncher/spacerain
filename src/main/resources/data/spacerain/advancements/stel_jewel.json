@@ -1,0 +1,36 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "icon": {
+            "item": "spacerain:cobalt_omicron"
+        },
+        "title": {
+            "text": "Its- uh, its blinking at me."
+        },
+        "description": {
+            "text": "Obtain Stellar Jewels"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": false,
+        "hidden": false
+    },
+    "criteria": {
+        "stel_jewel": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["spacerain:stellar_jewel"]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "stel_jewel"
+        ]
+    ],
+    "parent": "spacerain:cob"
+}

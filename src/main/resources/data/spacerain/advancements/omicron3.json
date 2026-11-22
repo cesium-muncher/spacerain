@@ -1,0 +1,36 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "icon": {
+            "item": "spacerain:awakened_cobalt_omicron"
+        },
+        "title": {
+            "text": "The Sun Kills All"
+        },
+        "description": {
+            "text": "The Sun Breaks All"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "criteria": {
+        "omicron3": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["spacerain:stellar_cobalt_omicron"]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "omicron3"
+        ]
+    ],
+    "parent": "spacerain:omicron2"
+}

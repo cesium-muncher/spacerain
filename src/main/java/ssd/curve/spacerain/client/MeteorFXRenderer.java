@@ -52,7 +52,7 @@ public class MeteorFXRenderer {
                         .spawn(l, p.getCenter().x, p.getCenter().y, p.getCenter().z);
 
 
-                WorldParticleBuilder.create(LodestoneParticleRegistry.SMOKE_PARTICLE)
+                WorldParticleBuilder.create(ModLodestoneParticles.METEOR_SMOKE)
                         .setScaleData(GenericParticleData.create(4, 0).build())
                         .enableNoClip()
                         .setLifetime(600)
@@ -62,6 +62,22 @@ public class MeteorFXRenderer {
                         //.setSpinData(SpinParticleData.create((float) (Math.random() * 360 - 180)).build())
                         .enableForcedSpawn()
                         .spawn(l, p.getCenter().x, p.getCenter().y, p.getCenter().z);
+            }
+            if (t == 1) {
+                double dist = Minecraft.getInstance().player.position().distanceTo(p.getCenter());
+                // fuck you get linear'd
+                // dist 1024 = volume 0
+                // dist 0 = volume 1
+                double volume = Math.max(-(dist/1024.0) + 1.0, 0);
+                Minecraft.getInstance().player.playSound(ModSounds.METEOR_SPAWN.get(), (float) volume, 1);
+            }
+            if (t == 3) {
+                double dist = Minecraft.getInstance().player.position().distanceTo(p.getCenter());
+                // fuck you get linear'd
+                // dist 1024 = volume 0
+                // dist 0 = volume 1
+                double volume = Math.max(-(dist/1024.0) + 1.0, 0);
+                Minecraft.getInstance().player.playSound(ModSounds.METEOR_IMPACT.get(), (float) volume, 1);
             }
 
 

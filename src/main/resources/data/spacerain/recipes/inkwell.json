@@ -1,0 +1,22 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "misc",
+	"key": {
+		"G": {
+			"item": "minecraft:glass"
+		},
+		"C": {
+			"item": "spacerain:cobalt_ingot"
+		}
+	},
+	"pattern": [
+		" C ",
+		"G G",
+		"GGG"
+	],
+	"result": {
+		"item": "spacerain:inkwell",
+		"count": 6
+	},
+	"show_notification": true
+}

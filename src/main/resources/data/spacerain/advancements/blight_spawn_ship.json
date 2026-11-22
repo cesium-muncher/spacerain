@@ -1,0 +1,29 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "icon": {
+            "item": "minecraft:white_wool"
+        },
+        "title": {
+            "text": "Smart Fella"
+        },
+        "description": {
+            "text": "Summon the Blight on a Physics Ship so it cannot corrupt the world."
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "criteria": {
+        "bss": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [
+        [
+            "bss"
+        ]
+    ],
+    "parent": "spacerain:blight_spawn"
+}

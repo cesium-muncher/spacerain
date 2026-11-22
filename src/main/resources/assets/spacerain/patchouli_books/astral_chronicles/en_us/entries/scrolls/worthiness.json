@@ -1,0 +1,15 @@
+{
+  "name": "Worthiness",
+  "icon": "minecraft:skeleton_skull",
+  "category": "spacerain:scrolls",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Some Scrolls require you to be Worthy. This typically means they will deal a ridiculous amount of damage, and only cast if you survive."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "The intended way for you to survive these scrolls, is to create totems of undying using the Catalytic Totem Vitalysis scroll"
+    }
+  ]
+}

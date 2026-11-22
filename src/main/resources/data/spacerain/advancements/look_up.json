@@ -1,0 +1,29 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "icon": {
+            "item": "spacerain:molten_meteorite_block"
+        },
+        "title": {
+            "text": "Look Up!"
+        },
+        "description": {
+            "text": "Have a meteor spawn near you"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "look_up": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [
+        [
+            "look_up"
+        ]
+    ],
+    "parent": "spacerain:root"
+}

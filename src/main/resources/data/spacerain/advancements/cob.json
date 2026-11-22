@@ -1,0 +1,36 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "icon": {
+            "item": "spacerain:cobalt_ingot"
+        },
+        "title": {
+            "text": "Is this one of them alloys?"
+        },
+        "description": {
+            "text": "Smelt meteoric cobalt ore into 8 cobalt ingots"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "cob": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["spacerain:cobalt_ingot"]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "cob"
+        ]
+    ],
+    "parent": "spacerain:look_up"
+}

@@ -62,6 +62,12 @@ public class MeteorImpactCraterManager {
                         BlockPos center = BlockPos.containing(worldcenter.x, worldcenter.y, worldcenter.z);
                         BlockPos floor = center.below(3);
                         cratergen(level, floor);
+                        for (Player plr : level.players()) {
+                            if (plr.position().distanceTo(center.getCenter()) < 2048) {
+                                ModChannel.sendToPlayer(new ForgeMPPacket(center, 3), (ServerPlayer) plr);
+                            }
+
+                        }
                     }
                 }
 
@@ -115,8 +121,10 @@ public class MeteorImpactCraterManager {
                         BlockPos center = BlockPos.containing(worldcenter.x, worldcenter.y, worldcenter.z);
                         level.sendParticles(ParticleTypes.CLOUD, worldcenter.x, worldcenter.y, worldcenter.z, 25, 1, 1, 1, 0.1);
                         for (Player plr : level.players()) {
-                            ModChannel.sendToPlayer(new ForgeMPPacket(center, 2), (ServerPlayer) plr);
-                            //plr.sendSystemMessage(Component.literal("server: " + pPos.toShortString()));
+                            if (plr.position().distanceTo(center.getCenter()) < 2048) {
+                                ModChannel.sendToPlayer(new ForgeMPPacket(center, 2), (ServerPlayer) plr);
+                            }
+
                         }
 
                     }

@@ -1,0 +1,36 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "icon": {
+            "item": "spacerain:light_elements"
+        },
+        "title": {
+            "text": "5 Grams"
+        },
+        "description": {
+            "text": "Create light elements"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": false,
+        "hidden": false
+    },
+    "criteria": {
+        "elm3": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["spacerain:light_elements"]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "elm3"
+        ]
+    ],
+    "parent": "spacerain:elm2"
+}

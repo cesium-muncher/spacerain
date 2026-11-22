@@ -1,0 +1,36 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "icon": {
+            "item": "spacerain:stellar_ink"
+        },
+        "title": {
+            "text": "The Sun Writes All"
+        },
+        "description": {
+            "text": "The Sun Breaks All"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "criteria": {
+        "ink4": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["spacerain:stellar_ink"]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "ink4"
+        ]
+    ],
+    "parent": "spacerain:ink3"
+}

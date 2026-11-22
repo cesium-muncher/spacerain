@@ -1,6 +1,9 @@
 package ssd.curve.spacerain.util;
 
+import net.minecraft.advancements.Advancement;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
@@ -19,6 +22,7 @@ import net.minecraft.world.level.levelgen.synth.ImprovedNoise;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.common.Mod;
+import ssd.curve.spacerain.Spacerain;
 import ssd.curve.spacerain.block.ModBlocks;
 
 public class SupernovaManager {
@@ -168,6 +172,22 @@ public class SupernovaManager {
             //e
             //e.hurt(ModDamageSources.causeDmg(level, null, ModDamageSources.STELLARIZED), damage);
         }
+
+    }
+    public static void giveadvancement(Level level, BlockPos center, int radius) {
+
+        for (Player e : level.players()) {
+            double dist = center.getCenter().distanceTo(e.position());
+            if (dist < radius * 3) {
+                Advancement metadv = e.getServer().getAdvancements().getAdvancement(new ResourceLocation(Spacerain.MODID, "star_explode"));
+                for (String criterion : metadv.getCriteria().keySet()) {
+                    ((ServerPlayer) e).getAdvancements().award(metadv, criterion);
+                }
+            }
+
+        }
+
+
 
     }
 

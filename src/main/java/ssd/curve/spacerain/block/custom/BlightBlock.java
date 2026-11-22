@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.MagmaBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.fml.common.Mod;
 import ssd.curve.spacerain.block.ModBlocks;
 import ssd.curve.spacerain.util.ModDamageSources;
@@ -34,7 +35,7 @@ public class BlightBlock extends Block {
             pLevel.setBlockAndUpdate(pPos, ModBlocks.STELLAR_JEWEL_ORE.get().defaultBlockState());
         } else if (bs.is(ModBlocks.METEORITE_BLOCK.get()) || !bs.isSolid() || bs.getBlock().getExplosionResistance() > 3000) {
             // nothing happens
-        } else if (pLevel.getBiome(pPos).is(BiomeTags.IS_OCEAN) || pLevel.getBiome(pPos).is(BiomeTags.SPAWNS_COLD_VARIANT_FROGS)) {
+        } else if (pLevel.getBiome(pPos).is(BiomeTags.IS_OCEAN) || pLevel.getBiome(pPos).is(Tags.Biomes.IS_COLD)) {
             pLevel.setBlockAndUpdate(pPos, ModBlocks.METEORITE_BLOCK.get().defaultBlockState());
         } else if (bs.isSolid() && !bs.is(ModBlocks.METEORITE_BLOCK.get()) && !bs.is(ModBlocks.ASTRAL_JEWEL_ORE.get()) && !bs.is(Blocks.BEDROCK)) { // please fix to do anything with high blast resist
             pLevel.setBlockAndUpdate(pPos, ModBlocks.STELLAR_BLIGHT.get().defaultBlockState());

@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 
 public class ForgeMPPacket { // meteor particle packet
     private final BlockPos pos;
-    private final int info; // 1 = entry sfx, 2 = smoke, 3 = land sfx, 4 = land smoke
+    private final int info; // 1 = entry sfx, 2 = smoke, 3 = land sfx & vfx
 
     public ForgeMPPacket(BlockPos pos, int info) {
         this.info = info;

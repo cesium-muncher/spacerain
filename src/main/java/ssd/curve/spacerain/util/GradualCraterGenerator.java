@@ -41,6 +41,7 @@ public class GradualCraterGenerator {
                 SupernovaManager.fuckingkilleveryone(plevel, pos, radius);
                 SupernovaManager.loudassnoise(plevel, pos);
                 SupernovaManager.SupernovaGenVericalColumn(plevel, pos, radius, pos, noise);
+                SupernovaManager.giveadvancement(plevel, pos, radius);
             } else {
                 SupernovaManager.SupernovaGenSquareLayer(plevel, pos, radius, layer, noise);
                 SupernovaManager.loudassnoise(plevel, pos);

@@ -1,0 +1,36 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "icon": {
+            "item": "spacerain:astral_jewel"
+        },
+        "title": {
+            "text": "Rubies!"
+        },
+        "description": {
+            "text": "Obtain Astral Jewels"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "ast_jewel": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["spacerain:astral_jewel"]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "ast_jewel"
+        ]
+    ],
+    "parent": "spacerain:look_up"
+}

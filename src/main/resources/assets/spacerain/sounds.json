@@ -4,8 +4,7 @@
     "min_distance": 20,
     "max distance": 500,
     "sounds":[
-      "spacerain:meteor_spawn1",
-      "spacerain:meteor_spawn2"
+      "spacerain:meteor_spawn"
     ]
   },
   "meteor_impact":{
@@ -13,7 +12,8 @@
     "min_distance": 20,
     "max distance": 500,
     "sounds":[
-      "spacerain:meteor_impact"
+      "spacerain:meteor_impact1",
+      "spacerain:meteor_impact2"
     ]
   },
   "star_spark":{

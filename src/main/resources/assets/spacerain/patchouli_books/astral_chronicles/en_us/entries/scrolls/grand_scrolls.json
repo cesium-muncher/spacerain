@@ -1,6 +1,6 @@
 {
-  "name": "Basic Scrolls",
-  "icon": "spacerain:scroll_transmutate_iron",
+  "name": "Grand Scrolls",
+  "icon": "spacerain:scroll_rain",
   "category": "spacerain:scrolls",
   "pages": [
     {

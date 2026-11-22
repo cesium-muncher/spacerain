@@ -1,14 +1,18 @@
 package ssd.curve.spacerain.item.scrolls;
 
+import net.minecraft.advancements.Advancement;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import ssd.curve.spacerain.Spacerain;
 import ssd.curve.spacerain.block.ModBlocks;
 import ssd.curve.spacerain.item.ModItems;
 import ssd.curve.spacerain.item.custom.RitualScrollItem;
@@ -31,6 +35,10 @@ public class ScrollAwaken extends RitualScrollItem {
             if (player.getHealth() > 0) {
                 level.destroyBlock(pos.above(2), true, null);
                 level.setBlockAndUpdate(pos.above(2), ModBlocks.STAR.get().defaultBlockState());
+                Advancement metadv = player.getServer().getAdvancements().getAdvancement(new ResourceLocation(Spacerain.MODID, "star_spawn"));
+                for (String criterion : metadv.getCriteria().keySet()) {
+                    ((ServerPlayer) player).getAdvancements().award(metadv, criterion);
+                }
             } else {
                 player.sendSystemMessage(Component.translatable("altar.spacerain.weakling"));
             }

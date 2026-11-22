@@ -339,6 +339,16 @@ public class StarBlockEntity extends BlockEntity {
                 pPlayer.getInventory().removeItem(slot, 1);
                 giveitem(pPlayer, ModItems.AWAKENED_SIGIL.get());
             }
+        } else if (item == ModItems.REFINED_INK.get()) {
+            if (evil >= 10) {
+                evil -= 10;
+                int slot = Inventory.SLOT_OFFHAND;
+                if (pHand == InteractionHand.MAIN_HAND) {
+                    slot = pPlayer.getInventory().selected;
+                }
+                pPlayer.getInventory().removeItem(slot, 1);
+                giveitem(pPlayer, ModItems.HATEFUL_INK.get());
+            }
         }
     }
 

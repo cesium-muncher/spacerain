@@ -1,0 +1,29 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "icon": {
+            "item": "spacerain:stellar_blight"
+        },
+        "title": {
+            "text": "What have you done?!"
+        },
+        "description": {
+            "text": "Summon the Stellar Blight"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": true
+    },
+    "criteria": {
+        "blightspawn": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [
+        [
+            "blightspawn"
+        ]
+    ],
+    "parent": "spacerain:stellarscroll"
+}

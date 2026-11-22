@@ -1,8 +1,10 @@
 package ssd.curve.spacerain.util;
 
+import net.minecraft.advancements.Advancement;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Position;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -20,6 +22,8 @@ import org.valkyrienskies.mod.common.assembly.ShipAssembler;
 import org.valkyrienskies.mod.mixinducks.world.entity.PlayerDuck;
 import ssd.curve.spacerain.Spacerain;
 import ssd.curve.spacerain.block.ModBlocks;
+import ssd.curve.spacerain.forgepackets.ForgeMPPacket;
+import ssd.curve.spacerain.forgepackets.ModChannel;
 import ssd.curve.spacerain.sound.ModSounds;
 
 import java.util.*;
@@ -286,6 +290,10 @@ public class MeteorGenerator {
         generateMeteorAtExactCoords((ServerLevel) player.level(), playerworldheightpos, (PlayerDuck) player);
         //player.sendSystemMessage(Component.literal(String.valueOf(player.level().players())));
         playmeteorspawnsfx(player.level(), playerworldheightpos);
+        Advancement metadv = player.getServer().getAdvancements().getAdvancement(new ResourceLocation(Spacerain.MODID, "look_up"));
+        for (String criterion : metadv.getCriteria().keySet()) {
+            ((ServerPlayer) player).getAdvancements().award(metadv, criterion);
+        }
     }
     public static void playmeteorspawnsfx(Level level, BlockPos soundcenter) {
         for (Player plr : ((ServerLevel) level).players()) {
@@ -293,13 +301,12 @@ public class MeteorGenerator {
             //plr.sendSystemMessage(Component.literal("test"));
             // cap at 2x
             double dist = plr.blockPosition().getCenter().distanceTo(soundcenter.getCenter());
-            double volume = 2 * Math.pow(0.5, (dist/350.0));
-            //plr.sendSystemMessage(Component.literal("debug, dist: " + dist));
-            //plr.sendSystemMessage(Component.literal("debug, volume: " + volume));
-            plr.sendSystemMessage(Component.literal("meteor sfx real"));
-            //plr.playSound(ModSounds.METEOR_SPAWN.get(), (float) volume, 1); //sfx not sfxing ffs
-            //level.playSound(plr, plr.position().x, plr.position().y, plr.position().z, ModSounds.METEOR_SPAWN.get(), SoundSource.AMBIENT, (float) volume, 1);
-            //plr.sendSystemMessage(Component.literal("test3holyfuckingshitcanyouplaythissfx"));
+            //double volume = 2 * Math.pow(0.5, (dist/350.0));
+
+            if (dist < 2048) {
+                ModChannel.sendToPlayer(new ForgeMPPacket(soundcenter, 1), (ServerPlayer) plr);
+            }
+
 
         }
 

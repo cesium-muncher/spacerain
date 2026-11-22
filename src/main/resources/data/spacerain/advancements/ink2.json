@@ -1,0 +1,36 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "icon": {
+            "item": "spacerain:refined_ink"
+        },
+        "title": {
+            "text": "Oil Refinery"
+        },
+        "description": {
+            "text": "Refine ink to create Grand Scrolls"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "ink2": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["spacerain:refined_ink"]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "ink2"
+        ]
+    ],
+    "parent": "spacerain:ink1"
+}

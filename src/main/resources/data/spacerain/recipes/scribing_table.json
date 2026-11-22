@@ -1,0 +1,27 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "equipment",
+	"key": {
+		"#": {
+			"item": "spacerain:astral_jewel"
+		},
+		"X": {
+			"item": "spacerain:cobalt_ingot"
+		},
+		"M": {
+			"item": "spacerain:meteorite_block"
+		},
+		"P": {
+			"item": "spacerain:parchment"
+		}
+	},
+	"pattern": [
+		"XPX",
+		"M#M",
+		"M#M"
+	],
+	"result": {
+		"item": "spacerain:scribing_table"
+	},
+	"show_notification": true
+}

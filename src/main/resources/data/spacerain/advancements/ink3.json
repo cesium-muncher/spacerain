@@ -1,0 +1,36 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "icon": {
+            "item": "spacerain:hateful_ink"
+        },
+        "title": {
+            "text": "100 Chapter AO3 Fanfic"
+        },
+        "description": {
+            "text": "Absorb the evil from the Stars, Create the Hateful Ink."
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "ink3": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["spacerain:hateful_ink"]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "ink3"
+        ]
+    ],
+    "parent": "spacerain:ink2"
+}
