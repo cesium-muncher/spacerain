@@ -13,7 +13,7 @@
         "frame": "task",
         "show_toast": true,
         "announce_to_chat": true,
-        "hidden": true
+        "hidden": false
     },
     "criteria": {
         "stellarscroll": {
@@ -32,5 +32,5 @@
             "stellarscroll"
         ]
     ],
-    "parent": "spacerain:root"
+    "parent": "spacerain:awk_sigil"
 }

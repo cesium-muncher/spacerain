@@ -100,7 +100,6 @@
   "star.spacerain.evil": "Evil: ",
   "star.spacerain.instability": "Instability: ",
 
-  "item.spacerain.solar_tongs": "Solar Tongs",
   "item.spacerain.spectrograph": "Spectrograph",
   "item.spacerain.cobalt_bottle": "Cobalt Bottle",
   "item.spacerain.light_elements": "Light Elements",
@@ -108,7 +107,7 @@
   "item.spacerain.heavy_elements": "Heavy Elements",
   "item.spacerain.exotic_elements": "Exotic Elements",
 
-  "item.spacerain.debug_scroll": "Secret Scroll of Debugging",
+  "item.spacerain.debug_scroll": "debug scroll dont use :3",
 
   "item.spacerain.scroll_transmutate_iron": "Ritual Scroll of Catalytic Iron Transmutation",
   "item.spacerain.scroll_transmutate_obsidian": "Grand Ritual Scroll of Catalytic Obsidian Reinforcement",
@@ -120,18 +119,25 @@
   "item.spacerain.scroll_fireball": "Combative Ritual Scroll of the Generic Magic Spell",
   "item.spacerain.scroll_atomic": "Combative Ritual Scroll of Instantaneous Player Combustion",
   "item.spacerain.scroll_warp": "Combative Ritual Scroll of Minor Evasion",
-
-
-  "item.spacerain.scroll_omicron": "Dark Ritual Scroll of the Weapon of Sacrifice",
   "item.spacerain.scroll_extended_endurance": "Ritual Scroll of Extended Endurance",
   "item.spacerain.scroll_extended_healing": "Ritual Scroll of Extended Healing",
+
+
+
+
   "item.spacerain.scroll_saturate": "Ritual Scroll of the Hungry Monk",
   "item.spacerain.scroll_rain": "Grand Ritual Scroll of the Tearing Skies",
   "item.spacerain.scroll_meteor": "Grand Ritual Scroll of Astral Attraction",
   "item.spacerain.scroll_true_light": "Grand Ritual Scroll of assistance from True Light",
+  "item.spacerain.scroll_ritual_staff": "Grand Ritual Scroll of Ritual Staff Assembly",
 
   "item.spacerain.scroll_famine": "Dark Ritual Scroll of Famine",
   "item.spacerain.scroll_global_warming": "Dark Ritual Scroll of Burning Skies",
+  "item.spacerain.scroll_omicron": "Dark Ritual Scroll of the Weapon of Sacrifice",
+  "item.spacerain.scroll_omicron_awaken": "Dark Ritual Scroll of Awakening the Grand Weapon",
+
   "item.spacerain.scroll_awaken": "Ancient Scroll of the Awakening",
-  "item.spacerain.scroll_stellaris": "Ancient Scroll of Stellaris"
+  "item.spacerain.scroll_stellaris": "Ancient Scroll of Stellaris",
+  "item.spacerain.scroll_omicron_stellar": "Ancient Scroll of Stellarizing the Grand Weapon",
+  "item.spacerain.scroll_stellar_ink": "Ancient Scroll of Ink Stellarization"
 }

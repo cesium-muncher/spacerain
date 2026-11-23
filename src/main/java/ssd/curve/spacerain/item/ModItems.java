@@ -1,6 +1,5 @@
 package ssd.curve.spacerain.item;
 
-import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -85,7 +84,7 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> HATEFUL_INK = ITEMS.register("hateful_ink",
             () -> new Item(new Item.Properties().rarity(ModRarities.RARITY_AWAKENED)));
-    public static final RegistryObject<Item> SOLAR_INK = ITEMS.register("stellar_ink",
+    public static final RegistryObject<Item> STELLAR_INK = ITEMS.register("stellar_ink",
             () -> new Item(new Item.Properties().rarity(ModRarities.RARITY_STELLAR)));
     public static final RegistryObject<Item> PARCHMENT = ITEMS.register("parchment",
             () -> new Item(new Item.Properties()));
@@ -128,7 +127,7 @@ public class ModItems {
     public static final RegistryObject<Item> SCROLL_STELLARIS = ITEMS.register("scroll_stellaris",
             () -> new ScrollBlight(new Item.Properties().rarity(ModRarities.RARITY_AWAKENED)));
     public static final RegistryObject<Item> SCROLL_AWAKEN = ITEMS.register("scroll_awaken",
-            () -> new ScrollAwaken(new Item.Properties()));
+            () -> new ScrollAwaken(new Item.Properties().rarity(ModRarities.RARITY_AWAKENED)));
     public static final RegistryObject<Item> SCROLL_TOTEMIZATION = ITEMS.register("scroll_totemization",
             () -> new ScrollTotemization(new Item.Properties()));
     public static final RegistryObject<Item> SCROLL_APPLECHANTMENT = ITEMS.register("scroll_applechantment",
@@ -143,6 +142,14 @@ public class ModItems {
             () -> new ScrollWarp(new Item.Properties()));
     public static final RegistryObject<Item> SCROLL_METEOR = ITEMS.register("scroll_meteor",
             () -> new ScrollMeteor(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_STAFF = ITEMS.register("scroll_ritual_staff",
+            () -> new ScrollRitualStaff(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_OMISTELL = ITEMS.register("scroll_omicron_stellar",
+            () -> new ScrollOmicronStellarization(new Item.Properties().rarity(ModRarities.RARITY_AWAKENED)));
+    public static final RegistryObject<Item> SCROLL_OMIAWAK = ITEMS.register("scroll_omicron_awaken",
+            () -> new ScrollOmicronAwakening(new Item.Properties()));
+    public static final RegistryObject<Item> SCROLL_STELLINK = ITEMS.register("scroll_stellar_ink",
+            () -> new ScrollStellarInk(new Item.Properties().rarity(ModRarities.RARITY_AWAKENED)));
 
 
 

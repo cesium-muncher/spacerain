@@ -2,7 +2,9 @@ package ssd.curve.spacerain.util;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.phys.Vec2;
 import org.jetbrains.annotations.NotNull;
+import org.joml.Vector3d;
 import org.valkyrienskies.core.api.ships.PhysShip;
 import org.valkyrienskies.core.api.ships.ShipPhysicsListener;
 import org.valkyrienskies.core.api.world.PhysLevel;
@@ -14,13 +16,16 @@ public final class MeteorListenerAttachment implements ShipPhysicsListener {
     private boolean stopbeingstatic;
     private boolean attemptcrater;
     private int ptickcountermajig;
+    private Vec2 shift;
     public MeteorListenerAttachment() {
         this.previousspeed = 0;
         this.keepworking = true;
         this.stopbeingstatic = false;
         this.attemptcrater = false;
         this.ptickcountermajig = 0;
-
+        float shiftmul = (float) (Math.random() * 2 * Math.PI);
+        float shiftdeg = (float) Math.random() * 10 + 5;
+        this.shift = new Vec2((float) Math.sin(shiftdeg) * shiftmul, (float) Math.cos(shiftdeg) * shiftmul);
     };
 
     @Override
@@ -41,6 +46,9 @@ public final class MeteorListenerAttachment implements ShipPhysicsListener {
 
                 this.keepworking = false;
                 this.stopbeingstatic = true;
+            }
+            if (ptickcountermajig == 120) {
+                physShip.applyBodyForce(new Vector3d(shift.x, 1, shift.y), physShip.getCenterOfMass()); // probably doesnt work at all lmfaooo
             }
 
             this.previousspeed = physShip.getVelocity().length();

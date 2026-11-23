@@ -32,5 +32,5 @@
             "omicron2"
         ]
     ],
-    "parent": "spacerain:omicron1"
+    "parent": "spacerain:awk_sigil"
 }

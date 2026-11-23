@@ -90,25 +90,32 @@ public class ModCreativeModeTabs {
                     .displayItems((ItemDisplayParameters, output) -> {
                         output.accept(ModItems.DEBUG_SCROLL.get());
                         output.accept(ModItems.SCROLL_TRANS_IRON.get());
-                        output.accept(ModItems.SCROLL_TRANS_OBSIDIAN.get());
-                        output.accept(ModItems.SCROLL_TOTEMIZATION.get());
                         output.accept(ModItems.SCROLL_APPLECHANTMENT.get());
                         output.accept(ModItems.SCROLL_LIGHTNING.get());
                         output.accept(ModItems.SCROLL_FIREBALL.get());
                         output.accept(ModItems.SCROLL_ATOMIC.get());
-                        output.accept(ModItems.SCROLL_WARP.get());
-                        output.accept(ModItems.SCROLL_RAIN.get());
-                        output.accept(ModItems.SCROLL_METEOR.get());
                         output.accept(ModItems.SCROLL_BOVINOMANCY.get());
-                        output.accept(ModItems.SCROLL_TRUE_LIGHT.get());
+                        output.accept(ModItems.SCROLL_WARP.get());
                         output.accept(ModItems.SCROLL_RESIST.get());
                         output.accept(ModItems.SCROLL_REGEN.get());
                         output.accept(ModItems.SCROLL_FOOD.get());
+                        // grand
+                        output.accept(ModItems.SCROLL_RAIN.get());
+                        output.accept(ModItems.SCROLL_METEOR.get());
+                        output.accept(ModItems.SCROLL_STAFF.get());
+                        output.accept(ModItems.SCROLL_TRUE_LIGHT.get());
+                        output.accept(ModItems.SCROLL_TRANS_OBSIDIAN.get());
+                        output.accept(ModItems.SCROLL_TOTEMIZATION.get());
+                        // evil
                         output.accept(ModItems.SCROLL_FAMINE.get());
                         output.accept(ModItems.SCROLL_GLOBAL_WARMING.get());
                         output.accept(ModItems.SCROLL_OMICRON.get());
+                        output.accept(ModItems.SCROLL_OMIAWAK.get());
+                        // ancient
                         output.accept(ModItems.SCROLL_AWAKEN.get());
                         output.accept(ModItems.SCROLL_STELLARIS.get());
+                        output.accept(ModItems.SCROLL_OMISTELL.get());
+                        output.accept(ModItems.SCROLL_STELLINK.get());
                     })
                     .build());
 

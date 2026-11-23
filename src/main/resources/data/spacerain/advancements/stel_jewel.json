@@ -2,7 +2,7 @@
     "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "icon": {
-            "item": "spacerain:cobalt_omicron"
+            "item": "spacerain:stellar_jewel"
         },
         "title": {
             "text": "Its- uh, its blinking at me."
@@ -32,5 +32,5 @@
             "stel_jewel"
         ]
     ],
-    "parent": "spacerain:cob"
+    "parent": "spacerain:blight_spawn"
 }

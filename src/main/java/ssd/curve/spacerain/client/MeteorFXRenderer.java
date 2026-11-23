@@ -42,7 +42,7 @@ public class MeteorFXRenderer {
 
                 Level l = Minecraft.getInstance().level;
                 WorldParticleBuilder.create(LodestoneParticleRegistry.SPARKLE_PARTICLE)
-                        .setScaleData(GenericParticleData.create(7, 0).build())
+                        .setScaleData(GenericParticleData.create(12, 0).build())
                         .enableNoClip()
                         .setLifetime(5)
                         .setColorData(ColorParticleData.create(pcol1, pcol2).build())
@@ -52,12 +52,12 @@ public class MeteorFXRenderer {
                         .spawn(l, p.getCenter().x, p.getCenter().y, p.getCenter().z);
 
 
-                WorldParticleBuilder.create(ModLodestoneParticles.METEOR_SMOKE)
-                        .setScaleData(GenericParticleData.create(4, 0).build())
+                WorldParticleBuilder.create(LodestoneParticleRegistry.SMOKE_PARTICLE)
+                        .setScaleData(GenericParticleData.create(4, 2).build())
                         .enableNoClip()
-                        .setLifetime(600)
+                        .setLifetime(20 * 120)
                         .setColorData(ColorParticleData.create(pcol3, pcol3).build())
-                        .setRenderType(LodestoneWorldParticleRenderType.TRANSPARENT)
+                        .setRenderType(LodestoneWorldParticleRenderType.LUMITRANSPARENT)
 
                         //.setSpinData(SpinParticleData.create((float) (Math.random() * 360 - 180)).build())
                         .enableForcedSpawn()
@@ -65,11 +65,12 @@ public class MeteorFXRenderer {
             }
             if (t == 1) {
                 double dist = Minecraft.getInstance().player.position().distanceTo(p.getCenter());
-                // fuck you get linear'd
-                // dist 1024 = volume 0
-                // dist 0 = volume 1
+
                 double volume = Math.max(-(dist/1024.0) + 1.0, 0);
-                Minecraft.getInstance().player.playSound(ModSounds.METEOR_SPAWN.get(), (float) volume, 1);
+                //Minecraft.getInstance().player.playSound(ModSounds.METEOR_SPAWN.get(), (float) volume, 1);
+
+                // ok maybe lets not do ts cuz sfx is ass
+                // ppl get a warning for the first time from the advancement :3
             }
             if (t == 3) {
                 double dist = Minecraft.getInstance().player.position().distanceTo(p.getCenter());

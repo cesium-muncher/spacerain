@@ -4,7 +4,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -17,7 +16,6 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -29,7 +27,6 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 import ssd.curve.spacerain.Spacerain;
 import ssd.curve.spacerain.client.ScribingTableMenu;
@@ -168,7 +165,7 @@ public class ScribingTableBlockEntity extends BlockEntity {
             this.itemHandler.setStackInSlot(OUTPUT_SLOT, getLootFromTable((ServerLevel) this.level, "grand_scroll_loot"));
         } else if (ink == ModItems.HATEFUL_INK.get()) {
             this.itemHandler.setStackInSlot(OUTPUT_SLOT, getLootFromTable((ServerLevel) this.level, "evil_scroll_loot"));
-        } else if (ink == ModItems.SOLAR_INK.get()) {
+        } else if (ink == ModItems.STELLAR_INK.get()) {
             this.itemHandler.setStackInSlot(OUTPUT_SLOT, getLootFromTable((ServerLevel) this.level, "solar_scroll_loot"));
         }
 
@@ -205,7 +202,7 @@ public class ScribingTableBlockEntity extends BlockEntity {
                 maxProgress = 20*1800;
             }
         }
-        if (ink == ModItems.SOLAR_INK.get()) {
+        if (ink == ModItems.STELLAR_INK.get()) {
             if (maxProgress != 20 * 3600) {
                 progress = 0;
                 maxProgress = 20*3600;
@@ -218,7 +215,7 @@ public class ScribingTableBlockEntity extends BlockEntity {
                 ink == ModItems.ASTRAL_INK.get() ||
                 ink == ModItems.REFINED_INK.get() ||
                 ink == ModItems.HATEFUL_INK.get() ||
-                ink == ModItems.SOLAR_INK.get()
+                ink == ModItems.STELLAR_INK.get()
                 );
     }
     private boolean isOutputEmpty() {

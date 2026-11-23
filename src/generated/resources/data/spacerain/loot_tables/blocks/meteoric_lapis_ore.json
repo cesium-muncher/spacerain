@@ -1,1 +1,1 @@
-{"pools":[{"bonus_rolls":0,"entries":[{"name":"spacerain:meteoric_lapis_ore","type":"minecraft:item"}],"rolls":1,"conditions":[{"condition":"minecraft:survives_explosion"}]}],"random_sequence":"spacerain:block/meteoric_lapis_ore","type":"minecraft:block"}
+{"random_sequence":"spacerain:block/meteoric_lapis_ore","type":"minecraft:block","pools":[{"entries":[{"type":"minecraft:item","name":"spacerain:meteoric_lapis_ore"}],"rolls":1,"bonus_rolls":0,"conditions":[{"condition":"minecraft:survives_explosion"}]}]}

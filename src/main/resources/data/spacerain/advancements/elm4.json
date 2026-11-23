@@ -5,7 +5,7 @@
             "item": "spacerain:exotic_elements"
         },
         "title": {
-            "text": "Its glowing"
+            "text": "Is it supposed to shake?"
         },
         "description": {
             "text": "Create exotic elements"
@@ -32,5 +32,5 @@
             "elm4"
         ]
     ],
-    "parent": "spacerain:elm3"
+    "parent": "spacerain:star_spawn"
 }

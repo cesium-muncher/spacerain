@@ -45,7 +45,7 @@ public class SupernovaRenderer {
             Color pcol2 = new Color((int) (Math.random() * 25), (int) (Math.random() * 25), (int) (Math.random() * 25));
 
             WorldParticleBuilder.create(LodestoneParticleRegistry.WISP_PARTICLE)
-                    .setScaleData(GenericParticleData.create(t/2.0f, 0).build())
+                    .setScaleData(GenericParticleData.create(t, 0).build())
                     .enableNoClip()
                     .setLifetime(100)
                     .setColorData(ColorParticleData.create(pcol1, pcol2).build())
@@ -71,9 +71,9 @@ public class SupernovaRenderer {
                         .enableNoClip()
                         .setTransparencyData(GenericParticleData.create(1.0f).build())
                         .setLifetime(400)
-                        .setColorData(ColorParticleData.create(Color.red, Color.red).build())
+                        .setColorData(ColorParticleData.create(Color.WHITE, Color.WHITE).build())
                         .disableCull()
-                        .setRenderType(LodestoneWorldParticleRenderType.LUMITRANSPARENT)
+                        //.setRenderType(LodestoneWorldParticleRenderType.LUMITRANSPARENT)
 
                         .enableForcedSpawn()
                         .spawn(l, p.getCenter().x, p.getCenter().y, p.getCenter().z);

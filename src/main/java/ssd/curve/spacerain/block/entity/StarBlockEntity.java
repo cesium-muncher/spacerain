@@ -15,6 +15,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -27,6 +28,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
@@ -228,7 +230,12 @@ public class StarBlockEntity extends BlockEntity {
         if (instability >= 100) {
             GradualCraterGenerator.generic_supernova_spawn(pLevel, pPos);
             // kablewy
+            if (pLevel.dimension() == Level.NETHER) {
+                ItemEntity star = new ItemEntity(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), new ItemStack(Items.NETHER_STAR));
+                star.setDefaultPickUpDelay();
 
+                pLevel.addFreshEntity(star);
+            }
 
         }
         if (Math.random() * 1000 < instability) {

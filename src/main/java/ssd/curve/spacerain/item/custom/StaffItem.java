@@ -67,7 +67,7 @@ public class StaffItem extends BundleItem {
                     // ok lets like
                     // attempt a cast or smthn
                     // js port over astral alter shit
-                    BlockHitResult lookatres = getPlayerPOVHitResultCustomRange(pPlayer.level(), pPlayer, ClipContext.Fluid.NONE, 10);
+                    BlockHitResult lookatres = getPlayerPOVHitResultCustomRange(pPlayer.level(), pPlayer, ClipContext.Fluid.NONE, 25);
                     BlockPos pPos = lookatres.getBlockPos();
 
                     Item originalItem = itemstack.getItem();

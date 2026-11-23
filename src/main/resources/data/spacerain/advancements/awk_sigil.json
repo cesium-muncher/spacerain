@@ -1,0 +1,36 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "icon": {
+            "item": "spacerain:awakened_sigil"
+        },
+        "title": {
+            "text": "Wakey wakey"
+        },
+        "description": {
+            "text": "Awaken your sigil"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": false,
+        "hidden": false
+    },
+    "criteria": {
+        "awakened_sigil": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": ["spacerain:awakened_sigil"]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "awakened_sigil"
+        ]
+    ],
+    "parent": "spacerain:elm4"
+}

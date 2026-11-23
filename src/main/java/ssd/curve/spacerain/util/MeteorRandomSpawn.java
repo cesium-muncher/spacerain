@@ -33,7 +33,7 @@ public class MeteorRandomSpawn {
                 // 76% over an hour
                 // math type shit
 
-                if (player.level().dimension() == Level.OVERWORLD) { // todo for later, add config for all dimensions n shit
+                if (player.level().dimension() == Level.OVERWORLD && player.position().y >= 60) { // todo for later, add config for all dimensions n shit
                     if (Math.random() * 100000 < 2) {
                         MeteorGenerator.generateMeteorForRealThisTimeISwear(player);
                         //player.sendSystemMessage(Component.literal("debug: meteor is falling, yell at mod dev to remove this!!!!"));

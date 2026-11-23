@@ -1,1 +1,1 @@
-{"pools":[{"bonus_rolls":0,"entries":[{"name":"spacerain:shimmering_solarfield","type":"minecraft:item"}],"rolls":1,"conditions":[{"condition":"minecraft:survives_explosion"}]}],"random_sequence":"spacerain:block/shimmering_solarfield","type":"minecraft:block"}
+{"random_sequence":"spacerain:block/shimmering_solarfield","type":"minecraft:block","pools":[{"entries":[{"type":"minecraft:item","name":"spacerain:shimmering_solarfield"}],"rolls":1,"bonus_rolls":0,"conditions":[{"condition":"minecraft:survives_explosion"}]}]}
